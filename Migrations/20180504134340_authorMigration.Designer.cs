@@ -11,8 +11,8 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180504134340_initialMigration")]
-    partial class initialMigration
+    [Migration("20180504134340_authorMigration")]
+    partial class authorMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
