@@ -16,9 +16,14 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     <link href="css/bookCaveStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div id="icon">
+        <img src="../../wwwroot/images/Book.jpg" alt="icon">
+    </div>
+    <nav class="fullNavigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -39,13 +44,12 @@
                         <div class="search-bar">
                             <form action="/action_page.php">
                                 <input type="text" placeholder="Search.." name="search" id="search-text">
-                                <button type="submit" id="search-button">Submit</button>
+                                <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
                             </form>
                     </div>
                     </li>
                     <li id="login"><a asp-area="" asp-controller="Home" asp-action="Contact">Login</a></li>
                     <li id="cart"><a asp-area="" asp-controller="Home" asp-action="Contact">Cart</a></li>
-
                 </ul>
             </div>
         </div>
@@ -55,6 +59,7 @@
         <hr />
         <footer>
             <p>&copy; 2018 - BookCave</p>
+            <li><a asp-area="" asp-controller="Home" asp-action="Contact">About Us</a></li>
         </footer>
     </div>
 

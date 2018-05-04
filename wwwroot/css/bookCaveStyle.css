@@ -1,4 +1,9 @@
+
 /* Navgation bar */
+.fullNavigation
+{
+    background: #F5F5DC;
+}
 .navigation-bar ul li
 {
    margin-left: 40px;
@@ -11,15 +16,10 @@
 {
     margin-left: 80px;
 }
-/* Search button in navigation bar */
-#search-button
+/* Search bar */
+.search-bar
 {
     margin-top: 10px;
-    background: pink;
-    font-size: 17px;
-    border: none;
-    cursor:pointer;
-    pointer-events: auto;
 }
 /* Search bar text */
 #search-text 
