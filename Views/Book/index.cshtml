@@ -9,25 +9,32 @@
 <!-- Printing all Books -->
 <div id="BookList"> 
 
-        @foreach(var book in Model)
-        {
-            <div class="CoverAndInfo">
-            
-                <!-- Clickable title: -->
-                <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a>
+    @foreach(var book in Model)
+    {
+        <div class="CoverAndInfo">
+        
+            <!-- Clickable title: -->
+            <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a>
 
-                <!-- Book Cover: --> 
-                <div class="BookCover">
-                    <img src="@model.Cover" alt="BookCover" height="42" width="42">
-                </div>
-
-                <!-- Book info  -->
-                <div class="BookInfo">
-                    Genre: Model.Genre, 
-                    Rating: Model.Rating, 
-                    Author: Model.Author, 
-                    Price: Model.Price
-                </div>
+            <!-- Book Cover: --> 
+            <div class="BookCover">
+                <img src="@model.Cover" alt="BookCover" height="42" width="42">
             </div>
-        }
+
+            <!-- Book info  -->
+            <div class="BookInfo">
+                Genre: Model.Genre, 
+                Rating: Model.Rating, 
+                Author: Model.Author, 
+                Price: Model.Price
+            </div>
+        </div>
+    }
+</div>
+<div id="BookFilter">
+
+    
+</div>
+
+
 
