@@ -1,0 +1,14 @@
+/* Navgation bar */
+.navigation-bar ul li
+{
+   margin-left: 30px;
+}
+/* Search button in navigation bar */
+.search-bar button 
+{
+    margin-top: 10px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
