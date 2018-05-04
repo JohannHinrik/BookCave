@@ -1,14 +1,29 @@
 /* Navgation bar */
 .navigation-bar ul li
 {
-   margin-left: 30px;
+   margin-left: 40px;
+}
+#login
+{
+    margin-left: 80px;
+}
+#cart
+{
+    margin-left: 80px;
 }
 /* Search button in navigation bar */
-.search-bar button 
+#search-button
 {
     margin-top: 10px;
-    background: #ddd;
+    background: pink;
     font-size: 17px;
     border: none;
-    cursor: pointer;
+    cursor:pointer;
+    pointer-events: auto;
+}
+/* Search bar text */
+#search-text 
+{
+    display: inline-block;
+    width: 250px;
 }
