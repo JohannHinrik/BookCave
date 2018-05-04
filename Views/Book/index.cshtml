@@ -17,27 +17,21 @@
 
 
 <h2>Books</h2>
+
 <!-- Printing all Books -->
-<ul>
-    @foreach(var book in Model)
-    {
 
-    }
-
-    
 <div id="BookList"> 
+    <ul>
+        @foreach(var book in Model)
+        {
+            <div class="CoverAndInfo">
+                <div class="BookCover">
 
-    <div class="CoverAndInfo">
-        <div class="BookCover">
-
-            <img src="@model.Cover" alt="Smiley face" height="42" width="42">
-
-        </div>
-        
-    </div>
-
+                    <img src="@model.Cover" alt="Smiley face" height="42" width="42">
+             </div>
+        }
+    </ul>
 </div>
-</ul>
 
 
 
