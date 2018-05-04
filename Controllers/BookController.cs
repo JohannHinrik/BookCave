@@ -12,10 +12,14 @@ namespace BookCave.Controllers
     public class BookController : Controller
     {
         private BookService _bookService;
+
+        // Constructor :
          public BookController()
         {
             _bookService = new BookService();
         }
+
+        // Index-view:
         public IActionResult Index()
         {
             var Books = _bookService.GetAllBooks();
