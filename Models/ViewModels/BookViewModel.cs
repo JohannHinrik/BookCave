@@ -1,6 +1,6 @@
 namespace BookCave.Model.ViewModels
 {
-    public class Book
+    public class BookViewModel
     {
 
         public string Title { get; set; }
