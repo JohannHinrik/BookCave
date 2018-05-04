@@ -17,7 +17,6 @@
     </environment>
     <link href="css/bookCaveStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-
 </head>
 <body>
     <div class="banner">
@@ -29,7 +28,7 @@
             <img src="../../images/bookCave.jpg" alt="siteName" id="siteName">
         </div>
     </div>
-    <nav class="fullNavigation">
+   <nav class="fullNavigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
+               <!--  <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a> -->
             </div>
             <!-- Navigation Bar -->
             <div class="navigation-bar">
@@ -62,14 +61,14 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+         <hr />
         <footer>
             <p>&copy; 2018 - BookCave</p>
             <li><a asp-area="" asp-controller="Home" asp-action="Contact">About Us</a></li>
         </footer>
     </div>
 
-    <environment include="Development">
+   <!--  <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
@@ -90,6 +89,6 @@
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false) -->
 </body>
 </html>
