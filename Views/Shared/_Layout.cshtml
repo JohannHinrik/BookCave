@@ -28,17 +28,25 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a>
             </div>
+            <!-- Navigation Bar -->
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Books</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">Top Rated</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">About Us</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Search</a></li>
+                    <li>
+                        <div class="search-container">
+                            <form action="/action_page.php">
+                                <input type="text" placeholder="Search.." name="search">
+                                <button type="submit">Submit</button>
+                            </form>
+                    </div>
+                    </li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Login</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Cart</a></li>
 
                 </ul>
-            </div>bookcave.store 
+            </div>
         </div>
     </nav>
     <div class="container body-content">
