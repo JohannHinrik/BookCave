@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace BookCave.Migrations
 {
-    public partial class initialMigration : Migration
+    public partial class authorMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
