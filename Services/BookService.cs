@@ -1,5 +1,6 @@
 using System.Collections.Generic;
-using BookCave.Models.ViewModels;
+using BookCave.Model.ViewModels;
+//using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 
 namespace BookCave.Services
@@ -15,10 +16,10 @@ namespace BookCave.Services
         }
 
         //GetAllBooks function: 
-       /* public List<BookViewModel> GetAllBooks()
+        public List<BookListViewModel> GetAllBooks()
         {
             var books = _bookRepo.GetAllBooks();
             return books;
-        }*/
+        }
     }
 }
