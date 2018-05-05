@@ -1,3 +1,4 @@
+using BookCave.Models;
 namespace BookCave.Data.EntityModels
 {
     public class Author

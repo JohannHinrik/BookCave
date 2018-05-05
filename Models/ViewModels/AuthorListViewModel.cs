@@ -1,3 +1,4 @@
+using BookCave.Models;
 namespace BookCave.Models.ViewModels
 {
     public class AuthorListViewModel

@@ -18,12 +18,11 @@ namespace BookCave.Controllers
         {
             _bookService = new BookService();
         }
-
+        
         // Index-view:
         public IActionResult Index()
         {
-            //var Books = _bookService.GetAllBooks();
-            
+            var Books = _bookService.GetAllBooks();
             return View();
         }
     }
