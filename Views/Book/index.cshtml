@@ -13,21 +13,17 @@
     @foreach(var book in Model)
     {
         <div class="CoverAndInfo">
-       
-/*             Clickable title:
- */// <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id">@movie.Title</a>
-
         /* Book Cover: */
         <div class="BookCover">
-            <img src="@model.Cover" alt="BookCover" height="42" width="42">
+            <img src="@book.Cover" alt="BookCover" height="42" width="42">
         </div>
 
         <!-- Book info  -->
         <div class="BookInfo">
-            Genre: Model.Genre, 
-            Rating: Model.Rating, 
-            Author: Model.Author, 
-            Price: Model.Price
+            Genre: book.Genre, 
+            Rating: book.Rating, 
+            Author: book.Author, 
+            Price: book.Price
         </div>
     </div>
     }
