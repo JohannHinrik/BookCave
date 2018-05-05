@@ -1,4 +1,30 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+/* icon */
+#icon
+{
+    height: 100px;
+    width: 100px;
+    margin-left: 30px;
+    background-image: url('../../images/Book.jpg');
+}
+#icon-div
+{
+    float: left;
+}
+#siteName-div
+{
+    text-align: center;
+}
 
+#siteName
+{
+    width: 400px;
+    height: 250;
+}
 /* Navgation bar */
 .fullNavigation
 {
