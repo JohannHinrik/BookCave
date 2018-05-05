@@ -1,7 +1,10 @@
-*
-{
+*{
     margin: 0px;
     padding: 0px;
+}
+
+body{
+    background: blue !important;
 }
 /* icon */
 #icon
@@ -54,8 +57,3 @@
     width: 250px;
 }
 
-/* Footer */
-.footer ul li p
-{
-    display: block;
-}
