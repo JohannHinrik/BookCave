@@ -1,0 +1,31 @@
+@{
+
+}
+
+
+<fieldset id="Cart">
+
+  <!-- ONE Book+Info -->
+  <div class="CoverAndInfo">
+      <!-- Book Cover:-->
+      <div class="BookCover">
+          <img src="@book.Cover" alt="BookCover" height="42" width="42">
+      </div>
+      <!-- Book info  -->
+      <div class="BookInfo">
+          Genre: book.Genre, 
+          Rating: book.Rating, 
+          Author: book.Author, 
+          Price: book.Price
+      </div>
+  </div>
+
+  <div id="Price">
+    Price: <!-- @model.price... -->
+  </div>
+
+  <div id="WishListButton">
+    <button type="button">Add To WishList!</button>
+  </div>
+
+</fieldset>

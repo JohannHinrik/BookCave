@@ -6,8 +6,8 @@
     <title>@ViewData["Title"] - BookCave</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />       
+    <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,7 +15,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <link href="css/bookCaveStyle.css" rel="stylesheet">
+    <link href="~/css/bookCaveStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 </head>
 <body>
@@ -28,7 +28,7 @@
             <img src="../../images/bookCave.jpg" alt="siteName" id="siteName">
         </div>
     </div>
-   <nav class="fullNavigation">
+   <nav id="fullNavigation">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -40,13 +40,13 @@
                <!--  <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BookCave</a> -->
             </div>
             <!-- Navigation Bar -->
-            <div class="navigation-bar">
+            <div id="navigation-bar">
                 <ul class="nav navbar-nav">
                     <li ><a asp-area="" asp-controller="Home" asp-action="Index">Books</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Top Rated</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
                     <li>
-                        <div class="search-bar">
+                        <div id="search-bar">
                             <form action="/action_page.php">
                                 <input type="text" placeholder="Search.." name="search" id="search-text">
                                 <button type="submit" id="search-button"><i class="fas fa-search"></i></button>
@@ -65,6 +65,9 @@
         <footer>
             <p>&copy; 2018 - BookCave</p>
             <li><a asp-area="" asp-controller="Home" asp-action="Contact">About Us</a></li>
+            <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
+            <li>Company Phone number: 555-5555</li>
+            <li>Address: BookStreet 2</li>
         </footer>
     </div>
 
