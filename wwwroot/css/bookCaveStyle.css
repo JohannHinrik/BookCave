@@ -1,11 +1,4 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-body{
-    background: blue !important;
-}
+/* ADDED */
 /* icon */
 #icon
 {
@@ -25,15 +18,15 @@ body{
 
 #siteName
 {
-    width: 400px;
-    height: 250;
+    width: 100px;
+    height: 100px;
 }
 /* Navgation bar */
-.fullNavigation
+#fullNavigation
 {
-    background: #F5F5DC;
+    background: pink;
 }
-.navigation-bar ul li
+#navigation-bar ul li
 {
    margin-left: 40px;
 }
@@ -46,7 +39,7 @@ body{
     margin-left: 80px;
 }
 /* Search bar */
-.search-bar
+#search-bar
 {
     margin-top: 10px;
 }
@@ -56,4 +49,3 @@ body{
     display: inline-block;
     width: 250px;
 }
-
