@@ -53,3 +53,9 @@
     display: inline-block;
     width: 250px;
 }
+
+/* Footer */
+.footer ul li p
+{
+    display: block;
+}
