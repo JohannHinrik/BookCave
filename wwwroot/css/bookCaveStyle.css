@@ -73,5 +73,13 @@
 .bookCover
 {
     width: 150px;
-    height: 150px;
+    height: 227px;
+    float: left;
+}
+
+.BookInfo
+{
+    float: right;
+    overflow: hidden;
+    width: 50%;
 }
