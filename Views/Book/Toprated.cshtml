@@ -6,8 +6,11 @@
     @foreach(var book in Model)
     {
         <li>
-            Genre: @book.Genre,
-            Rating: @book.Rating
+            <div class="bookDiv">
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a>
+                Genre: @book.Genre,
+                Rating: @book.Rating
+            </div>
         </li>
     }
 </ul>
