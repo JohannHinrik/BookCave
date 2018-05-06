@@ -13,17 +13,39 @@ namespace BookCave.Controllers
     {
         private BookService _bookService;
 
-        // Constructor :
-         public BookController()
+        
+        public BookController()
         {
             _bookService = new BookService();
         }
-        
-        // Index-view:
         public IActionResult Index()
         {
-            var Books = _bookService.GetAllBooks();
+            var books = _bookService.GetAllBooks();
+            return View(books);
+        }
+
+        public IActionResult About()
+        {
             return View();
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

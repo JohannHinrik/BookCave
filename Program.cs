@@ -28,17 +28,14 @@ namespace BookCave
         public static void SeedData()
         {
             var db = new DataContext();
-            if (!db.Authors.Any())
+          
+            var initialBooks = new List<Book>()
             {
-                var initialAuthors = new List<Author>()
-                {
-                    new Author { Name = "JK Rowling", Rating = 5 },
-                    new Author { Name = "JR Tolkien", Rating = 5 }
-                };
-                db.AddRange(initialAuthors);
-                db.SaveChanges();
-            }
-            
+                new Book { Title = "Harry Potter", About = "best book ever", Rating = 5 },
+                new Book { Title = "JR Tolkien", Rating = 5 }
+            };
+            db.AddRange(initialBooks);
+            db.SaveChanges();
         }
     }
 }

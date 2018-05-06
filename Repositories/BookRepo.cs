@@ -1,30 +1,33 @@
 using System.Collections.Generic;
+using BookCave.Data;
 using BookCave.Models.ViewModels;
-//using BookCave.Models.ViewModels;
+using System.Linq;
 
 namespace BookCave.Repositories
 {
     public class BookRepo
     {
-       public List<BookListViewModel> GetAllBooks()
+        private DataContext _db;
+        
+        public BookRepo()
         {
-          var Books = new List<BookListViewModel>
-            {
-                new BookListViewModel { Title = "Prisoner of Azcaban", 
-                                    Author = "J.K. Rowling", 
-                                    Review = "VEry nice", 
-                                    Genre = "Romance", 
-                                    About = "harry potter is the boy who lived, read all about it", 
-                                    Rating = 10.5 }
-                                    
-               /* new BookViewModel { Title = "Notting hill",
-                                    Author = "Gudrun Sara", 
-                                    Review = "More nice", 
-                                    Genre = "Romance", 
-                                    Rating = 9.5, 
-                                    About = "bets book ever" }*/
-            };
-            return Books; 
+            _db = new DataContext();
+        }
+
+        public List<BookListViewModel> GetAllBooks()
+        {
+            var books = (from b in _db.Books
+                         join au in _db.Authors on b.AuthorId equals au.Id
+                         select new BookListViewModel
+                         {
+                             BookId = b.Id,
+                             Title = b.Title,
+                             Genre = b.Genre,
+                             //ReviewId = b.Id,
+                             About = b.About,
+                             Rating = b.Rating
+                         }).ToList();
+            return books;
         }
     }
 }
