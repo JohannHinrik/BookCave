@@ -115,3 +115,21 @@
     background-color: cornflowerblue;
     color: white;
 }
+
+/* Book Details */
+
+.bookInfoDetails
+{
+    width: 35%;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background: #FFE5B4
+}
+
+.BookDetailsInfo
+{
+    float: left;
+    overflow: hidden;
+    width: 50%;
+}

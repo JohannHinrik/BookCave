@@ -46,16 +46,12 @@
                     <li><a asp-area="" asp-controller="Book" asp-action="TopRated">Top Rated</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
                     <li>
-
-
                         <div id="search-bar">
-                            <form action="/action_page.php">
                             @using (Html.BeginForm("Index", "Book", FormMethod.Get))
                             {
                                 @Html.TextBox("search")
                                 <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
                             }
-                            </form>
                     </div>
                     </li>
                     <li id="login"><a asp-area="" asp-controller="Home" asp-action="Contact">Login</a></li>

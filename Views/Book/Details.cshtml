@@ -2,13 +2,15 @@
 
 <h2>@Model.Title</h2>
 
-<div>
+<div class="bookInfoDetails">
      <div>
         <img src="~/images/books/(@Model.BookId).jpg" alt="@Model.Title" class="bookCover">
     </div>
-    <div class="BookInfo">
+    <div class="BookDetailsInfo">
         Genre: @Model.Genre <br/>
         Author: @Model.Author <br/>
-        Price: @Model.Price
+        Price: @Model.Price <br/>
+        About: <br/>
+        @Model.About
     </div>
 </div>
