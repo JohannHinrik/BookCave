@@ -16,5 +16,11 @@ namespace BookCave.Services
             var books = _bookRepo.GetAllBooks();
             return books;
         }
+        public List<BookListViewModel> GetTopRatedBooks()
+        {
+            var topRatedBooks = _bookRepo.GetTopRatedBooks();
+            return topRatedBooks;
+        }
+
     }
 }

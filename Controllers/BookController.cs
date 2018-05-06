@@ -13,7 +13,6 @@ namespace BookCave.Controllers
     {
         private BookService _bookService;
 
-        
         public BookController()
         {
             _bookService = new BookService();
@@ -27,6 +26,11 @@ namespace BookCave.Controllers
         public IActionResult LogIn()
         {
             return View();
+        }
+        public IActionResult TopRated()
+        {
+           var books = _bookService.GetTopRatedBooks();
+            return View(books);
         }
         public IActionResult Error()
         {
