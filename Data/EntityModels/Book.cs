@@ -7,6 +7,7 @@ namespace BookCave.Data.EntityModels
         public int ReviewId { get; set; }
         public string About { get; set; }
         public double Rating { get; set; }
+        public int Price { get; set; }
         public string Genre { get; set; }
         public int AuthorId { get; set; }
     }

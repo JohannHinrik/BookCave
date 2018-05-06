@@ -45,6 +45,8 @@ namespace BookCave.Migrations
 
                     b.Property<string>("Genre");
 
+                    b.Property<int>("Price");
+
                     b.Property<double>("Rating");
 
                     b.Property<int>("ReviewId");
