@@ -25,7 +25,7 @@
 /* Navgation bar */
 #fullNavigation
 {
-    background: rgb(255,235,235);
+    background: #FFE5B4
 }
 #navigation-bar ul li
 {
@@ -63,11 +63,11 @@
 /* Books */
 .bookDiv
 {
-    border-style: solid;
     width: 28%;
     float: left;
     margin-right: 15px;
     margin-bottom: 15px;
+    background: #FFE5B4
 }
 
 .bookCover
