@@ -83,3 +83,8 @@
     overflow: hidden;
     width: 50%;
 }
+
+.addToButtons
+{
+    bottom: 0%;
+}
