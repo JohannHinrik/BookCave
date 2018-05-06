@@ -60,5 +60,14 @@
     width: 300px;
 }
 
+/* Books */
+.bookDiv
+{
+    border-style: solid;
+}
 
-/* For about us html */
+.bookDiv #BookCover > img
+{
+    width: 5px !important;
+    height: 5px !important;
+}
