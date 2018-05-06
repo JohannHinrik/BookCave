@@ -1,9 +1,10 @@
 /* ADDED */
 /* icon */
+
 #icon
 {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     margin-left: 30px;
     background-image: url('../../images/Book.jpg');
 }
@@ -18,34 +19,46 @@
 
 #siteName
 {
-    width: 100px;
+    width: 300px;
     height: 100px;
 }
 /* Navgation bar */
 #fullNavigation
 {
-    background: pink;
+    background: rgb(255,235,235);
 }
 #navigation-bar ul li
 {
-   margin-left: 40px;
+   margin-left: 35px;
 }
+
+#navigation-bar ul li a
+{
+   color: black;
+}
+
 #login
 {
-    margin-left: 80px;
+    padding-left: 5px;
 }
+
 #cart
 {
-    margin-left: 80px;
+    padding-left: 5px;
 }
+
 /* Search bar */
 #search-bar
 {
     margin-top: 10px;
+    padding-left: 10px;
 }
 /* Search bar text */
 #search-text 
 {
     display: inline-block;
-    width: 250px;
+    width: 300px;
 }
+
+
+/* For about us html */

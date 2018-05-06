@@ -2,30 +2,43 @@
 
 }
 
-
-<fieldset id="Cart">
-
-  <!-- ONE Book+Info -->
-  <div class="CoverAndInfo">
-      <!-- Book Cover:-->
-      <div class="BookCover">
-          <img src="@book.Cover" alt="BookCover" height="42" width="42">
+<!-- @foreach(movie in Cart)
+{-->
+    <div id="OneItemInCart">
+      <div class="CoverAndInfo">
+          <!-- Book Cover:-->
+          <div class="BookCover">
+              <img src="@book.Cover" alt="BookCover" height="42" width="42">
+          </div>
+          <!-- Book info  -->
+          <div class="BookInfo">
+              Genre: <!-- @book.Genre, -->
+              Rating: <!-- @book.Rating, -->
+              Author:<!--  @book.Author, -->
+              Price: <!-- @book.Price -->
+          </div>
       </div>
-      <!-- Book info  -->
-      <div class="BookInfo">
-          Genre: book.Genre, 
-          Rating: book.Rating, 
-          Author: book.Author, 
-          Price: book.Price
+
+      <div id="Price">
+        Price: <!-- @model.price... -->
       </div>
-  </div>
 
-  <div id="Price">
-    Price: <!-- @model.price... -->
-  </div>
+      <div id="WishListButton">
+        <button type="button">Add To WishList!</button>
+      </div>
+    </div>
+<!-- } --> 
 
-  <div id="WishListButton">
-    <button type="button">Add To WishList!</button>
-  </div>
+<div id="CartSummary">
+    <div id="TotalBooks">
+        Total books in cart: <!-- SOME MODEL VALUE --> 
+    </div>
 
-</fieldset>
+    <div id="TotalPrice">
+        Total price: <!-- SOME MODEL VALUE -->
+    </div>
+
+    <button type="button">Continue Shopping</button>
+
+    <button type="button">Checkout</button>
+</div>
