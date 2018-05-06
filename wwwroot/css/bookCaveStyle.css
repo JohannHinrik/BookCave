@@ -64,10 +64,14 @@
 .bookDiv
 {
     border-style: solid;
+    width: 28%;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
-.bookDiv #BookCover > img
+.bookCover
 {
-    width: 5px !important;
-    height: 5px !important;
+    width: 150px;
+    height: 150px;
 }
