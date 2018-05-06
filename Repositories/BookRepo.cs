@@ -65,5 +65,20 @@ namespace BookCave.Repositories
                         }).ToList();
             return filteredBooks;
         }
+
+        public BookListViewModel GetBookDetails(int Id)
+        {
+            var book = (from b in _db.Books
+                        where b.Id == Id
+                        select new BookListViewModel
+                        {
+                            Title = b.Title,
+                            Genre = b.Genre,
+                            About = b.About,
+                            Rating = b.Rating,
+                            Price = b.Price
+                        }).First();
+            return book;
+        }
     }
 }

@@ -53,6 +53,15 @@ namespace BookCave.Controllers
 /*            var topRated = new Tuple<List<Book>, List<Author>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
  */            return View(topRatedBooks);
         }
+        public IActionResult Details(int Id)
+        {
+            var bookDetails = _bookService.GetBookDetails(Id);
+            if(bookDetails == null)
+            {
+                return View("Error");
+            }
+            return View(bookDetails);
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
