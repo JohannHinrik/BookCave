@@ -17,7 +17,7 @@ namespace BookCave
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-            SeedData();
+            //SeedData();
             host.Run();
         }
 
