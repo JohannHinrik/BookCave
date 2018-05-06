@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
 using BookCave.Services;
+using BookCave.Data;
+using BookCave.Models.ViewModels;
 
 namespace BookCave.Controllers
 {
     public class HomeController : Controller
     {
         private AuthorService _authorService;
+    
         
         public HomeController()
         {

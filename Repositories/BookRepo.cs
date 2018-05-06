@@ -50,5 +50,20 @@ namespace BookCave.Repositories
                          }).Take(10).ToList();
             return topRatedbooks;
         }
+
+        public List<BookListViewModel> GetSearchedBooks(string search)
+        {
+            var filteredBooks = (from b in _db.Books
+                        where b.Title.ToLower().Contains(search.ToLower())
+                        select new BookListViewModel
+                        {
+                            Title = b.Title,
+                            Genre = b.Genre,
+                            About = b.About,
+                            Rating = b.Rating,
+                            Price = b.Price
+                        }).ToList();
+            return filteredBooks;
+        }
     }
 }
