@@ -23,21 +23,6 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        public IActionResult SignUp()
-        {
-            return View();
-        }
-
         public IActionResult LogIn()
         {
             return View();
