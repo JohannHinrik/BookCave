@@ -32,12 +32,11 @@ namespace BookCave.Controllers
                  var books = _bookService.GetAllBooks();
                 return View(books);
             }
-            
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(search);
 
-                return View(filteredBooks.ToList());           
+                return View(filteredBooks);           
             }
         }
 
