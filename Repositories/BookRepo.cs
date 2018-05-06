@@ -57,6 +57,7 @@ namespace BookCave.Repositories
                         where b.Title.ToLower().Contains(search.ToLower())
                         select new BookListViewModel
                         {
+                            BookId = b.Id,
                             Title = b.Title,
                             Genre = b.Genre,
                             About = b.About,
@@ -72,6 +73,7 @@ namespace BookCave.Repositories
                         where b.Id == Id
                         select new BookListViewModel
                         {
+                            BookId = b.Id,
                             Title = b.Title,
                             Genre = b.Genre,
                             About = b.About,
