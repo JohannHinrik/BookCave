@@ -25,7 +25,8 @@ namespace BookCave.Repositories
                              Genre = b.Genre,
                              //ReviewId = b.Id,
                              About = b.About,
-                             Rating = b.Rating
+                             Rating = b.Rating,
+                             Author = au.Name
                          }).ToList();
             return books;
         }
@@ -42,7 +43,8 @@ namespace BookCave.Repositories
                              Genre = b.Genre,
                              //ReviewId = b.Id,
                              About = b.About,
-                             Rating = b.Rating
+                             Rating = b.Rating,
+                             Author = au.Name
                          }).Take(10).ToList();
             return topRatedbooks;
         }
