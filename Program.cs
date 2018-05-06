@@ -31,7 +31,7 @@ namespace BookCave
           
             var initialBooks = new List<Book>()
             {
-                new Book { Title = "Harry Potter", Rating = 5 },
+                new Book { Title = "Harry Potter", About = "best book ever", Rating = 5 },
                 new Book { Title = "JR Tolkien", Rating = 5 }
             };
             db.AddRange(initialBooks);
