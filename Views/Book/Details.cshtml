@@ -1,3 +1,14 @@
 @model BookCave.Models.ViewModels.BookListViewModel
 
 <h2>@Model.Title</h2>
+
+<div>
+     <div>
+        <img src="~/images/books/(@Model.BookId).jpg" alt="@Model.Title" class="bookCover">
+    </div>
+    <div class="BookInfo">
+        Genre: @Model.Genre <br/>
+        Author: @Model.Author <br/>
+        Price: @Model.Price
+    </div>
+</div>
