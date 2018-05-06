@@ -1,7 +1,7 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Book Page";
 }
 
 <h2 id="BooksTile">Books</h2>
@@ -12,24 +12,19 @@
 
     @foreach(var book in Model)
     {
-        <div class="CoverAndInfo">
-            /* Book Cover: */
+        <div class="bookDiv">
+            <!-- Book Cover  -->
             <div class="BookCover">
-                <img src="@book.Cover" alt="BookCover" height="42" width="42">
+                
             </div>
-
             <!-- Book info  -->
             <div class="BookInfo">
-                Genre: book.Genre, 
-                Rating: book.Rating, 
-                Author: book.Author, 
-                Price: book.Price
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a>
+                Genre: @book.Genre, 
+                Rating: @book.Rating, 
+                Author: @book.Author, 
+                Price: @book.Price
             </div>
         </div>
     }
 </div>
-<div id="BookFilter">
-
-</div>
-
-

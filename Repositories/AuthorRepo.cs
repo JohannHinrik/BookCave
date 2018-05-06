@@ -22,5 +22,18 @@ namespace BookCave.Repositories
                          }).ToList();
             return authors;
         }
+
+        public List<AuthorListViewModel> GetTopRatedAuthors()
+        {
+            var topRatedAuthors = (from a in _db.Authors
+                                    orderby a.Rating
+                                    select new AuthorListViewModel
+                                    {
+                                       Name = a.Name,
+                                       Rating = a.Rating,
+                                       Id = a.Id 
+                                    }).Take(10).ToList();
+            return topRatedAuthors;
+        }
     }
 }

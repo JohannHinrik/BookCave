@@ -21,6 +21,5 @@ namespace BookCave.Services
             var topRatedBooks = _bookRepo.GetTopRatedBooks();
             return topRatedBooks;
         }
-
     }
 }
