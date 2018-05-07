@@ -123,13 +123,13 @@
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
-    background: lightcoral;
+    background: cornflowerblue;
     color: white;
 }
 
 .cartButton:hover
 {
-    background-color: cornflowerblue;
+    background-color: rgb(52, 85, 230);
     color: white;
 }
 
@@ -147,8 +147,8 @@
 
 .wishListButton:hover
 {
-    background-color: cornflowerblue;
-    color: white;
+    background-color: lightgrey;
+    color: black;
 }
 
 /* Book Details */
