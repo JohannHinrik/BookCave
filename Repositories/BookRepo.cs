@@ -36,7 +36,7 @@ namespace BookCave.Repositories
         {
             var topRatedbooks = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
-                        orderby b.Rating
+                        orderby b.Rating descending
                         select new BookListViewModel
                         {
                             BookId = b.Id,
