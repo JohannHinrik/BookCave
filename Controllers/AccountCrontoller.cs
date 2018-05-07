@@ -2,6 +2,9 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using BookCave.Models;
+using BookCave.Models.ViewModels;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace BookCave.Controllers
 {
@@ -23,9 +26,28 @@ namespace BookCave.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult SignUp()
+        public async Task<IActionResult> SignUp(SignUpViewModel model)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            //If the register goes through 
+            //make the username the same as the password
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email
+            };
+            //The user gets registered
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                //The user is now registered succesfully
+                //Add the concatenated name
+                await _userManager.AddClaimsAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+            }
         }
     }
 }
