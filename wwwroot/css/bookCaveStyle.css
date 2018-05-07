@@ -24,11 +24,12 @@
 /* Navgation bar */
 #fullNavigation
 {
-    background: white;
+    background: rgba(157, 187, 243, 0.993);
 }
 #navigation-bar ul li
 {
    margin-left: 35px;
+   font-weight: bold;
 }
 
 #navigation-bar ul li a
@@ -182,7 +183,7 @@
 
 body
 {
-    background: white;
+    background: #F6F6F6;
     width: 100%;
     min-height: 100%;
 }
