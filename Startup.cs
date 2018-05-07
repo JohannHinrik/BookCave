@@ -42,12 +42,12 @@ namespace BookCave
 
             services.ConfigureApplicationCookie(options =>
             {
-                //Cookie settings
+                //Cookie settings:
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(4);
                 //If the LoginPath isn't set, ASP.NET Core defaults
-                //the path to /Account/Login.
-                options.LoginPath = "/Account/Login";
+                //the path to /Account/Login:
+                options.LoginPath = "/Account/LogIn";
                 //If the AccessDeniedPath isn't set, AST.NET Core defaults
                 //the path to /Account/AccessDenied.
                 options.AccessDeniedPath = "/Account/AccessDenied";
@@ -69,7 +69,7 @@ namespace BookCave
             }
 
             app.UseStaticFiles();
-
+            //Middleware added to enable authentication capabilities
             app.UseAuthentication();
             
             app.UseMvc(routes =>
