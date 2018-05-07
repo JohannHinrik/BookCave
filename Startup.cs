@@ -33,11 +33,11 @@ namespace BookCave
 
             services.Configure<IdentityOptions>(config =>
             {   
-                //User settings
-                //No 2 users can have the same email
+                //User settings.
+                //No 2 users can have the same email.
                 config.User.RequireUniqueEmail = true;
-                //Password settings for users
-                //Require a specific passwords length
+                //Password settings for users.
+                //Require a specific passwords length.
                 config.Password.RequiredLength = 6;
             });
 
@@ -70,7 +70,7 @@ namespace BookCave
             }
 
             app.UseStaticFiles();
-            //Middleware added to enable authentication capabilities
+            //Middleware added to enable authentication capabilities.
             app.UseAuthentication();
             
             app.UseMvc(routes =>

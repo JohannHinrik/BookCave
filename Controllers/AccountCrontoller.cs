@@ -33,21 +33,27 @@ namespace BookCave.Controllers
                 return View();
             }
             //If the register goes through 
-            //make the username the same as the password
+            //make the username the same as the password.
             var user = new ApplicationUser
             {
                 UserName = model.Email,
                 Email = model.Email
             };
-            //The user gets registered
+            //The user gets registered.
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                //The user is now registered succesfully
-                //Add the concatenated name
+                //The user is now registered succesfully.
+                //Add the concatenated first name and last name as fullName in claims.
                 await _userManager.AddClaimsAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+                await _signInManager.SignInAsync(user, false);
+
+                //Taking the user back to the homepage
+                return RedirectToAction("Index", "Home");
             }
+            //If the upper didn't succeed, return the view
+            return View();
         }
     }
 }
