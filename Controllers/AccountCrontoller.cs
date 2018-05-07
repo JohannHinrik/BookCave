@@ -39,7 +39,7 @@ namespace BookCave.Controllers
                 UserName = model.Email,
                 Email = model.Email
             };
-            //The user gets registered.
+            //Creating the user with _userManager.
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
@@ -47,6 +47,7 @@ namespace BookCave.Controllers
                 //The user is now registered succesfully.
                 //Add the concatenated first name and last name as fullName in claims.
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+                //Signing in the user
                 await _signInManager.SignInAsync(user, false);
 
                 //Taking the user back to the homepage
