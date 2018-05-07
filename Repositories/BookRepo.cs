@@ -54,7 +54,10 @@ namespace BookCave.Repositories
         public List<BookListViewModel> GetSearchedBooks(string search)
         {
             var filteredBooks = (from b in _db.Books
-                        where b.Title.ToLower().Contains(search.ToLower())
+                        join au in _db.Authors on b.AuthorId equals au.Id
+                        where ((b.Title.ToLower().Contains(search.ToLower())) 
+                              || (au.Name.ToLower().Contains(search.ToLower()))
+                              || (b.Genre.ToLower().Contains(search.ToLower())))
                         select new BookListViewModel
                         {
                             BookId = b.Id,
@@ -62,6 +65,7 @@ namespace BookCave.Repositories
                             Genre = b.Genre,
                             About = b.About,
                             Rating = b.Rating,
+                            Author = au.Name,
                             Price = b.Price
                         }).ToList();
             return filteredBooks;
