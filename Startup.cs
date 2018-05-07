@@ -34,16 +34,17 @@ namespace BookCave
             {
                //User settings
                config.User.RequireUniqueEmail = true; 
+               config.Password.RequiredLength = 6;
             });
 
             services.ConfigureApplicationCookie(options =>
             {
-                //Cookie settings
+                //Cookie settings:
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.ExpireTimeSpan = TimeSpan.FromHours(3);
                 //If the LoginPath isn't set, ASP.NET Core defaults
-                //the path to /Account/Login.
-                options.LoginPath = "/Account/Login";
+                //the path to /Account/Login:
+                options.LoginPath = "/Account/LogIn";
                 //If the AccessDeniedPath isn't set, AST.NET Core defaults
                 //the path to /Account/AccessDenied.
                 options.AccessDeniedPath = "/Account/AccessDenied";
@@ -65,7 +66,7 @@ namespace BookCave
             }
 
             app.UseStaticFiles();
-
+            
             app.UseAuthentication();
             
             app.UseMvc(routes =>
