@@ -15,5 +15,17 @@ namespace BookCave.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SignUp()
+        {
+            
+        }
     }
 }
