@@ -8,6 +8,7 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
+using BookCave.Repositories;
 
 namespace BookCave.Controllers
 {
@@ -29,14 +30,13 @@ namespace BookCave.Controllers
         {
             if (search == null) 
             {
-                 var books = _bookService.GetAllBooks();
+                var books = _bookService.GetAllBooks();
                 return View(books);
             }
             
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(search);
-
                 return View(filteredBooks.ToList());           
             }
         }

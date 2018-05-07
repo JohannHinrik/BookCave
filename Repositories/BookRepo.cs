@@ -57,7 +57,7 @@ namespace BookCave.Repositories
                         join au in _db.Authors on b.AuthorId equals au.Id
                         where ((b.Title.ToLower().Contains(search.ToLower())) 
                               || (au.Name.ToLower().Contains(search.ToLower()))
-                              || (b.Genre.ToLower().Contains(search.ToLower())))
+                              || (b.Genre.ToLower() == search.ToLower()))
                         select new BookListViewModel
                         {
                             BookId = b.Id,
