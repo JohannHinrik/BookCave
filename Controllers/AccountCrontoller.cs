@@ -46,7 +46,7 @@ namespace BookCave.Controllers
             {
                 //The user is now registered succesfully.
                 //Add the concatenated first name and last name as fullName in claims.
-                await _userManager.AddClaimsAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+                await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
 
                 //Taking the user back to the homepage
