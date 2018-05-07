@@ -140,7 +140,9 @@
     border-radius: 5px;
     text-align: center;
     background: transparent;
-    color: red;
+    color: black;
+    font-weight: bold;
+    border-radius: 60%;
 }
 
 .wishListButton:hover
@@ -204,9 +206,6 @@ h2
     background: white;
     margin-top: 15px;
     margin-left: 25px;
-    border-style: solid;
-    border-color: rgb(160,160,160);
-    border-width: 1px;
 }
 
 #topAuthors
@@ -222,6 +221,9 @@ h2
     margin-right: 10px;
     margin-bottom: 15px;
     background: white;
+    border-style: solid;
+    border-color: rgb(160,160,160);
+    border-width: 1px;
 }
 
 /* Book title name  */
