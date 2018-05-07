@@ -74,6 +74,7 @@ namespace BookCave.Repositories
         public BookListViewModel GetBookDetails(int Id)
         {
             var book = (from b in _db.Books
+                         join au in _db.Authors on b.AuthorId equals au.Id
                         where b.Id == Id
                         select new BookListViewModel
                         {
@@ -81,6 +82,7 @@ namespace BookCave.Repositories
                             Title = b.Title,
                             Genre = b.Genre,
                             About = b.About,
+                            Author = au.Name,
                             Rating = b.Rating,
                             Price = b.Price
                         }).First();
