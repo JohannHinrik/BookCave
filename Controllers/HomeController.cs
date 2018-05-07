@@ -8,7 +8,6 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data;
 using BookCave.Models.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -32,7 +31,7 @@ namespace BookCave.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+       public IActionResult Contact()
         {
             return View();
         }
