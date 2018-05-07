@@ -9,7 +9,7 @@
 <!--  Printing all Books
  -->
 <div class="books"> 
-    @foreach(var book in Model)
+    @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(10))
     {
         <div class="bookDiv">
             <!-- Book Cover  -->

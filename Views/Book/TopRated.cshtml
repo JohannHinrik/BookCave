@@ -1,8 +1,8 @@
-@model List<BookCave.Models.ViewModels.BookListViewModel>
+@model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
 <h2>TOP 10 BOOKS</h2>
 <div>
-    @foreach(var book in Model)
+    @foreach(var book in Model.Item1)
     {
         <div class="bookDiv">
             <div>

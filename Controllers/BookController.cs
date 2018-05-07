@@ -47,10 +47,10 @@ namespace BookCave.Controllers
         public IActionResult TopRated()
         {
            var topRatedBooks = _bookService.GetTopRatedBooks();
-          /* var topRatedAuthors = _authorService.GetTopRatedAuthors(); */
+           var topRatedAuthors = _authorService.GetTopRatedAuthors(); 
 
-/*            var topRated = new Tuple<List<Book>, List<Author>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
- */            return View(topRatedBooks);
+            var topRated = new Tuple<List<BookListViewModel>, List<AuthorListViewModel>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
+             return View(topRated);
         }
         public IActionResult Details(int Id)
         {
