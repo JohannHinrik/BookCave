@@ -25,7 +25,7 @@ namespace BookCave
         //This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AuthenticationDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AuthenticationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationDbContext>()
@@ -48,12 +48,14 @@ namespace BookCave
                 options.ExpireTimeSpan = TimeSpan.FromHours(4);
                 //If the LoginPath isn't set, ASP.NET Core defaults
                 //the path to /Account/Login:
+                //Always redirected to this
                 options.LoginPath = "/Account/LogIn";
                 //If the AccessDeniedPath isn't set, AST.NET Core defaults
                 //the path to /Account/AccessDenied.
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+            
             services.AddMvc();
         }
 

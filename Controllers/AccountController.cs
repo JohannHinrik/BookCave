@@ -28,6 +28,7 @@ namespace BookCave.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel model)
         {
+            //Returning the view if not valid.
             if (!ModelState.IsValid)
             {
                 return View();
@@ -75,6 +76,7 @@ namespace BookCave.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+            //If not return the view
             return View();
         }
         [HttpPost]
@@ -86,7 +88,7 @@ namespace BookCave.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public IActionResult Index()
+        public IActionResult AccessDenied()
         {
             return View();
         }
