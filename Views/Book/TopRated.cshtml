@@ -1,7 +1,7 @@
 @model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
 <h2 id="topBooksH2">TOP 10 BOOKS</h2>
-<div id="topBooks">
+<div class="topBooks">
     @foreach(var book in Model.Item1)
     {
         <div class="topBookDiv">
@@ -9,7 +9,7 @@
                 <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
             </div>
             <div class="BookInfo">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a> <br/>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class ="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                 <p class="bookPrice">@book.Price Kr</p>
@@ -17,7 +17,7 @@
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
                 <br/>
-                <button type="button" class="wishListButton">Add to WishList</button>
+                <button type="button" class="wishListButton"><button type="button" class="wishListButton"><i class="far fa-heart"></i></button></button>
             </div>
         </div>
     }
