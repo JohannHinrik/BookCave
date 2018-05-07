@@ -31,17 +31,20 @@ namespace BookCave
                 .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(config =>
-            {
-               //User settings
-               config.User.RequireUniqueEmail = true; 
-               config.Password.RequiredLength = 6;
+            {   
+                //User settings
+                //No 2 users can have the same email
+                config.User.RequireUniqueEmail = true;
+                //Password settings for users
+                //Require a specific passwords length
+                config.Password.RequiredLength = 6;
             });
 
             services.ConfigureApplicationCookie(options =>
             {
                 //Cookie settings:
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromHours(3);
+                options.ExpireTimeSpan = TimeSpan.FromHours(4);
                 //If the LoginPath isn't set, ASP.NET Core defaults
                 //the path to /Account/Login:
                 options.LoginPath = "/Account/LogIn";
@@ -66,7 +69,7 @@ namespace BookCave
             }
 
             app.UseStaticFiles();
-            
+            //Middleware added to enable authentication capabilities
             app.UseAuthentication();
             
             app.UseMvc(routes =>
