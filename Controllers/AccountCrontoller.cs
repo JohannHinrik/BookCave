@@ -56,5 +56,33 @@ namespace BookCave.Controllers
             //If the upper didn't succeed, return the view
             return View();
         }
+        
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LogIn(LogInViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.Remember, false);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //For the user to sign out.
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
