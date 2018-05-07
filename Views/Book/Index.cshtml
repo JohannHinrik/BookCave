@@ -8,7 +8,7 @@
 
 <!--  Printing all Books
  -->
-<div> 
+<div class="books"> 
     @foreach(var book in Model)
     {
         <div class="bookDiv">
@@ -21,7 +21,7 @@
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
-                Price: @book.Price
+               <p class="bookPrice">@book.Price Kr</p>
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>

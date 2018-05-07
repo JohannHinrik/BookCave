@@ -8,10 +8,12 @@
 #icon-div
 {
     float: left;
+    background: white;
 }
 #siteName-div
 {
     text-align: center;
+    background: white;
 }
 
 #siteName
@@ -22,7 +24,7 @@
 /* Navgation bar */
 #fullNavigation
 {
-    background: #FFE5B4
+    background: white;
 }
 #navigation-bar ul li
 {
@@ -58,13 +60,19 @@
 }
 
 /* Books */
+/* for all books */
+.books
+{
+    background: white;
+}
+/* for each book */
 .bookDiv
 {
     width: 30%;
     float: left;
     margin-right: 15px;
     margin-bottom: 15px;
-    background: #FFE5B4
+    background: white;
 }
 
 .bookCover
@@ -79,6 +87,7 @@
     float: right;
     overflow: hidden;
     width: 50%;
+    background: white;
 }
 
 .addToButtons
@@ -95,6 +104,8 @@
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
+    background: rgb(16, 187, 213);
+    color: white;
 }
 
 .cartButton:hover
@@ -108,6 +119,8 @@
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
+    background: rgb(16, 187, 213);
+    color: white;
 }
 
 .wishListButton:hover
@@ -120,16 +133,45 @@
 
 .bookInfoDetails
 {
-    width: 35%;
+    width: 70%;
     float: left;
     margin-right: 15px;
     margin-bottom: 15px;
-    background: #FFE5B4
+    background: white;
 }
 
+.bookDetailsPayment
+{
+    background: white;
+    float: right;
+    width: 25%;
+}
 .BookDetailsInfo
 {
     float: left;
     overflow: hidden;
     width: 50%;
+}
+
+.bookPrice
+{
+    color: rgb(245, 84, 169);
+    font-weight: bold;
+}
+body
+{
+    background: rgb(240, 240, 240);
+}
+
+/* Footer */
+#footer
+{
+    /* NEEDS FIXING TODO: */
+    bottom:0;
+    left:0;
+}
+
+h2
+{
+    text-align: left;
 }

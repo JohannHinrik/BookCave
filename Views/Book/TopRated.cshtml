@@ -11,6 +11,8 @@
             <div class="BookInfo">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
+                Author: @book.Author <br/>
+                <p class="bookPrice">@book.Price Kr</p>
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
