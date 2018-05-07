@@ -66,6 +66,7 @@
     background: white;
 }
 /* for each book */
+
 .bookDiv
 {
     width: 30%;
@@ -73,6 +74,17 @@
     margin-right: 15px;
     margin-bottom: 15px;
     background: white;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .bookDiv
+    {
+        width: 342px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        background: white;
+    }
 }
 
 .bookCover
