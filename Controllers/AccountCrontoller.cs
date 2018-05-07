@@ -63,6 +63,7 @@ namespace BookCave.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //The views returned when the user signs in.
         public async Task<IActionResult> LogIn(LogInViewModel model)
         {
             if (!ModelState.IsValid)
@@ -78,7 +79,7 @@ namespace BookCave.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //For the user to sign out.
+        //Views when the user signs out.
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
