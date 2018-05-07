@@ -1,7 +1,7 @@
 @model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
 <h2>TOP 10 BOOKS</h2>
-<div>
+<div class="bookDetails">
     @foreach(var book in Model.Item1)
     {
         <div class="bookDiv">
@@ -22,9 +22,15 @@
         </div>
     }
 </div>
-</div>
 
 <h2>TOP 10 AUTHORS</h2>
-<div>
-
+<div class="authorDetails">
+    @foreach(var author in Model.Item2)
+    {
+        <div>
+            @author.Name
+            <br/>
+            Rating: @author.Rating
+        </div>
+    }
 </div>
