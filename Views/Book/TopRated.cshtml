@@ -25,12 +25,16 @@
 
 <div id="topAuthors">
     <h2 id="topAuthorH2">TOP 10 AUTHORS</h2>
+    <ol>
     @foreach(var author in Model.Item2)
     {
+        <li id="authorList">
         <div>
             @author.Name
             <br/>
             Rating: @author.Rating
         </div>
+        </li>
     }
+    </ol>
 </div>

@@ -67,7 +67,7 @@
 }
 /* for each book */
 
-.bookDiv, #topAuthors
+.bookDiv
 {
     width: 30%;
     float: left;
@@ -185,14 +185,6 @@ body
     background: white;
 }
 
-/* Footer */
-#footer
-{
-    /* NEEDS FIXING TODO: */
-    bottom:0;
-    left:0;
-}
-
 h2
 {
     text-align: left;
@@ -233,4 +225,9 @@ h2
     font-size: 17px;
     color: black;
     padding-right: 3px;
+}
+
+#authorList
+{
+    margin-bottom: 5px;
 }
