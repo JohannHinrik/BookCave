@@ -183,6 +183,8 @@
 body
 {
     background: white;
+    width: 100%;
+    min-height: 100%;
 }
 
 h2
@@ -230,4 +232,12 @@ h2
 #authorList
 {
     margin-bottom: 5px;
+}
+
+/* footer */
+
+#footer
+{
+    clear: both;
+    position: relative;
 }
