@@ -67,18 +67,19 @@
 }
 /* for each book */
 
-.bookDiv
+.bookDiv, #topAuthors
 {
     width: 30%;
     float: left;
     margin-right: 15px;
     margin-bottom: 15px;
     background: white;
+    overflow: auto;
 }
 
 
 @media only screen and (max-width: 1200px) {
-    .bookDiv
+    .bookDiv, topBookDiv
     {
         width: 342px;
         margin-right: 15px;
@@ -186,4 +187,29 @@ body
 h2
 {
     text-align: left;
+}
+
+/* Top Rated Books */
+#topBooks
+{ 
+    float:left;
+    width: 60%;
+    background: white;
+    margin-top: 15px;
+    margin-left: 25px;
+}
+
+#topAuthors
+{
+    float: right;
+    margin-right: 15px;
+}
+
+.topBookDiv
+{
+    width: 45%;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    background: white;
 }
