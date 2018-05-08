@@ -26,16 +26,16 @@ namespace BookCave.Controllers
         {
            
         }*/
-        public IActionResult Index(string search)
+        public IActionResult Index(int genre, int order, string search)
         {
             if (search == null) 
             {
-                var books = _bookService.GetAllBooks();
+                var books = _bookService.GetAllBooks(genre, order);
                 return View(books);
             }
             else 
             {
-                var filteredBooks = _bookService.GetSearchedBooks(search);
+                var filteredBooks = _bookService.GetSearchedBooks(genre, order, search);
                 return View(filteredBooks.ToList());           
             }
         }
