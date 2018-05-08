@@ -1,5 +1,9 @@
 @model BookCave.Models.ViewModels.LoginViewModel
 
+@{
+    ViewData["Title"] = "Log in";
+}
+
 <h1>Login!</h1>
 
 <form asp-action="Login" asp-controller="Account" class="form-horizontal">
@@ -22,4 +26,5 @@
     <input type="submit" class="LoginButton" value="Login"/>
 </div>
 
+Dont have an account? <button type="button"> Sign up!</button>
 </form>
