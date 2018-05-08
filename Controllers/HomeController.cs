@@ -8,9 +8,11 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data;
 using BookCave.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private AuthorService _authorService;
@@ -29,9 +31,8 @@ namespace BookCave.Controllers
         public IActionResult About()
         {
             return View();
-        }
-
-        public IActionResult Contact()
+        } 
+       public IActionResult Contact()
         {
             return View();
         }
