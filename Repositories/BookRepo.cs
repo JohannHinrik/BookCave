@@ -58,7 +58,7 @@ namespace BookCave.Repositories
             return topRatedbooks;
         }
 
-        public List<BookListViewModel> GetSearchedBooks(string search)
+        public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
             var filteredBooks = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
