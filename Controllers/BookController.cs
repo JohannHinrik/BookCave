@@ -8,11 +8,8 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
-<<<<<<< HEAD
-using Microsoft.AspNetCore.Authorization;
-=======
 using BookCave.Repositories;
->>>>>>> df1715eac28b2285c7625949e520ec223a000b79
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
