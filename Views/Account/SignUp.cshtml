@@ -4,33 +4,13 @@
 <h1>Sign up!</h1>
 
 <form asp-action="SignUp" asp-controller="Account" class="from-horizontal">
-   
-   <!-- <div class="form-group">
-        <input type="text" asp-for="Name" class="form-control" placeholder="Enter your name.."/>
-    </div>
--->
         <div class="form-group">
         <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name.."/>
     </div>
+
     <div class="form-group">
         <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.."/>
     </div>
-<!--
-    <div class="form-group">
-        <input type="text" asp-for="Username" class="form-control" placeholder="Enter username.."/>
-    </div>
-
-    <div class="form-group">
-        <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address.."/>
-    </div>
-
-        <div class="form-group">
-        <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.."/>
-    </div>
-
-        <div class="form-group">
-        <input type="text" asp-for="Country" class="form-control" placeholder="Enter your country.."/>
-    </div> -->
 
     <div class="form-group">
         <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email.."/>
@@ -40,8 +20,20 @@
         <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.."/>
     </div>
 
-    <!--<div class="form-group">
-        <input type="text" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password.."/>
+    <div class="form-group">
+        <input type="text" asp-for="Username" class="form-control" placeholder="Enter username.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" asp-for="Country" class="form-control" placeholder="Enter your country.."/>
     </div>
 
     <div class="form-group">
@@ -51,7 +43,7 @@
     <div class="form-group">
         <input type="text" asp-for="FavoriteBook" class="form-control" placeholder="Enter your favorite book.."/>
     </div>
--->
+
     <div class="form-group">
         <button type="submit" class="SignUpButton">Create account!</button>
     </div>
