@@ -14,24 +14,32 @@ namespace BookCave.Repositories
             _db = new DataContext();
         }
 
-        public List<BookListViewModel> GetAllBooks()
+        public List<BookListViewModel> GetAllBooks(int genre, int order)
         {
+            string temp = "";
+            if (genre == 3)
+            {
+                temp = "Fiction";
+            }
             var books = (from b in _db.Books
-                        join au in _db.Authors on b.AuthorId equals au.Id
-                        select new BookListViewModel
-                        {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Genre = b.Genre,
-                            //ReviewId = b.Id,
-                            About = b.About,
-                            Rating = b.Rating,
-                            Author = au.Name,
-                            Price = b.Price
-                        }).ToList();
+                    join au in _db.Authors on b.AuthorId equals au.Id
+                    where(b.Genre.Contains(temp))
+                    select new BookListViewModel
+                    {
+                        BookId = b.Id,
+                        Title = b.Title,
+                        Genre = b.Genre,
+                        //ReviewId = b.Id,
+                        About = b.About,
+                        Rating = b.Rating,
+                        Author = au.Name,
+                        Price = b.Price
+                    }).ToList();
             return books;
-        }
 
+            
+            
+        }
         public List<BookListViewModel> GetTopRatedBooks()
         {
             var topRatedbooks = (from b in _db.Books
@@ -51,7 +59,7 @@ namespace BookCave.Repositories
             return topRatedbooks;
         }
 
-        public List<BookListViewModel> GetSearchedBooks(string search)
+        public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
             var filteredBooks = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
