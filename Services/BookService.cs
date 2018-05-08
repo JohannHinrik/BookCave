@@ -11,9 +11,9 @@ namespace BookCave.Services
         {
             _bookRepo = new BookRepo();
         }
-        public List<BookListViewModel> GetAllBooks()
+        public List<BookListViewModel> GetAllBooks(int test)
         {
-            var books = _bookRepo.GetAllBooks();
+            var books = _bookRepo.GetAllBooks(test);
             return books;
         }
         public List<BookListViewModel> GetTopRatedBooks()
@@ -30,11 +30,6 @@ namespace BookCave.Services
         {
             var book = _bookRepo.GetBookDetails(Id);
             return book;
-        }
-        public List<BookListViewModel> GetTestBooks(int test)
-        {
-            var searchedBooks = _bookRepo.GetTestBooks(test);
-            return searchedBooks;
         }
     }
 }
