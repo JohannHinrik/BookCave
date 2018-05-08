@@ -52,13 +52,27 @@
                             {
                                 @Html.DropDownList("test", new SelectList(
                                 new List<Object>{ 
-                                    new { value = 0 , text = "Red"  },
-                                    new { value = 1 , text = "Blue" },
-                                    new { value = 2 , text = "Green"}
+                                    new { value = 0 , text = "Genre:"  },
+                                    new { value = 1 , text = "Adventure" },
+                                    new { value = 2 , text = "Autobiogrophy"},
+                                    new { value = 3 , text = "Fiction"}
                                 },
                                 "value",
                                 "text",
                                 0))
+
+                                @Html.DropDownList("test2", new SelectList(
+                                new List<Object>{ 
+                                    new { value = 0 , text = "Order by:"  },
+                                    new { value = 1 , text = "Price low to high" },
+                                    new { value = 2 , text = "Price high to low"},
+                                    new { value = 3 , text = "Alphabetical order"},
+                                    new { value = 4 , text = "Reversed alphabet"}
+                                },
+                                "value",
+                                "text",
+                                0))
+
                                 @Html.TextBox("search")
                                 <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
                             }
