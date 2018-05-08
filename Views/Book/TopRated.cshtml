@@ -1,28 +1,40 @@
-@model List<BookCave.Models.ViewModels.BookListViewModel>
+@model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
-<h2>TOP 10 BOOKS</h2>
-<div>
-    @foreach(var book in Model)
+<h2 id="topBooksH2">TOP 10 BOOKS</h2>
+<div class="topBooks">
+    @foreach(var book in Model.Item1)
     {
-        <div class="bookDiv">
+        <div class="topBookDiv">
             <div>
                 <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
             </div>
             <div class="BookInfo">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a> <br/>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class ="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
+                Author: @book.Author <br/>
+                <p class="bookPrice">@book.Price Kr</p>
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
                 <br/>
-                <button type="button" class="wishListButton">Add to WishList</button>
+                <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
             </div>
         </div>
     }
 </div>
-</div>
 
-<h2>TOP 10 AUTHORS</h2>
-<div>
-
+<div id="topAuthors">
+    <h2 id="topAuthorH2">TOP 10 AUTHORS</h2>
+    <ol>
+    @foreach(var author in Model.Item2)
+    {
+        <li id="authorList">
+        <div>
+            @author.Name
+            <br/>
+            Rating: @author.Rating
+        </div>
+        </li>
+    }
+    </ol>
 </div>

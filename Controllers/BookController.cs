@@ -8,7 +8,11 @@ using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Authorization;
+=======
+using BookCave.Repositories;
+>>>>>>> df1715eac28b2285c7625949e520ec223a000b79
 
 namespace BookCave.Controllers
 {
@@ -31,14 +35,12 @@ namespace BookCave.Controllers
         {
             if (search == null) 
             {
-                 var books = _bookService.GetAllBooks();
+                var books = _bookService.GetAllBooks();
                 return View(books);
             }
-            
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(search);
-
                 return View(filteredBooks.ToList());           
             }
         }
@@ -50,10 +52,10 @@ namespace BookCave.Controllers
         public IActionResult TopRated()
         {
            var topRatedBooks = _bookService.GetTopRatedBooks();
-          /* var topRatedAuthors = _authorService.GetTopRatedAuthors(); */
+           var topRatedAuthors = _authorService.GetTopRatedAuthors(); 
 
-/*            var topRated = new Tuple<List<Book>, List<Author>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
- */            return View(topRatedBooks);
+            var topRated = new Tuple<List<BookListViewModel>, List<AuthorListViewModel>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
+             return View(topRated);
         }
         public IActionResult Details(int Id)
         {

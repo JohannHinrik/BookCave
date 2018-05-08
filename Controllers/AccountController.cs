@@ -58,14 +58,14 @@ namespace BookCave.Controllers
             return View();
         }
         
-        public IActionResult LogIn()
+        public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         //The views returned when the user signs in.
-        public async Task<IActionResult> LogIn(LogInViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {

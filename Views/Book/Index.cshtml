@@ -8,8 +8,8 @@
 
 <!--  Printing all Books
  -->
-<div> 
-    @foreach(var book in Model)
+<div class="books"> 
+    @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(10))
     {
         <div class="bookDiv">
             <!-- Book Cover  -->
@@ -18,15 +18,15 @@
             </div>
             <!-- Book info  -->
             <div class="BookInfo">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">@book.Title</a> <br/>
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
-                @book.Price $
+               <p class="bookPrice">@book.Price Kr</p>
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
                 <br/>
-                <button type="button" class="wishListButton">Add to WishList</button>
+                <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
             </div>
         </div>
     }

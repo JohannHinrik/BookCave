@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookCave.Models.ViewModels
 {
-    public class LogInViewModel
+    public class LoginViewModel
     {
         [EmailAddress]
         public string Email { get; set; }

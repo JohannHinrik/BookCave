@@ -1,8 +1,8 @@
-@model BookCave.Models.ViewModels.LogInViewModel
+@model BookCave.Models.ViewModels.LoginViewModel
 
-<h1>Log in!</h1>
+<h1>Login!</h1>
 
-<form asp-action="LogIn" asp-controller="Account" class="form-horizontal">
+<form asp-action="Login" asp-controller="Account" class="form-horizontal">
 
 <div class="form-group">
     <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email.."/>
@@ -19,7 +19,7 @@
 </div>
 
 <div class="form-group">
-    <input type="submit" class="LogInButton" value="LogIn">Create account!</button>
+    <input type="submit" class="LoginButton" value="Login"/>
 </div>
 
 </form>
