@@ -16,9 +16,10 @@ namespace BookCave.Repositories
 
         public List<BookListViewModel> GetAllBooks(int genre, int order)
         {
-            if (genre == 1)
+            string temp = "";
+            if (genre == 3)
             {
-                string temp = "Fiction";
+                temp = "Fiction";
             }
             var books = (from b in _db.Books
                     join au in _db.Authors on b.AuthorId equals au.Id
