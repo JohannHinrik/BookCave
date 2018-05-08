@@ -1,9 +1,4 @@
-﻿// Write your JavaScript code.
-$('#icon').click(function() { 
-    document.location = 'http://localhost:5000';
-} );
-
-/* $('.cartButton').delegate(".bookTitle", 'click', function(){
+﻿/* $('.cartButton').delegate(".bookTitle", 'click', function(){
     swal({
         title: "Book has been added to your cart!",
         text: "Do you wish to go to cart or continue shopping?",
