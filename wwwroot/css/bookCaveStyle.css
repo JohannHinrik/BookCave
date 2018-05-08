@@ -159,8 +159,9 @@
 {
     width: 70%;
     float: left;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     background: white;
 }
 
@@ -192,6 +193,11 @@ body
 h2
 {
     text-align: left;
+}
+
+#imgDetails
+{
+    margin: 15px;
 }
 
 /* Top Rated Books */
