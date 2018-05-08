@@ -39,8 +39,11 @@ namespace BookCave
                 //Password settings for users.
                 //Require a specific passwords length.
                 config.Password.RequiredLength = 6;
+                //Needs a digit
                 config.Password.RequireDigit = true;
-                config.Password.RequireUppercase = false;
+                //Needs an upper case letter
+                config.Password.RequireUppercase = true;
+                //Can't have symbols
                 config.Password.RequireNonAlphanumeric = false;
             });
 
