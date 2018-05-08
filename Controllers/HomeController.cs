@@ -14,7 +14,6 @@ namespace BookCave.Controllers
     public class HomeController : Controller
     {
         private AuthorService _authorService;
-    
         
         public HomeController()
         {
