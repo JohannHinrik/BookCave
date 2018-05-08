@@ -11,7 +11,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-action="LogOut" asp-controller="Account" method="POST">
-        <ul class="navigationBarAccountBtnRight">
+        <ul class="nav navbar-nav">
             <li>
                 //The user's name shown in the vaigation bar
                 <button class="navigationBtnLink">@claim</button>
@@ -24,7 +24,7 @@
 }
 else
 {
-    <ul class="navigationBarAccountBtnRight">
+    <ul class="nav navbar-nav">
         <li>
             <a asp-area="" asp-controller="Account" asp-action="SignUp">Sign Up</a>
         </li>
