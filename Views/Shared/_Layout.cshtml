@@ -50,6 +50,15 @@
                         <div id="search-bar">
                             @using (Html.BeginForm("Index", "Book", FormMethod.Get))
                             {
+                                @Html.DropDownList("test", new SelectList(
+                                new List<Object>{ 
+                                    new { value = 0 , text = "Red"  },
+                                    new { value = 1 , text = "Blue" },
+                                    new { value = 2 , text = "Green"}
+                                },
+                                "value",
+                                "text",
+                                0))
                                 @Html.TextBox("search")
                                 <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
                             }
