@@ -1,0 +1,35 @@
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using BookCave.Models
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    //Getting the claim for the name
+    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-action="LogOut" asp-controller="Account" method="POST">
+        <ul class="navigationBarAccountBtnRight">
+            <li>
+                //The user's name shown in the vaigation bar
+                <button class="navigationBtnLink">@claim</button>
+            </li>
+            <li>
+                <button type="submit" class="navigationBtnLink">Log out</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="navigationBarAccountBtnRight">
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="SignUp">Sign Up</a>
+        </li>
+        <li>
+            <a asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+    </ul>
+}
