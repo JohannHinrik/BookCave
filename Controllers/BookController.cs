@@ -9,11 +9,9 @@ using BookCave.Services;
 using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
-using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
     public class BookController : Controller
     {
         private BookService _bookService;
