@@ -1,0 +1,57 @@
+@{
+
+}
+
+<h1>Order Overview</h1>
+
+<div id="overview">
+    <div id=name>
+      Name: <!-- @Model.Name --> 
+    </div>
+    <div id=address>
+        Address: <!-- @Model.Address --> 
+            <div id=city>
+              City: <!-- @Model.City --> 
+            </div>
+            <div id=country>
+              Country: <!-- @Model.Country --> 
+            </div>
+    </div>
+    <div id=cardNumber>
+      Card Number: <!-- @Model.cardNumber --> 
+    </div>
+
+    <div id="cvc">
+      CVC: <!-- @Model.Cvc --> 
+    </div>
+
+        <div id=expDate>
+      Expiry Date: <!-- @Model.ExpDate --> 
+    </div>
+</div>
+
+<div id="booksInCart">
+  <h2>Books in Cart</h2>
+  <hr>
+  @foreach(var book in @Model)
+  {
+    @book.Title
+    <br/>
+    @book.Price
+    <hr>
+  }
+</div>
+
+    <div id="discount">
+      Discount: <!-- @Model.Discount --> 
+    </div>
+
+    <div id="totalPrice">
+      Total Order Price: <!-- @Model.TotalPrice --> 
+    </div>
+
+<button type="button" id="cancelCheckout">Cancel</button>
+
+<button type="button" id="backToCart">Back</button>
+
+<button type="button" id="continueCheckout2">Continue</button>
