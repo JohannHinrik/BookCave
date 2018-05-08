@@ -62,6 +62,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         //The views returned when the user signs in.
@@ -79,6 +80,7 @@ namespace BookCave.Controllers
             //If not return the view
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Views when the user signs out.

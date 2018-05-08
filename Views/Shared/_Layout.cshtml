@@ -52,10 +52,11 @@
                                 @Html.TextBox("search")
                                 <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
                             }
-                    </div>
+                        </div>
                     </li>
-                    <li id="login"><a asp-area="" asp-controller="Home" asp-action="Contact">Login</a></li>
-                    <li id="cart"><a asp-area="" asp-controller="Home" asp-action="Contact">Cart</a></li>
+                <!--The login button for the navigation bar-->
+                @await Html.PartialAsync("_LoginPartial")
+                <li id="cart"><a asp-area="" asp-controller="Home" asp-action="Contact">Cart</a></li>
                 </ul>
             </div>
         </div>
