@@ -11,9 +11,9 @@ namespace BookCave.Services
         {
             _bookRepo = new BookRepo();
         }
-        public List<BookListViewModel> GetAllBooks()
+        public List<BookListViewModel> GetAllBooks(int genre, int order)
         {
-            var books = _bookRepo.GetAllBooks();
+            var books = _bookRepo.GetAllBooks(genre, order);
             return books;
         }
         public List<BookListViewModel> GetTopRatedBooks()
@@ -21,9 +21,9 @@ namespace BookCave.Services
             var topRatedBooks = _bookRepo.GetTopRatedBooks();
             return topRatedBooks;
         }
-        public List<BookListViewModel> GetSearchedBooks(string search)
+        public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
-            var searchedBooks = _bookRepo.GetSearchedBooks(search);
+            var searchedBooks = _bookRepo.GetSearchedBooks(genre, order, search);
             return searchedBooks;
         }
         public BookListViewModel GetBookDetails(int Id)
