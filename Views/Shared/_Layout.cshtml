@@ -50,7 +50,7 @@
                         <div id="search-bar">
                             @using (Html.BeginForm("Index", "Book", FormMethod.Get))
                             {
-                                @Html.DropDownList("test", new SelectList(
+                                @Html.DropDownList("genre", new SelectList(
                                 new List<Object>{ 
                                     new { value = 0 , text = "Genre:"  },
                                     new { value = 1 , text = "Adventure" },
@@ -61,7 +61,7 @@
                                 "text",
                                 0))
 
-                                @Html.DropDownList("test2", new SelectList(
+                                @Html.DropDownList("order", new SelectList(
                                 new List<Object>{ 
                                     new { value = 0 , text = "Order by:"  },
                                     new { value = 1 , text = "Price low to high" },
