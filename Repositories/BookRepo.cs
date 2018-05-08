@@ -16,14 +16,23 @@ namespace BookCave.Repositories
 
         public List<BookListViewModel> GetAllBooks(int genre, int order)
         {
-            string temp = "";
-            if (genre == 3)
+            string tempGenre = "?";
+            if (genre == 1)
             {
-                temp = "Fiction";
+                tempGenre = "Adventure";
             }
+            else if (genre == 2)
+            {
+                tempGenre = "Autobiogrophy";
+            }
+            else if (genre == 3)
+            {
+                tempGenre = "Fiction";
+            }
+
             var books = (from b in _db.Books
                     join au in _db.Authors on b.AuthorId equals au.Id
-                    where(b.Genre.Contains(temp))
+                    where(b.Genre.Contains(tempGenre))
                     select new BookListViewModel
                     {
                         BookId = b.Id,
@@ -35,6 +44,35 @@ namespace BookCave.Repositories
                         Author = au.Name,
                         Price = b.Price
                     }).ToList();
+            //price low to high
+            if (order == 1)
+            {
+                books = (from b in books
+                        orderby b.Price ascending
+                        select b).ToList();
+            }
+            //price high to low
+            else if (order == 2)
+            {
+                books = (from b in books
+                        orderby b.Price
+                        select b).ToList();
+            }
+
+            //alphabet
+            else if (order == 3)
+            {
+                books = (from b in books
+                        orderby b.Title
+                        select b).ToList();
+            }
+            //reversed alphabet
+            else if (order == 4)
+            {
+                books = (from b in books
+                        orderby b.Title descending
+                        select b).ToList();
+            }    
             return books;
 
             
