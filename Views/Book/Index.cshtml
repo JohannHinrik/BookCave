@@ -8,6 +8,22 @@
 
 <!--  Printing all Books
  -->
+
+@using (Html.BeginForm("Index", "Book", FormMethod.Get))
+                            {
+                                @Html.DropDownList("test", new SelectList(
+                                new List<Object>{ 
+                                    new { value = 0 , text = "Red"  },
+                                    new { value = 1 , text = "Blue" },
+                                    new { value = 2 , text = "Green"}
+                                },
+                                "value",
+                                "text",
+                                0), 
+                                new { onchange = "this.form.submit();" })
+                                
+                            }
+
 <div class="books"> 
     @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(10))
     {

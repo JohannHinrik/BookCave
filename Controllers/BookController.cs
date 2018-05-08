@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BookController : Controller
     {
         private BookService _bookService;
@@ -28,17 +28,18 @@ namespace BookCave.Controllers
         {
            
         }*/
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, int test)
         {
             if (search == null) 
             {
-                var books = _bookService.GetAllBooks();
+                var books = _bookService.GetAllBooks(test);
                 return View(books);
             }
+
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(search);
-                return View(filteredBooks.ToList());           
+                return View(filteredBooks.ToList());        
             }
         }
 

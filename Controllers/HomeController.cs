@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private AuthorService _authorService;

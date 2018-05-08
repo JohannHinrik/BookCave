@@ -14,7 +14,7 @@ namespace BookCave.Repositories
             _db = new DataContext();
         }
 
-        public List<BookListViewModel> GetAllBooks()
+        public List<BookListViewModel> GetAllBooks(int test)
         {
             var books = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
