@@ -59,6 +59,7 @@ namespace BookCave.Controllers
         }
         public IActionResult Details(int Id)          
         {
+
             var bookDetails = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
 
             if(bookDetails == null)
