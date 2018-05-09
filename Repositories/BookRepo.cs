@@ -23,13 +23,12 @@ namespace BookCave.Repositories
             }
             else if (genre == 2)
             {
-                tempGenre = "Autobiogrophy";
+                tempGenre = "Autobiography";
             }
             else if (genre == 3)
             {
                 tempGenre = "Fiction";
             }
-
             var books = (from b in _db.Books
                     join au in _db.Authors on b.AuthorId equals au.Id
                     where(b.Genre.Contains(tempGenre))
@@ -45,6 +44,9 @@ namespace BookCave.Repositories
                         Author = au.Name,
                         Price = b.Price
                     }).ToList();
+            return books;  
+
+            }
 /*
             //price low to high
             if (order == 1)
@@ -74,7 +76,6 @@ namespace BookCave.Repositories
                         orderby b.Title descending
                         select b).ToList();
             } */
-            return books;  
         }
         public List<BookListViewModel> GetTopRatedBooks()
         {
