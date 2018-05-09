@@ -17,13 +17,31 @@
 }); */
 
 
-$('.cartButton').click(function() { 
+$('.cartButton').click(function(id, qty) {
+
+    let oldCart = window.sessionStorage.getItem('cart');
+    
+    console.log(oldCart);
+
+    let newCart = { bookId: id,
+                    qty: qty }
+
+    console.log(newCart)
+
+    newCart = newCart + oldCart
+
+    console.log(newCart)
+
+    window.sessionStorage.setItem('cart', newCart)
+
+
     swal({
         title: "Success!",
         text: "Book has been added to your cart!",
         icon: "success",
         button: "Continue Browsing",
       });
+
 });
 
 $('.wishListButton').click(function() { 
@@ -42,4 +60,9 @@ $('.updateProfile').click(function() {
         icon: "success",
         button: "Continue",
       });
+});
+
+/* Deleting account */
+$('.DeleteAccountButton').click(function() { 
+
 });
