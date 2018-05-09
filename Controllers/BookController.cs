@@ -16,11 +16,13 @@ namespace BookCave.Controllers
     {
         private BookService _bookService;
         private AuthorService _authorService;
+        private ReviewService _reviewService;
 
         public BookController()
         {
             _bookService = new BookService();
             _authorService = new AuthorService();
+            _reviewService = new ReviewService();
         }
        /* public IActionResult Index()
         {
@@ -40,6 +42,7 @@ namespace BookCave.Controllers
             }
         }
 
+///TODO: TAKA ÞENNANN ÚT???:
         public IActionResult LogIn()
         {
             return View();
@@ -52,9 +55,10 @@ namespace BookCave.Controllers
             var topRated = new Tuple<List<BookListViewModel>, List<AuthorListViewModel>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
              return View(topRated);
         }
-        public IActionResult Details(int Id)
+        public IActionResult Details(int Id)          
         {
-            var bookDetails = _bookService.GetBookDetails(Id);
+            var bookDetails = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+
             if(bookDetails == null)
             {
                 return View("Error");
