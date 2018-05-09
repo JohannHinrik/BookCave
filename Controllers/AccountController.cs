@@ -26,7 +26,7 @@ namespace BookCave.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> MyProfile()
+        public async Task<IActionResult> EditAccount()
         {
             //Get user data
             var user = await _userManager.GetUserAsync(User);
@@ -46,9 +46,20 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> MyProfile(ProfileViewModel model)
+        public async Task<IActionResult> EditAccount(ProfileViewModel model)
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            //Update properties
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.FavoriteBook = model.FavoriteBook;
+            user.City = model.City;
+            user.Country = model.Country;
+            user.Address = model.Address;
+            user.Image = model.Image;
+
+            await _userManager.UpdateAsync(user);
+            return View(model);
         }
 
         [HttpPost]
