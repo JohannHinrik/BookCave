@@ -11,7 +11,6 @@ namespace BookCave.Models
         public string FavoriteBook {get; set; }
 
         // Without Arnar: 
-        public string Username {get; set; }
         public string City {get; set; }
         public string Country {get; set; }
         public string Address {get; set; }
