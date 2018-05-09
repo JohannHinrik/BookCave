@@ -33,11 +33,16 @@ namespace BookCave.Controllers
 
         public IActionResult Index(int genre, int order, string search)
         {
-            if (search == null) 
+            if (search == null && !(order == 0 && genre == 0)) 
+            {
+                var filteredBooks = _bookService.GetSearchedBooks(genre, order);
+                return View(filteredBooks);
+            }
+            else if (search == null) 
             {
                 var books = _bookService.GetAllBooks();
                 return View(books);
-            }
+            } 
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(genre, order, search);
