@@ -11,9 +11,9 @@ namespace BookCave.Services
         {
             _bookRepo = new BookRepo();
         }
-        public List<BookListViewModel> GetAllBooks(int genre, int order)
+        public List<BookListViewModel> GetAllBooks()//int genre, int order)
         {
-            var books = _bookRepo.GetAllBooks(genre, order);
+            var books = _bookRepo.GetAllBooks();//genre, order);
             return books;
         }
         public List<BookListViewModel> GetTopRatedBooks()
