@@ -63,10 +63,7 @@ namespace BookCave.Repositories
                         Price = b.Price
                     }).ToList();
                 return books;
-            }
-
-            
-            
+            }  
         }
         public List<BookListViewModel> GetTopRatedBooks()
         {
@@ -106,7 +103,7 @@ namespace BookCave.Repositories
                         }).ToList();
             return filteredBooks;
         }
-
+        
         public BookListViewModel GetBookDetails(int Id)
         {
             var book = (from b in _db.Books
