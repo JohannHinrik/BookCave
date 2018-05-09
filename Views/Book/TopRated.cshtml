@@ -14,11 +14,11 @@
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                 <p class="bookPrice">@book.Price Kr</p>
-                @for(var i = @book.Rating; i > 0; i--)
+                @for(var i = Math.Round(@book.Rating); i > 0; i--)
                 {
                     <i class="fas fa-star"></i>
                 }
-                @for(var i = @book.Rating; i < 5; i++)
+                @for(var i = Math.Round(@book.Rating); i < 5; i++)
                 {
                     <i class="far fa-star"></i>
                 }
