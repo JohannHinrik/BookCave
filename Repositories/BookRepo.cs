@@ -31,7 +31,7 @@ namespace BookCave.Repositories
             }
             var books = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
-                        where b.Genre.Equals(tempGenre) 
+                        where b.Genre == tempGenre 
                         select new BookListViewModel
                         {
                             BookId = b.Id,
@@ -45,9 +45,9 @@ namespace BookCave.Repositories
                         });//.ToList();
             //return books;
 
-            if (order == 1) {//price low to high
+  //          if (order == 1) {//price low to high
                 books = books.OrderBy(book => book.Price);
-            }
+    //        }
                 //books = books.OrderByDescending(book => book.Price);
 
             var output = new List<BookListViewModel>();
@@ -105,13 +105,12 @@ namespace BookCave.Repositories
                                     Price = b.Price
                                 });//).ToList();
             //return filteredBooks;
-            if (order == 1) {//price low to high
+            //if (order == 1) {//price low to high
                 filteredBooks = filteredBooks.OrderBy(book => book.Price);
-            }
+            //}
                 //books = books.OrderByDescending(book => book.Price);
 
-            var output = new List<BookListViewModel>();
-            output = filteredBooks.ToList();
+            var output = filteredBooks.ToList();
             return output;
         }
         
