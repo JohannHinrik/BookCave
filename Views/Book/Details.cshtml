@@ -41,14 +41,14 @@
 
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
-        <input type="radio" asp-for="@Item2.Rating" name="rate" value="1"> 1
-        <input type="radio" asp-for="@Item2.Rating" name="rate" value="2"> 2
-        <input type="radio" asp-for="@Item2.Rating" name="rate" value="3"> 3
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='2'> 2
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='3'> 3
         <br>
 
         <!-- Leave a comment: -->
         <div class="form-group">
-            <textarea class="form-control" rows="3" required></textarea>
+            <textarea asp-for="@Model.Item2.Comment" class="form-control" rows="3" required></textarea>
         </div>
 
         <!-- Submit rating and comment: -->
@@ -61,7 +61,6 @@
     <hr>
     <div class="ListOfComments">
         <hr>
-
         @foreach(var review in Model.Item2)
         {
             <div id="OneComment">

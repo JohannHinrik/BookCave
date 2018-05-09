@@ -82,15 +82,15 @@ namespace BookCave.Controllers
             //If the comment was not valid:
             if(ModelState.IsValid)
             {
-                var newReview = new Review()
+                var newReview = new ReviewListViewModel()
                 {
                     BookId = _reviewService.FindBookId(),
-                    AccountId = _reviewService.FindAccountId(),
+                    //AccountId = _reviewService.FindAccountId(),
                     Comment = review.Comment,
                     Id = _reviewService.FindReviewID(),
                     Rating =  review.Rating
                 };
-                _reviewService.AddReviewToDB();
+                _reviewService.AddReviewToDB(newReview);
                 return View();
             }
             return View();

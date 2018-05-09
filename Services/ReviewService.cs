@@ -19,21 +19,25 @@ namespace BookCave.Services
 
         public int FindReviewID()
         {
-            return 0;
+            var newId = _reviewRepo.FindReviewID();
+            return newId;
         }
 
-        public int FindAccountId()
+       /* public int FindAccountId()
         {
-            return 0;
-        }
+            var newId = _reviewRepo.FindAccountId()
+            return newId;
+        }*/
 
         public int FindBookId()
         {
-            return 0;
+            var newId = _reviewRepo.FindBookId();
+            return newId;
         }
 
-        public void AddReviewToDB()
+        public void AddReviewToDB(ReviewListViewModel NewReview)
         {
+            _reviewRepo.AddReviewToDB(NewReview);
             return;
         }
     }
