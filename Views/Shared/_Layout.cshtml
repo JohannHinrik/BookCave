@@ -25,53 +25,44 @@
             <a href="http://localhost:5000"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
         </div>
     </div>
-   <nav id="fullNavigation">
-        <div class="container">
-            <!-- Navigation Bar -->
-            <div id="navigation-bar">
-                <ul class="nav navbar-nav">
-                    <li ><a asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
-                    <li><a asp-area="" asp-controller="Book" asp-action="TopRated">Top Rated</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-                    <li>
-                        <div id="search-bar">
-                            @using (Html.BeginForm("Index", "Book", FormMethod.Get))
-                            {
-                                @Html.DropDownList("genre", new SelectList(
-                                new List<Object>{ 
-                                    new { value = 0 , text = "Genre:"  },
-                                    new { value = 1 , text = "Adventure" },
-                                    new { value = 2 , text = "Autobiogrophy"},
-                                    new { value = 3 , text = "Fiction"}
-                                },
-                                "value",
-                                "text",
-                                0))
-
-                                @Html.DropDownList("order", new SelectList(
-                                new List<Object>{ 
-                                    new { value = 0 , text = "Order by:"  },
-                                    new { value = 1 , text = "Price low to high" },
-                                    new { value = 2 , text = "Price high to low"},
-                                    new { value = 3 , text = "Alphabetical order"},
-                                    new { value = 4 , text = "Reversed alphabet"}
-                                },
-                                "value",
-                                "text",
-                                0))
-
-                                @Html.TextBox("search")
-                                <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
-                            }
-                        </div>
-                    </li>
-                <!--The login button for the navigation bar-->
-                @await Html.PartialAsync("_LoginPartial")
-                <li id="cart"><a asp-area="" asp-controller="Home" asp-action="Contact"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                </ul>
+    <!-- ADDED -->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" a asp-area="" asp-controller="Home" asp-action="Index">The Book Cave</a>
             </div>
-        </div>
+            <ul class="nav navbar-nav">
+                <li ><a asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
+                <li><a asp-area="" asp-controller="Book" asp-action="TopRated">Top Rated</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+            </ul>
+            <div class="container">
+ 
+  
+            <!-- Search bar -->
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        @Html.TextBox("search")
+                        <button type="submit" id="search-button" value="search"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            <!-- Need to add a dropdown bar here!!  -->
+                <div class="nav navbar-nav navbar-right">
+                     <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Home" asp-action="Contact"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                            @await Html.PartialAsync("_LoginPartial")
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
     </nav>
+<!-- HERE IT ENDS -->
     <div class="container body-content">
         @RenderBody()
          <hr />

@@ -8,16 +8,17 @@
 
 <!--  Printing all Books
  -->
-<div class="books"> 
-    @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(10))
+<div> 
+    @foreach(var book in Model)
     {
-        <div class="bookDiv">
+        <div class="col-xs-6 col-lg-6">
+        <hr>
             <!-- Book Cover  -->
-            <div>
+            <div class="bookCover">
                 <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
             </div>
             <!-- Book info  -->
-            <div class="BookInfo">
+            <div class="col-xs-6 col-lg-6">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
@@ -31,3 +32,4 @@
         </div>
     }
 </div>
+
