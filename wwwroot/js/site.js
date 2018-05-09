@@ -34,3 +34,12 @@ $('.wishListButton').click(function() {
         button: "Continue Browsing",
       });
 });
+
+$('.updateProfile').click(function() { 
+    swal({
+        title: "Success!",
+        text: "Profile Updated!",
+        icon: "success",
+        button: "Continue",
+      });
+});
