@@ -14,9 +14,14 @@
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                 <p class="bookPrice">@book.Price Kr</p>
-                 <div class="stars-outer">
-                    <div class="stars-inner"></div>
-                </div>
+                @for(var i = @book.Rating; i > 0; i--)
+                {
+                    <i class="fas fa-star"></i>
+                }
+                @for(var i = @book.Rating; i < 5; i++)
+                {
+                    <i class="far fa-star"></i>
+                }
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
