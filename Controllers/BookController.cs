@@ -66,7 +66,7 @@ namespace BookCave.Controllers
         public IActionResult Details(int Id)          
         {
             //bookDetails keeps the book details and all the reviews from the users (from DB):
-            var bookDetails = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+            var bookDetails = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
 
             if(bookDetails == null)
             {
@@ -91,10 +91,10 @@ namespace BookCave.Controllers
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
-                var bookDetails1 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+                var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
                 return View(bookDetails1);
             }
-            var bookDetails2 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+            var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
             return View(bookDetails2);
         }
 

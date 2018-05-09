@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BookCave.Data;
 using BookCave.Models.ViewModels;
 using System.Linq;
+using BookCave.Data.EntityModels;
 
 namespace BookCave.Repositories
 {
@@ -51,7 +52,7 @@ namespace BookCave.Repositories
 
         public void AddReviewToDB(ReviewListViewModel NewReview)
         {
-                var newReview = new ReviewListViewModel()
+                var newReview = new Review()
                 {
                     BookId = NewReview.BookId,
                     //AccountId = _reviewService.FindAccountId(),
@@ -59,7 +60,7 @@ namespace BookCave.Repositories
                     Id = NewReview.Id,
                     Rating = NewReview.Rating
                 };
-            _db.AddRange(newReview);
+            _db.Add(newReview);
             _db.SaveChanges();
             return;
         }
