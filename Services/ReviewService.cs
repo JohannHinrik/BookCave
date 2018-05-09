@@ -31,8 +31,8 @@ namespace BookCave.Services
 
         public int FindBookId()
         {
-            var newId = _reviewRepo.FindBookId();
-            return newId;
+            var bookId = _reviewRepo.FindBookId();
+            return bookId;
         }
 
         public void AddReviewToDB(ReviewListViewModel NewReview)

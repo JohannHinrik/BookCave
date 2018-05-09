@@ -51,6 +51,16 @@ namespace BookCave.Repositories
 
         public void AddReviewToDB(ReviewListViewModel NewReview)
         {
+                var newReview = new ReviewListViewModel()
+                {
+                    BookId = NewReview.BookId,
+                    //AccountId = _reviewService.FindAccountId(),
+                    Comment = NewReview.Comment,
+                    Id = NewReview.Id,
+                    Rating = NewReview.Rating
+                };
+            _db.AddRange(newReview);
+            _db.SaveChanges();
             return;
         }
 

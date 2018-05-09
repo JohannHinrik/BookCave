@@ -1,4 +1,4 @@
-@model Tuple<BookCave.Models.ViewModels.BookListViewModel,List<BookCave.Models.ViewModels.ReviewListViewModel>>
+@model Tuple<BookCave.Models.ViewModels.BookListViewModel, BookCave.Models.ViewModels.ReviewListViewModel, List<BookCave.Models.ViewModels.ReviewListViewModel>>
 
 <div class ="row">
     <h2>@Model.Item1.Title</h2>
@@ -38,7 +38,6 @@
     <h4>Leave a Comment:</h4>
 
     <form role="form" asp-action="Details" asp-controller="Book">
-
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
         <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1
@@ -61,7 +60,7 @@
     <hr>
     <div class="ListOfComments">
         <hr>
-        @foreach(var review in Model.Item2)
+        @foreach(var review in Model.Item3)
         {
             <div id="OneComment">
                 comment: @review.Comment
