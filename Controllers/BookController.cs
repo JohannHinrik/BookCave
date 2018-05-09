@@ -9,6 +9,7 @@ using BookCave.Services;
 using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -59,7 +60,7 @@ namespace BookCave.Controllers
         }
         public IActionResult Details(int Id)          
         {
-
+            //bookDetails keeps the book details and all the reviews from the users (from DB):
             var bookDetails = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
 
             if(bookDetails == null)
@@ -68,6 +69,58 @@ namespace BookCave.Controllers
             }
             return View(bookDetails);
         }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Details(ReviewListViewModel review)     
+        {
+            //If the comment was not valid:
+            if(ModelState.IsValid)
+            {
+                var newReview = new Review()
+                {
+                    BookId = _reviewService.FindBookId(),
+                    AccountId = _reviewService.FindAccountId(),
+                    Comment = review.Comment,
+                    Id = _reviewService.FindReviewID(),
+                    Rating =  review.Rating
+                };
+                _reviewService.AddReviewToDB();
+                return View();
+            }
+            return View();
+        }
+
+/*        [HttpPost]
+        public IActionResult Create(MovieInputModel movie)
+        {
+            A new instance of the entity Model Movie is made from the movie in the parameter:
+            if(ModelState.IsValid)
+            {
+                var newMovie = new Movie()
+                {
+                    Id = FakeDatabase.Movies.Count + 1, 
+                    Title = movie.Title, 
+                    ReleaseYear = movie.ReleaseYear, 
+                    Runtime = movie.Runtime, 
+                    Genre = movie.Genre, 
+                    Image = "", 
+                    Rating = 0
+                };
+                //Back to Movie menu:
+                FakeDatabase.Movies.Add(newMovie);
+                return RedirectToAction("Index");
+            }
+            return View();
+        } */
+
+
+
+
+
+
+
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
