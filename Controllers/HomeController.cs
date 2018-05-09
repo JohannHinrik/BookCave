@@ -27,7 +27,21 @@ namespace BookCave.Controllers
             var book = _bookService.GetTopRatedBooks();
             return View(book);
         }
-
+/* 
+        public IActionResult Index(int genre, int order, string search)
+        {
+            if (search == null) 
+            {
+                var books = _bookService.GetAllBooks();
+                return View(books);
+            }
+            else 
+            {
+                var filteredBooks = _bookService.GetSearchedBooks(genre, order, search);
+                return View(filteredBooks);           
+            }
+        }
+*/
         public IActionResult About()
         {
             return View();

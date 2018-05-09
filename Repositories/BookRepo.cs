@@ -14,24 +14,10 @@ namespace BookCave.Repositories
             _db = new DataContext();
         }
 
-        public List<BookListViewModel> GetAllBooks(int genre, int order)
+        public List<BookListViewModel> GetAllBooks()
         {
-            string tempGenre = "?";
-            if (genre == 1)
-            {
-                tempGenre = "Adventure";
-            }
-            else if (genre == 2)
-            {
-                tempGenre = "Autobiography";
-            }
-            else if (genre == 3)
-            {
-                tempGenre = "Fiction";
-            }
             var books = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
-                        where b.Genre == tempGenre 
                         select new BookListViewModel
                         {
                             BookId = b.Id,
@@ -42,17 +28,8 @@ namespace BookCave.Repositories
                             Rating = b.Rating,
                             Author = au.Name,
                             Price = b.Price
-                        });//.ToList();
-            //return books;
-
-  //          if (order == 1) {//price low to high
-                books = books.OrderBy(book => book.Price);
-    //        }
-                //books = books.OrderByDescending(book => book.Price);
-
-            var output = new List<BookListViewModel>();
-            output = books.ToList();
-            return output;
+                        }).ToList();
+            return books;
         }
         public List<BookListViewModel> GetTopRatedBooks()
         {
@@ -75,25 +52,13 @@ namespace BookCave.Repositories
 
         public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
-            string tempGenre = "?";
-            if (genre == 1)
-            {
-                tempGenre = "Adventure";
-            }
-            else if (genre == 2)
-            {
-                tempGenre = "Autobiography";
-            }
-            else if (genre == 3)
-            {
-                tempGenre = "Fiction";
+            if (search == null) {
+                //IMPLEMENT
             }
             var filteredBooks = (from b in _db.Books
                                 join au in _db.Authors on b.AuthorId equals au.Id
-                                where (b.Title.ToLower().Contains(search.ToLower())
-                                    || au.Name.ToLower().Contains(search.ToLower()))
-                                    && b.Genre.Equals(tempGenre) 
-                                    //|| (b.Genre.ToLower() == search.ToLower()))
+                                where b.Title.ToLower().Contains(search.ToLower())
+                                        || au.Name.ToLower().Contains(search.ToLower())
                                 select new BookListViewModel
                                 {
                                     BookId = b.Id,
@@ -103,13 +68,48 @@ namespace BookCave.Repositories
                                     Rating = b.Rating,
                                     Author = au.Name,
                                     Price = b.Price
-                                });//).ToList();
-            //return filteredBooks;
-            //if (order == 1) {//price low to high
-                filteredBooks = filteredBooks.OrderBy(book => book.Price);
-            //}
-                //books = books.OrderByDescending(book => book.Price);
+                                });
+            //GENReS
+            if (genre == 1) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Adventure"));
+            }
+            else if (genre == 2) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Autobiography"));
+            }
+            else if (genre == 3) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Fiction"));
+            }
+            else if (genre == 4) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Studies"));
+            }
+            else if (genre == 5) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Romance"));
+            }
+            else if (genre == 6) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Cookbooks"));
+            }
+            else if (genre == 7) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("ScienceFiction"));
+            }
+            else if (genre == 8) {
+                filteredBooks = filteredBooks.Where(book => book.Genre.Equals("Novel"));
+            }
 
+            //ORDERS
+            if (order == 1) {
+            filteredBooks = filteredBooks.OrderBy(book => book.Price);
+            }
+            else if (order == 2) {
+                filteredBooks = filteredBooks.OrderByDescending(book => book.Price);
+            }
+            else if (order == 3 || order == 0) {
+                filteredBooks = filteredBooks.OrderBy(book => book.Title);
+            }
+            else if (order == 4) {
+                filteredBooks = filteredBooks.OrderByDescending(book => book.Title);
+            }
+
+            //RETURN VALUE
             var output = filteredBooks.ToList();
             return output;
         }
