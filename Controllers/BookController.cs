@@ -60,7 +60,7 @@ namespace BookCave.Controllers
            var topRatedBooks = _bookService.GetTopRatedBooks();
            var topRatedAuthors = _authorService.GetTopRatedAuthors(); 
 
-            var topRated = new Tuple<List<BookListViewModel>, List<AuthorListViewModel>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
+            var topRated = new Tuple<List<BookListViewModel>,List<AuthorListViewModel>>(_bookService.GetTopRatedBooks(),_authorService.GetTopRatedAuthors());
              return View(topRated);
         }
         public IActionResult Details(int Id)          
@@ -93,42 +93,10 @@ namespace BookCave.Controllers
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
-
-
                 return View();
             }
             return View();
         }
-
-/*        [HttpPost]
-        public IActionResult Create(MovieInputModel movie)
-        {
-            A new instance of the entity Model Movie is made from the movie in the parameter:
-            if(ModelState.IsValid)
-            {
-                var newMovie = new Movie()
-                {
-                    Id = FakeDatabase.Movies.Count + 1, 
-                    Title = movie.Title, 
-                    ReleaseYear = movie.ReleaseYear, 
-                    Runtime = movie.Runtime, 
-                    Genre = movie.Genre, 
-                    Image = "", 
-                    Rating = 0
-                };
-                //Back to Movie menu:
-                FakeDatabase.Movies.Add(newMovie);
-                return RedirectToAction("Index");
-            }
-            return View();
-        } */
-
-
-
-
-
-
-
 
         public IActionResult Error()
         {
