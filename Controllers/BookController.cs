@@ -77,11 +77,9 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Details(ReviewListViewModel review)     
-        {
+        public IActionResult Details(ReviewListViewModel review, int Id)     
+        {            
             //If the comment was not valid:
-            Console.WriteLine(review.Rating);
-
             if(ModelState.IsValid)
             {
                 var newReview = new ReviewListViewModel()
@@ -93,9 +91,11 @@ namespace BookCave.Controllers
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
-                return View();
+                var bookDetails1 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+                return View(bookDetails1);
             }
-            return View();
+            var bookDetails2 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+            return View(bookDetails2);
         }
 
         public IActionResult Error()
