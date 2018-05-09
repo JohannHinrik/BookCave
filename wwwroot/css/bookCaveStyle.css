@@ -19,6 +19,7 @@
     height: 227px;
     float: left;
 }
+
 .addToButtons
 {
     bottom: 0%;
@@ -110,6 +111,11 @@ h2
     margin-right: 15px;
 }
 
+.detailBookCover
+{
+    height: 40%;
+    width: 40%;
+}
 .bookTitle
 {
     font-weight: bold;
