@@ -42,10 +42,35 @@
             <!-- Search bar -->
             <form class="navbar-form" role="search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q">
-                    <div class="input-group-btn">
-                        @Html.TextBox("search")
-                        <button type="submit" id="search-button" value="search"><i class="glyphicon glyphicon-search"></i></button>
+                    <div id="search-bar-bookcave">
+                        @using (Html.BeginForm("Index", "Book", FormMethod.Get))
+                        {
+                            @Html.DropDownList("genre", new SelectList(
+                            new List<Object>{ 
+                                new { value = 0 , text = "Genre:"  },
+                                new { value = 1 , text = "Adventure" },
+                                new { value = 2 , text = "Autobiogrophy"},
+                                new { value = 3 , text = "Fiction"}
+                            },
+                            "value",
+                            "text",
+                            0))
+
+                            @Html.DropDownList("order", new SelectList(
+                            new List<Object>{ 
+                                new { value = 0 , text = "Order by:"  },
+                                new { value = 1 , text = "Price low to high" },
+                                new { value = 2 , text = "Price high to low"},
+                                new { value = 3 , text = "Alphabetical order"},
+                                new { value = 4 , text = "Reversed alphabet"}
+                            },
+                            "value",
+                            "text",
+                            0))
+
+                            @Html.TextBox("search")
+                            <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
+                        }
                     </div>
                 </div>
             <!-- Need to add a dropdown bar here!!  -->

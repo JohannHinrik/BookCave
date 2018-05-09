@@ -16,14 +16,41 @@ namespace BookCave.Repositories
 
         public List<BookListViewModel> GetAllBooks(int genre, int order)
         {
-            string temp = "";
-            if (genre == 3)
+            string tempGenre = "?";
+            if (genre == 1)
             {
-                temp = "Fiction";
+                tempGenre = "Adventure";
             }
-            var books = (from b in _db.Books
+            else if (genre == 2)
+            {
+                tempGenre = "Autobiography";
+            }
+            else if (genre == 3)
+            {
+                tempGenre = "Fiction";
+            }
+            if (tempGenre == "Adventure" || tempGenre == "Autobiography" || tempGenre == "Fiction")
+            {
+                var books = (from b in _db.Books
+                join au in _db.Authors on b.AuthorId equals au.Id
+                where(b.Genre.Contains(tempGenre)) 
+                select new BookListViewModel
+                {
+                    BookId = b.Id,
+                    Title = b.Title,
+                    Genre = b.Genre,
+                    //ReviewId = b.Id,
+                    About = b.About,
+                    Rating = b.Rating,
+                    Author = au.Name,
+                    Price = b.Price
+                }).ToList();
+            return books;
+            }
+            else
+            {    
+                var books = (from b in _db.Books
                     join au in _db.Authors on b.AuthorId equals au.Id
-                    where(b.Genre.Contains(temp))
                     select new BookListViewModel
                     {
                         BookId = b.Id,
@@ -35,7 +62,8 @@ namespace BookCave.Repositories
                         Author = au.Name,
                         Price = b.Price
                     }).ToList();
-            return books;
+                return books;
+            }
 
             
             
