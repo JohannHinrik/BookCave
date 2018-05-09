@@ -58,7 +58,7 @@
     <div class="col-md-3">
         <h2>Top Rated Books</h2>
         <ol>
-             @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(3))
+             @foreach(var book in Model.OrderByDescending(x=>x.Rating).Take(3))
              {
                  <li><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a></li>
              }
