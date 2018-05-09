@@ -35,6 +35,11 @@ namespace BookCave.Controllers
                 var books = _bookService.GetAllBooks();
                 return View(books);
             }
+            else if (search == null && !(order == 0 && genre == 0)) 
+            {
+                var filteredBooks = _bookService.GetSearchedBooks(genre, order);
+                return View(filteredBooks);
+            }
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(genre, order, search);

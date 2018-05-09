@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
@@ -31,5 +32,10 @@ namespace BookCave.Services
             var book = _bookRepo.GetBookDetails(Id);
             return book;
         }
-    }
+        public List<BookListViewModel> GetSearchedBooks(int genre, int order)
+        {
+            var searchedBooks = _bookRepo.GetSearchedBooks(genre, order);
+            return searchedBooks;
+        }
+  }
 }
