@@ -46,7 +46,7 @@ namespace BookCave.Repositories
                     }).ToList();
             return books;  
 
-            }
+        }
 /*
             //price low to high
             if (order == 1)
@@ -76,7 +76,6 @@ namespace BookCave.Repositories
                         orderby b.Title descending
                         select b).ToList();
             } */
-        }
         public List<BookListViewModel> GetTopRatedBooks()
         {
             var topRatedbooks = (from b in _db.Books
