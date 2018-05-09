@@ -1,46 +1,61 @@
-@model BookCave.Models.ViewModels.BookListViewModel
+@model BookCave.Models.ViewModels.BookListViewModel   
+
 <div class ="row">
-<h2>@Model.Title</h2>
-<div class="col-xs-6 col-lg-6">
-     <div>
-        <img src="~/images/books/(@Model.BookId).jpg" alt="@Model.Title" class="detailBookCover">
+    <h2>@Model.Title</h2>
+    <div class="col-xs-6 col-lg-6">
+        <div>
+            <img src="~/images/books/(@Model.BookId).jpg" alt="@Model.Title" class="detailBookCover">
+        </div>
     </div>
-</div>
-<div class="col-xs-6 col-lg-6">
-    Genre: @Model.Genre <br/>
-    Author: @Model.Author <br/>
-    About: <br/>
-    @Model.About
-    <br/>
-    <div class="addToButtons">
-        <h4><span>@Model.Price Kr</span></h4>
-        @for(var i = Math.Round(@Model.Rating); i > 0; i--)
-        {
-            <i id="yes" class="fas fa-star"></i>
-        }
-        @for(var i = Math.Round(@Model.Rating); i < 5; i++)
-        {
-            <i id="no" class="fas fa-star"></i>
-        }
-        <button type="button" class="cartButton">Add to Cart</button>
+    <div class="col-xs-6 col-lg-6">
+        Genre: @Model.Genre <br/>
+        Author: @Model.Author <br/>
+        About: <br/>
+        @Model.About
         <br/>
-        <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
+        <div class="addToButtons">
+            <h4><span>@Model.Price Kr</span></h4>
+            @for(var i = Math.Round(@Model.Rating); i > 0; i--)
+            {
+                <i id="yes" class="fas fa-star"></i>
+            }
+            @for(var i = Math.Round(@Model.Rating); i < 5; i++)
+            {
+                <i id="no" class="fas fa-star"></i>
+            }
+            <button type="button" class="cartButton">Add to Cart</button>
+            <br/>
+            <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
+        </div>
     </div>
-</div>
+
 </div>
 
-<!-- ALSO ASK ABOUT THIS -->
-</div>
+
+
 <div class="col-xs-6 col-lg-6">
- <!-- ASK ABOUT THIS (COOMENTS) -->     
-<h4>Leave a Comment:</h4>
-<form role="form">
-    <div class="form-group">
-        <textarea class="form-control" rows="3" required></textarea>
+    <!-- ASK ABOUT THIS (COMENTS) -->     
+    <h4>Leave a Comment:</h4>
+
+    <form role="form">
+        <div class="form-group">
+            <textarea class="form-control" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <br><br>
+
+    <h4><small>RECENT POSTS</small></h4>
+    <hr>
+    <div class="ListOfComments">
+
+        <!-- @foreach(var review in Model.Reviews)
+        {
+            username: review.Username
+            <div id="OneComment">
+                comment: review.Comment
+            </div>
+        } -->
     </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
-<br><br>
-<h4><small>RECENT POSTS</small></h4>
-<hr>
 </div>
