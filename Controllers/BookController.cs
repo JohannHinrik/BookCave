@@ -80,6 +80,8 @@ namespace BookCave.Controllers
         public IActionResult Details(ReviewListViewModel review)     
         {
             //If the comment was not valid:
+            Console.WriteLine(review.Rating);
+
             if(ModelState.IsValid)
             {
                 var newReview = new ReviewListViewModel()
@@ -91,6 +93,8 @@ namespace BookCave.Controllers
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
+
+
                 return View();
             }
             return View();
