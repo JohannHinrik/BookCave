@@ -18,18 +18,19 @@ namespace BookCave.Repositories
             _db = new DataContext();
         }
         string ShoppingCartId { get; set; }
-        public const string CartSessionKey = "CartId";
-        public static CartRepo GetCart(HttpContext context)
+        //public const string CartSessionKey = "CartId";
+        /*public static CartRepo GetCart(HttpContext context)
         {
             var cart = new CartRepo();
             cart.ShoppingCartId = cart.GetCartId(context);
             return cart;
-        }
+        }*/
+        /*
         //A helper function to make call to the cart simple
         public static CartRepo GetCart(Controller controller)
         {
             return GetCart(controller.HttpContext);
-        }
+        }*/
         public void AddToCart(Book Book)
         {
             //Get the matching cart and Book instances
@@ -151,7 +152,7 @@ namespace BookCave.Repositories
             return order.Id;
         }
         // We're using HttpContextBase to allow access to cookies.
-        public string GetCartId(HttpContext context)
+        /*public string GetCartId(HttpContext context)
         {
             if (context.Session[CartSessionKey] == null)
             {
@@ -169,7 +170,7 @@ namespace BookCave.Repositories
                 }
             }
             return context.Session[CartSessionKey].ToString();
-        }
+        }*/
         // When a user has logged in, migrate their shopping cart to
         // be associated with their username
         public void MigrateCart(string userName)

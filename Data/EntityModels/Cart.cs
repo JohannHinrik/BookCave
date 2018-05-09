@@ -1,13 +1,13 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace BookCave.Data.EntityModels
 {
     public class Cart
     {
-        [Key]
         public string Id { get; set; }
         public int BookId { get; set; }
-        public int Count { get; set; }
-        public virtual Book Book  { get; set; }
+        public int AccountId{ get; set; }
     }
 }

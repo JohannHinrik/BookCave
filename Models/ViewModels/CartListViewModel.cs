@@ -3,7 +3,7 @@ using BookCave.Data.EntityModels;
 
 namespace BookCave.Models.ViewModels
 {
-    public class ShoppingCartViewModel
+    public class CartListViewModel
     {
         public string Book { get; set; }
         public List<Cart> CartItems { get; set; }
