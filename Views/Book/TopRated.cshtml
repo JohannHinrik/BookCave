@@ -1,18 +1,27 @@
 @model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
 <h2 id="topBooksH2">TOP 10 BOOKS</h2>
-<div class="topBooks">
+<div class="col-xs-6 col-lg-9">
     @foreach(var book in Model.Item1)
     {
-        <div class="topBookDiv">
+        <div class="col-xs-6 col-lg-6">
+        <hr>
             <div>
                 <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
             </div>
-            <div class="BookInfo">
+            <div class="col-xs-6 col-lg-6">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class ="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                 <p class="bookPrice">@book.Price Kr</p>
+                @for(var i = Math.Round(@book.Rating); i > 0; i--)
+                {
+                    <i class="fas fa-star"></i>
+                }
+                @for(var i = Math.Round(@book.Rating); i < 5; i++)
+                {
+                    <i class="far fa-star"></i>
+                }
             </div>
             <div class="addToButtons">
                 <button type="button" class="cartButton">Add to Cart</button>
