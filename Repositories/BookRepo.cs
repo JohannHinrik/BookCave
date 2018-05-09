@@ -29,41 +29,30 @@ namespace BookCave.Repositories
             {
                 tempGenre = "Fiction";
             }
-            if (tempGenre == "Adventure" || tempGenre == "Autobiography" || tempGenre == "Fiction")
-            {
-                var books = (from b in _db.Books
-                join au in _db.Authors on b.AuthorId equals au.Id
-                where(b.Genre.Contains(tempGenre)) 
-                select new BookListViewModel
-                {
-                    BookId = b.Id,
-                    Title = b.Title,
-                    Genre = b.Genre,
-                    //ReviewId = b.Id,
-                    About = b.About,
-                    Rating = b.Rating,
-                    Author = au.Name,
-                    Price = b.Price
-                }).ToList();
-            return books;
+            var books = (from b in _db.Books
+                        join au in _db.Authors on b.AuthorId equals au.Id
+                        where b.Genre.Equals(tempGenre) 
+                        select new BookListViewModel
+                        {
+                            BookId = b.Id,
+                            Title = b.Title,
+                            Genre = b.Genre,
+                            //ReviewId = b.Id,
+                            About = b.About,
+                            Rating = b.Rating,
+                            Author = au.Name,
+                            Price = b.Price
+                        });//.ToList();
+            //return books;
+
+            if (order == 1) {//price low to high
+                books = books.OrderBy(book => book.Price);
             }
-            else
-            {    
-                var books = (from b in _db.Books
-                    join au in _db.Authors on b.AuthorId equals au.Id
-                    select new BookListViewModel
-                    {
-                        BookId = b.Id,
-                        Title = b.Title,
-                        Genre = b.Genre,
-                        //ReviewId = b.Id,
-                        About = b.About,
-                        Rating = b.Rating,
-                        Author = au.Name,
-                        Price = b.Price
-                    }).ToList();
-                return books;
-            }  
+                //books = books.OrderByDescending(book => book.Price);
+
+            var output = new List<BookListViewModel>();
+            output = books.ToList();
+            return output;
         }
         public List<BookListViewModel> GetTopRatedBooks()
         {
@@ -86,22 +75,44 @@ namespace BookCave.Repositories
 
         public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
+            string tempGenre = "?";
+            if (genre == 1)
+            {
+                tempGenre = "Adventure";
+            }
+            else if (genre == 2)
+            {
+                tempGenre = "Autobiography";
+            }
+            else if (genre == 3)
+            {
+                tempGenre = "Fiction";
+            }
             var filteredBooks = (from b in _db.Books
-                        join au in _db.Authors on b.AuthorId equals au.Id
-                        where ((b.Title.ToLower().Contains(search.ToLower())) 
-                              || (au.Name.ToLower().Contains(search.ToLower()))
-                              || (b.Genre.ToLower() == search.ToLower()))
-                        select new BookListViewModel
-                        {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Genre = b.Genre,
-                            About = b.About,
-                            Rating = b.Rating,
-                            Author = au.Name,
-                            Price = b.Price
-                        }).ToList();
-            return filteredBooks;
+                                join au in _db.Authors on b.AuthorId equals au.Id
+                                where (b.Title.ToLower().Contains(search.ToLower())
+                                    || au.Name.ToLower().Contains(search.ToLower()))
+                                    && b.Genre.Equals(tempGenre) 
+                                    //|| (b.Genre.ToLower() == search.ToLower()))
+                                select new BookListViewModel
+                                {
+                                    BookId = b.Id,
+                                    Title = b.Title,
+                                    Genre = b.Genre,
+                                    About = b.About,
+                                    Rating = b.Rating,
+                                    Author = au.Name,
+                                    Price = b.Price
+                                });//).ToList();
+            //return filteredBooks;
+            if (order == 1) {//price low to high
+                filteredBooks = filteredBooks.OrderBy(book => book.Price);
+            }
+                //books = books.OrderByDescending(book => book.Price);
+
+            var output = new List<BookListViewModel>();
+            output = filteredBooks.ToList();
+            return output;
         }
         
         public BookListViewModel GetBookDetails(int Id)
