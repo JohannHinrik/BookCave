@@ -29,7 +29,9 @@ namespace BookCave.Repositories
             {
                 tempGenre = "Fiction";
             }
-            var books = (from b in _db.Books
+            if (tempGenre == "?")
+            {
+               var books = (from b in _db.Books
                     join au in _db.Authors on b.AuthorId equals au.Id
                     where(b.Genre.Contains(tempGenre))
                  //   if (order == 1) {books.Orderby = b.Price}
@@ -44,8 +46,29 @@ namespace BookCave.Repositories
                         Author = au.Name,
                         Price = b.Price
                     }).ToList();
-            return books;  
-
+                return books;  
+ 
+            }
+            else
+            {
+                var books = (from b in _db.Books
+                    join au in _db.Authors on b.AuthorId equals au.Id
+                    where(b.Genre.Contains(tempGenre))
+                 //   if (order == 1) {books.Orderby = b.Price}
+                    select new BookListViewModel
+                    {
+                        BookId = b.Id,
+                        Title = b.Title,
+                        Genre = b.Genre,
+                        //ReviewId = b.Id,
+                        About = b.About,
+                        Rating = b.Rating,
+                        Author = au.Name,
+                        Price = b.Price
+                    }).ToList();
+                return books;  
+            }
+            
         }
 /*
             //price low to high

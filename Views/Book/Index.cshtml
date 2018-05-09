@@ -29,7 +29,7 @@
                <p class="bookPrice">@book.Price Kr</p>
                 @for(var i = Math.Round(@book.Rating); i > 0; i--)
                 {
-                    <i class="fas fa-star"></i>
+                    <i id="yes" class="fas fa-star"></i>
                 }
                 @for(var i = Math.Round(@book.Rating); i < 5; i++)
                 {
