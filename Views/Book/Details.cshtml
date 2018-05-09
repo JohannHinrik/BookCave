@@ -1,25 +1,25 @@
-@model BookCave.Models.ViewModels.BookListViewModel   
+@model Tuple<BookCave.Models.ViewModels.BookListViewModel,List<BookCave.Models.ViewModels.ReviewListModel>>
 
 <div class ="row">
-    <h2>@Model.Title</h2>
+    <h2>@Model.Item1.Title</h2>
     <div class="col-xs-6 col-lg-6">
         <div>
             <img src="~/images/books/(@Model.BookId).jpg" alt="@Model.Title" class="detailBookCover">
         </div>
     </div>
     <div class="col-xs-6 col-lg-6">
-        Genre: @Model.Genre <br/>
-        Author: @Model.Author <br/>
+        Genre: @Model.Item1.Genre <br/>
+        Author: @Model.Item1.Author <br/>
         About: <br/>
-        @Model.About
+        @Model.Item1.About
         <br/>
         <div class="addToButtons">
-            <h4><span>@Model.Price Kr</span></h4>
-            @for(var i = Math.Round(@Model.Rating); i > 0; i--)
+            <h4><span>@Model.Item1.Price Kr</span></h4>
+            @for(var i = Math.Round(@Model.Item1.Rating); i > 0; i--)
             {
                 <i id="yes" class="fas fa-star"></i>
             }
-            @for(var i = Math.Round(@Model.Rating); i < 5; i++)
+            @for(var i = Math.Round(@Model.Item1.Rating); i < 5; i++)
             {
                 <i id="no" class="fas fa-star"></i>
             }
@@ -49,13 +49,15 @@
     <h4><small>RECENT POSTS</small></h4>
     <hr>
     <div class="ListOfComments">
-
-        <!-- @foreach(var review in Model.Reviews)
+        <hr>
+        <!-- @foreach(var review in Model.Item1)
         {
             username: review.Username
             <div id="OneComment">
                 comment: review.Comment
             </div>
+            <hr>
         } -->
+
     </div>
 </div>
