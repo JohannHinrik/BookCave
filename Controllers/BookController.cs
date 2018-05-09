@@ -24,21 +24,23 @@ namespace BookCave.Controllers
             _authorService = new AuthorService();
             _reviewService = new ReviewService();
         }
-       /* public IActionResult Index()
+        /*public IActionResult Index()
         {
-           
+            var books = _bookService.GetAllBooks();
+            return View(books);
         }*/
+
         public IActionResult Index(int genre, int order, string search)
         {
             if (search == null) 
             {
-                var books = _bookService.GetAllBooks(genre, order);
+                var books = _bookService.GetAllBooks();
                 return View(books);
             }
             else 
             {
                 var filteredBooks = _bookService.GetSearchedBooks(genre, order, search);
-                return View(filteredBooks.ToList());           
+                return View(filteredBooks);           
             }
         }
 
