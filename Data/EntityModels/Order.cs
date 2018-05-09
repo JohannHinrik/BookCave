@@ -12,7 +12,7 @@ namespace BookCave.Data.EntityModels
         public string City { get; set; }
         public string Country { get; set; }
         public string Email { get; set; }
-        public int Total { get; set; }
+        public decimal Total { get; set; }
         public System.DateTime OrderDate { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
     }

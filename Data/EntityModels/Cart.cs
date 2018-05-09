@@ -8,6 +8,6 @@ namespace BookCave.Data.EntityModels
         public string Id { get; set; }
         public int BookId { get; set; }
         public int Count { get; set; }
-        
+        public virtual Book Book  { get; set; }
     }
 }
