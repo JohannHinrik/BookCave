@@ -1,12 +1,10 @@
-using System.Collections.Generic;
-
-namespace BookCave.Data.EntityModels
+namespace BookCave.Models.ViewModels
 {
-    public partial class Order
+    public class OrderListViewModel
     {
-        public int Id { get; set; }
-        public int BookId { get; set; }
         public int UserId { get; set; }
+        public int Book { get; set; }
+        public int User { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
