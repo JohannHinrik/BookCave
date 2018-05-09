@@ -8,9 +8,11 @@
 
 <!--  Printing all Books
  -->
-<div> 
-    @foreach(var book in Model)
+<div>
+    <ul class="pagination">
+    @foreach(var book in Model.OrderByDescending(x=>x.Title).Take(6))
     {
+        <li class="page-item">
         <div class="col-xs-6 col-lg-6">
         <hr>
             <!-- Book Cover  -->
@@ -33,6 +35,9 @@
                 <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
             </div>
         </div>
+        </li>
     }
+    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+     <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
 </div>
-
