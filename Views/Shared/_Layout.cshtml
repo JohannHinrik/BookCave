@@ -40,7 +40,7 @@
  
   
             <!-- Search bar -->
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
                 <div class="input-group">
                     <div id="search-bar-bookcave">
                         @using (Html.BeginForm("Index", "Book", FormMethod.Get))
