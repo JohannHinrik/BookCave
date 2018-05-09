@@ -187,3 +187,15 @@ h2
         text-align: center;
         
 }
+
+.fas {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: yellow;
+}
+
+#no.fas{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: transparent;
+}
