@@ -14,11 +14,11 @@
     <br/>
     <div class="addToButtons">
         <h4><span>@Model.Price Kr</span></h4>
-        @for(var i = Math.Round(@book.Rating); i > 0; i--)
+        @for(var i = Math.Round(@Model.Rating); i > 0; i--)
         {
-            <i class="fas fa-star"></i>
+            <i id="yes" class="fas fa-star"></i>
         }
-        @for(var i = Math.Round(@book.Rating); i < 5; i++)
+        @for(var i = Math.Round(@Model.Rating); i < 5; i++)
         {
             <i id="no" class="fas fa-star"></i>
         }
