@@ -13,7 +13,7 @@
     <form asp-action="LogOut" asp-controller="Account" method="POST">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <button class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-user"></span> @claim</button>
+                <a class="btn btn-link navbar-btn navbar-link" asp-controller="Account" asp-action="MyProfile"><span class="glyphicon glyphicon-user"></span> @claim</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-log-out"></span> Log out</button>

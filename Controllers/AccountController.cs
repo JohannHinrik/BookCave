@@ -5,6 +5,7 @@ using BookCave.Models;
 using BookCave.Models.ViewModels;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookCave.Controllers
 {
@@ -22,6 +23,43 @@ namespace BookCave.Controllers
         public IActionResult SignUp()
         {
             return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditAccount()
+        {
+            //Get user data
+            var user = await _userManager.GetUserAsync(User);
+
+            return View(new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                FavoriteBook = user.FavoriteBook,
+                City = user.City,
+                Country = user.Country,
+                Address = user.Address,
+                Image = user.Image
+                /* TODO: Later Add email and username */
+            });
+
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditAccount(ProfileViewModel model)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            //Update properties
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.FavoriteBook = model.FavoriteBook;
+            user.City = model.City;
+            user.Country = model.Country;
+            user.Address = model.Address;
+            user.Image = model.Image;
+
+            await _userManager.UpdateAsync(user);
+            return View(model);
         }
 
         [HttpPost]

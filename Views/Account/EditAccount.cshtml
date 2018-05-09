@@ -1,0 +1,29 @@
+@model BookCave.Models.ViewModels.ProfileViewModel
+
+<form asp-action="EditAccount" asp-controller="Account" class="form-horizontal" method="POST">
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="FavoriteBook" placeholder="Enter your favorite book..." value="@Model.FavoriteBook" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="Country" placeholder="Enter your country..." value="@Model.Country" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
+    </div>
+    <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="Image" placeholder="Enter a new image..." value="@Model.Image" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-default" value="Update profile!" />
+    </div>
+</form>

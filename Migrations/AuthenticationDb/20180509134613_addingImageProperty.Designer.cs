@@ -11,8 +11,8 @@ using System;
 namespace BookCave.Migrations.AuthenticationDb
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    [Migration("20180508093255_accountMigration")]
-    partial class accountMigration
+    [Migration("20180509134613_addingImageProperty")]
+    partial class addingImageProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,13 +28,27 @@ namespace BookCave.Migrations.AuthenticationDb
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<string>("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FavoriteBook");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 

@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations.AuthenticationDb
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    partial class AuthenticationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180509121725_accountMigration")]
+    partial class accountMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +45,6 @@ namespace BookCave.Migrations.AuthenticationDb
                     b.Property<string>("FavoriteBook");
 
                     b.Property<string>("FirstName");
-
-                    b.Property<string>("Image");
 
                     b.Property<string>("LastName");
 
