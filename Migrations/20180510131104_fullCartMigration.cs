@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BookCave.Migrations
 {
-    public partial class cartMigration : Migration
+    public partial class fullCartMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
