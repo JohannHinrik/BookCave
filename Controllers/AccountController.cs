@@ -53,7 +53,7 @@ namespace BookCave.Controllers
             });
         }
 
- [Authorize]
+        [Authorize]
         public async Task<IActionResult> EditAccount()
         {
             //Get user data
@@ -192,9 +192,9 @@ namespace BookCave.Controllers
             return RedirectToAction("Cart","Account");
         }
 
-        /* [Authorize]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> UpdateCart(int id, string amount)
+        public async Task<IActionResult> UpdateCart(int id, int amount)
         {
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
@@ -203,7 +203,7 @@ namespace BookCave.Controllers
 
             return RedirectToAction("Cart","Account");
         }
- */
+
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -241,9 +241,7 @@ namespace BookCave.Controllers
             //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
             //return View(bookDetails2);
             return RedirectToAction("Details", "Book", new { id = idbook});
-
         }
-
 
         [Authorize]
         public async Task<IActionResult> FirstPaymentStep()
@@ -251,18 +249,56 @@ namespace BookCave.Controllers
             //Get user data
             var user = await _userManager.GetUserAsync(User);
 
-            return View(new ProfileViewModel {
+            var UserPay= new ProfileViewModel {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                FavoriteBook = user.FavoriteBook,
                 City = user.City,
                 Country = user.Country,
                 Address = user.Address,
-                Image = user.Image
                 /* TODO: Later Add email and username */
-            });
+            };
+
+            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
+
+            return View(PaymentInfo);
         }
 
+        /*[Authorize]
+        public async Task<IActionResult> OverviewStep(OrderListViewModel cardInfo)
+        {
+            // 1. Add cardInfo to database: 
+            if(ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user.Id;
 
+                var newOrder = new OrderListViewModel()
+                {
+                    UserId = userId,
+                    Book = cardInfo.Book,
+                    User = cardInfo.User,
+                    Address = cardInfo.Address,
+                    City = cardInfo.City,
+                    Country = cardInfo.Country,
+                    Quantity = 
+                    Price =
+                    PaymentInfo =
+                    PaymentInfo =
+                }; 
+            // 2. Put models into tuple
+
+            // 2. return view(tuple);
+
+                _reviewService.AddReviewToDB(newReview);
+                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+                return RedirectToAction("Details", "Book", new { id = idbook});
+                //return View(bookDetails1);
+            }
+            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+            //return View(bookDetails2);
+            return RedirectToAction("Details", "Book", new { id = idbook});
+
+            return View();
+        }*/
     }
 }

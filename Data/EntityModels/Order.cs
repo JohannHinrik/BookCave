@@ -11,5 +11,6 @@ namespace BookCave.Data.EntityModels
         public string Country { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
+        public CreditCard PaymentInfo { get; set; }
     }
 }

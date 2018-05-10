@@ -65,7 +65,7 @@ namespace BookCave.Repositories
              _db.Carts.Update(connection);
                 _db.SaveChanges();
             }
-        /* public void CartUpdate(string userId, int bookId, string amount)
+        public void UpdateCart(string userId, int bookId, int amount)
         {
             var connection = (from c in _db.Carts
                               where c.UserId == userId && c.BookId == bookId
@@ -73,6 +73,6 @@ namespace BookCave.Repositories
             connection.Quantity = amount;
              _db.Carts.Update(connection);
                 _db.SaveChanges();
-            } */
+        } 
     }
 }
