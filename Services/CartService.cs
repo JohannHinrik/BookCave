@@ -13,10 +13,14 @@ namespace BookCave.Services
             _cartRepo = new CartRepo();
         }
 
-         public List<OrderListViewModel> GetUserOrder()
+        public void AddItem(string userId, int bookId)
         {
-            var orders = _cartRepo.GetUserOrder();
-            return orders;
+            _cartRepo.AddItem(userId, bookId);
+        }
+
+        public List<BookListViewModel> GetBooks(string userId)
+        {
+            return _cartRepo.GetBooks(userId);
         }
     }
 }

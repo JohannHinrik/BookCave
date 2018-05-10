@@ -20,11 +20,5 @@ namespace BookCave.Controllers
         {
             _cartService = new CartService();
         }
-
-         public IActionResult Index()
-        {
-            var orders = _cartService.GetUserOrder();
-            return View(orders);
-        }
     }
 }
