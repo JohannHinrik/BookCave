@@ -48,3 +48,6 @@ $('.updateProfile').click(function() {
 $('.DeleteAccountButton').click(function() { 
 
 });
+
+
+$("#Image-choosing input[type='radio']:checked").attr("checked", "checked");

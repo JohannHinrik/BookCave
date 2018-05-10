@@ -35,6 +35,21 @@
                   </div>
                 </div>
 
+                <!--IMAGE
+                <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
+                  <div class="form-group">
+                      <div class="col-md-10">
+                          <p>Upload an image:</p>
+                          <input type="file" name="files" multiple />
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-md-10">
+                          <input type="submit" value="Upload" />
+                      </div>
+                  </div>
+              </form>
+-->
                 <div class="row">
                   <div class="col-sm-4">
                     <label for="inputEmail3" class="control-label">Address:</label>
@@ -61,6 +76,8 @@
           </br>
           </br>
           
+          @{string path = Model.Image;}
+          <img src="@Url.Content(path)" alt="Avatar" class="avatar">
           
             <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
             <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>

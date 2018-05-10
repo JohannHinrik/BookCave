@@ -35,6 +35,22 @@
         <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.."/>
     </div>
 
+    <div id="Image-choosing">
+        <p>Please choose an avatar that you like!</p> 
+        <label class="avatar">
+            <input type="radio" name="image" value="~/images/avatars/captain.png"> <img src="~/images/avatars/captain.png" alt="Avatar" class="avatar">
+        </label>
+        <label class="avatar">
+            <input type="radio" name="image" value="~/images/avatars/detective.png"> <img src="~/images/avatars/detective.png" alt="Avatar" class="avatar">
+        </label>
+        <label class="avatar">
+            <input type="radio" name="image" value="~/images/avatars/nun.png"> <img src="~/images/avatars/nun.png" alt="Avatar" class="avatar">
+        </label>
+        <label class="avatar">
+            <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
+        </label>
+    </div>
+
     <div class="form-group">
         <button type="submit" class="SignUpButton">Create account!</button>
     </div>
