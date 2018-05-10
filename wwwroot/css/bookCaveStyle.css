@@ -238,3 +238,22 @@ h2
     -webkit-text-stroke-color: black;
     color: transparent;
 }
+
+/*hide radio button*/
+.avatar > input {
+    visibility: hidden; 
+    position: absolute;
+  }
+
+/*avatar image style*/
+.avatar > input + img {
+    cursor: pointer;
+    border: 2px solid transparent;
+    height: 200px;
+}
+
+/*red border if checked*/
+.avatar > input:checked + img {
+    border-radius: 50%;
+    border: 2px solid red;
+}
