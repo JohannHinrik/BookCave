@@ -45,15 +45,34 @@ namespace BookCave.Repositories
             var books = (from b in _db.Books
                          join c in _db.Carts on b.Id equals c.BookId
                          join a in _db.Authors on b.AuthorId equals a.Id
-                         where c.UserId == userId
+                         where c.UserId == userId && c.Quantity != 0
                          select new BookListViewModel()
                          {
                             BookId = b.Id,
                             Title = b.Title,
                             Author = a.Name,
-                            Price = b.Price 
+                            Price = b.Price,
+                            Quantity = c.Quantity
                          }).ToList();
             return books;
         }
+        public void DeleteItem(string userId, int bookId)
+        {
+            var connection = (from c in _db.Carts
+                              where c.UserId == userId && c.BookId == bookId
+                              select c).FirstOrDefault();
+            connection.Quantity = 0;
+             _db.Carts.Update(connection);
+                _db.SaveChanges();
+            }
+        /* public void CartUpdate(string userId, int bookId, string amount)
+        {
+            var connection = (from c in _db.Carts
+                              where c.UserId == userId && c.BookId == bookId
+                              select c).FirstOrDefault();
+            connection.Quantity = amount;
+             _db.Carts.Update(connection);
+                _db.SaveChanges();
+            } */
     }
 }

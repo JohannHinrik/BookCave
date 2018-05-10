@@ -174,6 +174,30 @@ namespace BookCave.Controllers
             return RedirectToAction("Index","Book");
         }
 
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _cartService.DeleteItem(userId, id);
+
+            return RedirectToAction("Cart","Account");
+        }
+
+        /* [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> UpdateCart(int id, string amount)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _cartService.UpdateCart(userId, id, amount);
+
+            return RedirectToAction("Cart","Account");
+        }
+ */
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);

@@ -4,30 +4,44 @@
 
 }
 <!-- List of all books in cart: -->
-<div id="booksInCart">
-  <div>
-       @foreach(var book in Model) {
-        <div class="OneItemInCart">
-            <div class="addToButtons">
-                <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
-            </div>
-        </div>
+    
 
-        <div id="Price">
-          Price: 
-        </div>
 
-        <!-- SKOÐA BETUR ÞESSA SLÓÐ: https://css-tricks.com/number-increment-buttons/ :-->
-        <div id="Quantity">
-          <form method="post" action="">
-              <label for="Quantity">Quantity</label>
-              <input type="text" name="Quantity" id="quantiy-box" value="1">
-          </form>
-        </div>
-
-        <div class="deleteButton">
-            <button type="button"></button>
-        </div>
-      }
-  </div>
+<div class="container">
+    @foreach(var book in Model) {
+	<table id="cart" class="table table-hover table-condensed">
+    				<thead>
+					
+					</thead>
+					<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
+									</div>
+								</div>
+							</td>
+							<td data-th="Price">@book.Price</td>
+							<td data-th="Quantity">
+								<input type="number" class="form-control text-center"  placeholder="@book.Quantity">
+							</td>
+							<td class="actions" data-th="">
+								<button class="btn btn-info btn-sm"><i class="fas fa-sync"></i></button>
+                                <form asp-action="DeleteItem" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>	
+                                </form>							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+    }
+    <tfoot>
+						<tr>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total: </strong></td>
+							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>
 </div>
