@@ -103,6 +103,8 @@ namespace BookCave.Migrations
 
                     b.Property<int>("OrderId");
 
+                    b.Property<int>("Quantity");
+
                     b.HasKey("Id");
 
                     b.ToTable("OrderBookConnections");
