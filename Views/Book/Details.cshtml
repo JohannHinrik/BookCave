@@ -23,7 +23,9 @@
             {
                 <i id="no" class="fas fa-star"></i>
             }
-            <button type="button" class="cartButton">Add to Cart</button>
+            <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@@Model.Item1.BookId" method="POST">
+                <button type="submit" class="cartButton">Add to Cart</button>
+            </form>
             <br/>
             <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
         </div>

@@ -22,5 +22,13 @@ namespace BookCave.Services
         {
             return _cartRepo.GetBooks(userId);
         }
+        public void DeleteItem(string userId, int bookId)
+        {
+            _cartRepo.DeleteItem(userId, bookId);
+        }
+        /* public void UpdateCart(string userId, int bookId, string amount)
+        {
+            _cartRepo.UpdateCart(userId, bookId, amount);
+        } */
     }
 }
