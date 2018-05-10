@@ -240,12 +240,9 @@ namespace BookCave.Controllers
             //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
             //return View(bookDetails2);
             return RedirectToAction("Details", "Book", new { id = idbook});
-
         }
 
-
         [Authorize]
-        [HttpPost]
         public async Task<IActionResult> FirstPaymentStep()
         {
             //Get user data
@@ -265,24 +262,42 @@ namespace BookCave.Controllers
             return View(PaymentInfo);
         }
 
-        [Authorize]
-        public async Task<IActionResult> OverviewStep()
+        /*[Authorize]
+        public async Task<IActionResult> OverviewStep(OrderListViewModel cardInfo)
         {
-            //Get user data
-            var user = await _userManager.GetUserAsync(User);
+            // 1. Add cardInfo to database: 
+            if(ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user.Id;
 
-            var UserPay= new ProfileViewModel {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                City = user.City,
-                Country = user.Country,
-                Address = user.Address,
-                /* TODO: Later Add email and username */
-            };
+                var newOrder = new OrderListViewModel()
+                {
+                    UserId = userId,
+                    Book = cardInfo.Book,
+                    User = cardInfo.User,
+                    Address = cardInfo.Address,
+                    City = cardInfo.City,
+                    Country = cardInfo.Country,
+                    Quantity = 
+                    Price =
+                    PaymentInfo =
+                    PaymentInfo =
+                }; 
+            // 2. Put models into tuple
 
-            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
+            // 2. return view(tuple);
 
-            return View(PaymentInfo);
-        }
+                _reviewService.AddReviewToDB(newReview);
+                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+                return RedirectToAction("Details", "Book", new { id = idbook});
+                //return View(bookDetails1);
+            }
+            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+            //return View(bookDetails2);
+            return RedirectToAction("Details", "Book", new { id = idbook});
+
+            return View();
+        }*/
     }
 }

@@ -1,4 +1,5 @@
 @model Tuple<BookCave.Models.ViewModels.ProfileViewModel, BookCave.Models.ViewModels.OrderListViewModel>
+
 @{
 
 }
@@ -6,50 +7,34 @@
 <h1>Order Overview</h1>
 
 <div id="overview">
-    <div id=name>
-      Name: <!-- @Model.Name --> 
+    <div id=firstName>
+      Name: @Model.Item1.FirstName @Model.Item1.LastName
     </div>
     <div id=address>
-        Address: <!-- @Model.Address --> 
+        Address: @Model.Item1.Address
             <div id=city>
-              City: <!-- @Model.City --> 
+              City: @Model.Item1.City
             </div>
             <div id=country>
-              Country: <!-- @Model.Country --> 
+              Country: @Model.Item1.Country
             </div>
     </div>
     <div id=cardNumber>
-      Card Number: <!-- @Model.cardNumber --> 
+      Card Number: @Model.Item2.PaymentInfo.CardNumber
     </div>
 
     <div id="cvc">
-      CVC: <!-- @Model.Cvc --> 
+      CVC: @Model.Item2.PaymentInfo.Cvc
     </div>
 
-        <div id=expDate>
-      Expiry Date: <!-- @Model.ExpDate --> 
+    <div id=expDate>
+      Expiry Date: @Model.Item2.PaymentInfo.ExpiryMonth / @Model.Item2.PaymentInfo.ExpiryYear
     </div>
 </div>
 
 <div id="booksInCart">
   <h2>Books in Cart</h2>
-  <hr>
-  @foreach(var book in @Model)
-  {
-    @book.Title
-    <br/>
-    @book.Price
-    <hr>
-  }
 </div>
-
-    <div id="discount">
-      Discount: <!-- @Model.Discount --> 
-    </div>
-
-    <div id="totalPrice">
-      Total Order Price: <!-- @Model.TotalPrice --> 
-    </div>
 
 <button type="button" id="cancelCheckout">Cancel</button>
 
