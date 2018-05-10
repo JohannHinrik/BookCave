@@ -16,7 +16,6 @@ $('.cartButton').click(function(id) {
 
 });
 
-
 $('.wishListButton').click(function() { 
     swal({
         title: "Success!",
@@ -49,5 +48,6 @@ $('.DeleteAccountButton').click(function() {
 
 });
 
-
 $("#Image-choosing input[type='radio']:checked").attr("checked", "checked");
+
+/*$("#Image-choosing input[type='radio']:checked").css("border", '2px solid red');*/
