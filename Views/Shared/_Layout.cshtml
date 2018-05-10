@@ -40,7 +40,7 @@
  
   
             <!-- Search bar -->
-            <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
                 <div class="input-group">
                     <div id="search-bar-bookcave">
                         @using (Html.BeginForm("Index", "Book", FormMethod.Get))
@@ -73,11 +73,12 @@
                             "text",
                             0))
 
-                            @Html.TextBox("search")
+                            @Html.TextBox("search", null, new {@placeholder = "Search.."})
                             <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
                         }
                     </div>
                 </div>
+            </form>
             <!-- Need to add a dropdown bar here!!  -->
                 <div class="nav navbar-nav navbar-right">
                      <div class="dropdown">
@@ -88,8 +89,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </form>
+        </div>
+       <!-- </form>-->
     </div>
 </nav>
 <!-- HERE IT ENDS -->

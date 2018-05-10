@@ -95,9 +95,14 @@ namespace BookCave.Controllers
             //make the username the same as the password.
             var user = new ApplicationUser
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email,
-                ActiveAccount = true
+                ActiveAccount = true,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Address = model.Address,
+                City = model.City,
+                Country = model.Country
             };
             //Creating the user with _userManager.
             var result = await _userManager.CreateAsync(user, model.Password);

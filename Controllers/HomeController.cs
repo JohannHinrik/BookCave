@@ -32,8 +32,8 @@ namespace BookCave.Controllers
         {
             if (search == null) 
             {
-                var books = _bookService.GetAllBooks();
-                return View(books);
+                var book = _bookService.GetTopRatedBooks();
+                return View(book);
             }
             else 
             {

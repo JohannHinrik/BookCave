@@ -16,10 +16,32 @@ namespace BookCave.Services
             var ReviewList = _reviewRepo.GetAllReviews(Id);
             return ReviewList;
         }
+
+        public int FindReviewID()
+        {
+            var newId = _reviewRepo.FindReviewID();
+            return newId;
+        }
+
+       /* public int FindAccountId()
+        {
+            var newId = _reviewRepo.FindAccountId()
+            return newId;
+        }*/
+
+        public int FindBookId()
+        {
+            var bookId = _reviewRepo.FindBookId();
+            return bookId;
+        }
+
+        public void AddReviewToDB(ReviewListViewModel NewReview)
+        {
+            _reviewRepo.AddReviewToDB(NewReview);
+            return;
+        }
     }
 }
 
 
 
-
-/// _reviewService.GetAllReviews(Id));

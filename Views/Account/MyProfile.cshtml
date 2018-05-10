@@ -4,42 +4,76 @@
 
 }
 
-<div id="MemberAccount">
-
-    <!-- Image of member: -->
-    <img src="" alt="Smiley face">
-
-    <div id="Username">
-        Username:  @Model.UserName
-    </div>
-
-    <div id="Name">
-        Name: @Model.FirstName @Model.LastName
-    </div>
-
-    <div id="Address">
-        Address:  @Model.Address
-        <div id="City">
-            City: @Model.City
+<div class="">
+    <!-- UI - X Starts -->
+    <div class="ui-67">
+    
+      <!-- Head Starts -->
+      <div class="ui-head bg-lblue">
+        <!-- Details -->
+        <div class="ui-details">
+          <!-- Name -->
+          <h3 id="name-header">@Model.FirstName @Model.LastName</h3>
         </div>
-        <div id="Country">
-            Country: @Model.Country
+      </div>
+      <div class="ui-content">
+        <div class="row">
+          <div class="col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 acc-col">
+            <section>
+              <h3>Contact Information</h3>
+              <form class="ng-pristine ng-valid" role="form">
+                <div class="row">
+                   <div class="col-sm-12">
+                    <label for="inputName" class="control-label">Name:</label>
+                      <input type="text" class="form-control" id="inputName" value="@Model.FirstName @Model.LastName"> 
+                  </div>               
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label for="inputEmail3" class="control-label">Email:</label>
+                      <input type="email" class="form-control" id="inputEmail3" value=" @Model.Email">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="inputEmail3" class="control-label">Address:</label>
+                      <input type="email" class="form-control" id="inputEmail3" value="@Model.Address">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="inputPassword3" class="control-label">City:</label>
+                      <input type="text" class="form-control" id="inputPassword3" value="@Model.City">
+                  </div> 
+
+                  <div class="col-sm-2">
+                    <label for="inputPassword3" class="control-label">Country:</label>
+                      <input type="text" class="form-control" id="inputPassword3" value="@Model.Country">
+                  </div> 
+                  <div class="col-sm-2">
+                    <label for="inputPassword3" class="control-label">Favorite Book:</label>
+                      <input type="text" class="form-control" id="inputPassword3" value="@Model.FavoriteBook">
+                  </div> 
+                </div>
+                </form>
+        </section>
+
+           
+          </br>
+          </br>
+          
+          
+            <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
+            <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>
+
+             <button type="button" class="DeleteAccountButton">Delete Account</button>
+
+            <button type="button">Order History</button>
+          </div>
+          <!-- col-8 -->
         </div>
+
+      </div>
+      <!-- Content Ends -->
     </div>
-
-    <div id="Email">
-        Email: @Model.Email
-    </div>
-
-    <div id="FavBook">
-        Favorite Book: @Model.FavoriteBook
-    </div>
-
-
-    <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
-    <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>
-
-    <button type="button" class="DeleteAccountButton">Delete Account</button>
-
-    <button type="button">Order History</button>
+    <!-- UI - X Ends -->
 </div>
