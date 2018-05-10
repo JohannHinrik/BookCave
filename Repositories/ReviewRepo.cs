@@ -35,7 +35,7 @@ namespace BookCave.Repositories
         public int FindReviewID()
         {
             var newId = 2;
-            return newId;
+            return newId; 
         }
 
         public int FindAccountId()
@@ -57,14 +57,12 @@ namespace BookCave.Repositories
                     BookId = NewReview.BookId,
                     AccountId = NewReview.AccountId,
                     Comment = NewReview.Comment,
-                    Id = NewReview.Id,
                     Rating = NewReview.Rating
                 };
             _db.Add(newReview);
             _db.SaveChanges();
             return;
         }
-
     }
     
 }
