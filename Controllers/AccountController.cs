@@ -93,7 +93,7 @@ namespace BookCave.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignUp(SignUpViewModel model)
+        public async Task<IActionResult> SignUp(SignUpViewModel model, string image)
         {
             //Returning the view if not valid.
             if (!ModelState.IsValid)
@@ -111,7 +111,8 @@ namespace BookCave.Controllers
                 LastName = model.LastName,
                 Address = model.Address,
                 City = model.City,
-                Country = model.Country
+                Country = model.Country,
+                Image = image
             };
             //Creating the user with _userManager.
             var result = await _userManager.CreateAsync(user, model.Password);

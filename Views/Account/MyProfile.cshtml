@@ -76,6 +76,8 @@
           </br>
           </br>
           
+          @{string path = Model.Image;}
+          <img src="@Url.Content(path)" alt="Avatar" class="avatar">
           
             <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
             <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>
