@@ -22,24 +22,8 @@ $('.search-button').addEventListener("keyup", function(event) {
     }
 });
 
-$('.cartButton').click(function(id, qty) {
-
-    let oldCart = window.sessionStorage.getItem('cart');
-    
-    console.log(oldCart);
-
-    let newCart = { bookId: id,
-                    qty: qty }
-
-    console.log(newCart)
-
-    newCart = newCart + oldCart
-
-    console.log(newCart)
-
-    window.sessionStorage.setItem('cart', newCart)
-
-
+$('.cartButton').click(function(id) {
+    AddToCart(id);
     swal({
         title: "Success!",
         text: "Book has been added to your cart!",
@@ -49,10 +33,20 @@ $('.cartButton').click(function(id, qty) {
 
 });
 
+
 $('.wishListButton').click(function() { 
     swal({
         title: "Success!",
         text: "Book has been added to your wishlist!",
+        icon: "success",
+        button: "Continue Browsing",
+      });
+});
+
+$('.cartButton').click(function() { 
+    swal({
+        title: "Success!",
+        text: "Book has been added to your cart!",
         icon: "success",
         button: "Continue Browsing",
       });

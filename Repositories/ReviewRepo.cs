@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BookCave.Data;
 using BookCave.Models.ViewModels;
 using System.Linq;
+using BookCave.Data.EntityModels;
 
 namespace BookCave.Repositories
 {
@@ -33,15 +34,15 @@ namespace BookCave.Repositories
 
         public int FindReviewID()
         {
-            var newId = _db.Reviews.Count() + 1;
-            return newId;
+            var newId = 2;
+            return newId; 
         }
 
-        /*public int FindAccountId()
+        public int FindAccountId()
         {
-            var newId = _db.
+            var newId = 5;
             return newId;
-        }*/
+        }
 
         public int FindBookId()
         {
@@ -51,19 +52,17 @@ namespace BookCave.Repositories
 
         public void AddReviewToDB(ReviewListViewModel NewReview)
         {
-                var newReview = new ReviewListViewModel()
+                var newReview = new Review()
                 {
                     BookId = NewReview.BookId,
-                    //AccountId = _reviewService.FindAccountId(),
+                    AccountId = NewReview.AccountId,
                     Comment = NewReview.Comment,
-                    Id = NewReview.Id,
                     Rating = NewReview.Rating
                 };
-            _db.AddRange(newReview);
+            _db.Add(newReview);
             _db.SaveChanges();
             return;
         }
-
     }
     
 }

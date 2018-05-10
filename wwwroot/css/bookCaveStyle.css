@@ -86,7 +86,6 @@
     overflow: hidden;
     width: 50%;
 }
-
 .bookPrice
 {
     font-weight: bold;
@@ -108,8 +107,18 @@ h2
 #topAuthors
 {
     float: right;
-    margin-right: 15px;
 }
+
+#topBooksH2
+{
+    float: left;
+}
+#topAuthorH2
+{
+    float: right;
+    padding-bottom: 10px;
+}
+
 
 .detailBookCover
 {
@@ -124,9 +133,39 @@ h2
     padding-right: 3px;
 }
 
-#authorList
+#list ol
 {
-    margin-bottom: 5px;
+    margin-top: 100px;
+}
+#list div {
+    margin: 20px;
+  }
+  
+#list ul {
+    list-style-type: none;
+    width: 500px;
+  }
+
+#list h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  }
+  
+
+  
+#list li p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+#list li {
+    padding: 10px;
+    overflow: auto;
+    background: lightgray;
+
+}
+
+#list li:hover {
+    background: #eee;
+    cursor: pointer;
 }
 
 /* Team photo  */
