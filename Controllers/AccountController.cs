@@ -59,7 +59,7 @@ namespace BookCave.Controllers
             //Get user data
             var user = await _userManager.GetUserAsync(User);
                 Debug.WriteLine(user.FirstName);
-
+            
             return View(new ProfileViewModel {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
