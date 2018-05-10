@@ -34,13 +34,13 @@
     padding: 8px 15px;
     border-radius: 5px;
     text-align: center;
-    background: cornflowerblue;
+    background: rgb(36, 119, 186);
     color: white;
 }
 
 .cartButton:hover
 {
-    background-color: royalblue;
+    background-color: rgb(28, 94, 146);
     color: white;
 }
 
