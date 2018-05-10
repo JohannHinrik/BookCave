@@ -207,5 +207,14 @@ namespace BookCave.Controllers
             return View(books);
         }
 
+        /* public async Task<IActionResult> FirstPaymentStep(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _cartService.DeleteItem(userId, id);
+
+            return RedirectToAction("FirstPaymentStep","Account");
+        } */
     }
 }

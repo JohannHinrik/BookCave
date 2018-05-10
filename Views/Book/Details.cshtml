@@ -23,7 +23,7 @@
             {
                 <i id="no" class="fas fa-star"></i>
             }
-            <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@@Model.Item1.BookId" method="POST">
+            <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@Model.Item1.BookId" method="POST">
                 <button type="submit" class="cartButton">Add to Cart</button>
             </form>
             <br/>
