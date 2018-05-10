@@ -37,7 +37,7 @@
    
     <h4>Leave a Comment:</h4>
 
-    <form role="form" asp-action="Details" asp-controller="Book">
+    <form role="form" asp-action="Details" asp-controller="Book" asp-route-id="@Model.Item1.BookId">
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
         <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1

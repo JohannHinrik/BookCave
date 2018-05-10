@@ -85,7 +85,7 @@ namespace BookCave.Controllers
                 var newReview = new ReviewListViewModel()
                 {
                     BookId = _reviewService.FindBookId(),
-                    //AccountId = _reviewService.FindAccountId(),
+                    AccountId = _reviewService.FindAccountId(),
                     Comment = review.Comment,
                     Id = _reviewService.FindReviewID(),
                     Rating =  review.Rating

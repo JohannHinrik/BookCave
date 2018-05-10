@@ -23,11 +23,11 @@ namespace BookCave.Services
             return newId;
         }
 
-       /* public int FindAccountId()
+       public int FindAccountId()
         {
-            var newId = _reviewRepo.FindAccountId()
+            var newId = _reviewRepo.FindAccountId();
             return newId;
-        }*/
+        }
 
         public int FindBookId()
         {

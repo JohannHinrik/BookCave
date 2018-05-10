@@ -34,15 +34,15 @@ namespace BookCave.Repositories
 
         public int FindReviewID()
         {
-            var newId = _db.Reviews.Count() + 1;
+            var newId = 2;
             return newId;
         }
 
-        /*public int FindAccountId()
+        public int FindAccountId()
         {
-            var newId = _db.
+            var newId = 5;
             return newId;
-        }*/
+        }
 
         public int FindBookId()
         {
@@ -55,7 +55,7 @@ namespace BookCave.Repositories
                 var newReview = new Review()
                 {
                     BookId = NewReview.BookId,
-                    //AccountId = _reviewService.FindAccountId(),
+                    AccountId = NewReview.AccountId,
                     Comment = NewReview.Comment,
                     Id = NewReview.Id,
                     Rating = NewReview.Rating
