@@ -1,6 +1,8 @@
 @model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
 <h2 id="topBooksH2">TOP 10 BOOKS</h2>
+<h2 id="topAuthorH2">TOP 10 AUTHORS</h2>
+
 <div class="col-xs-6 col-lg-9">
     @foreach(var book in Model.Item1)
     {
@@ -32,18 +34,21 @@
     }
 </div>
 
-<div id="topAuthors">
-    <h2 id="topAuthorH2">TOP 10 AUTHORS</h2>
-    <ol>
-    @foreach(var author in Model.Item2)
-    {
-        <li id="authorList">
-        <div>
-            @author.Name
-            <br/>
-            Rating: @author.Rating
-        </div>
-        </li>
-    }
-    </ol>
+<div id="list" width="25%">
+        <ol>
+        @foreach(var author in Model.Item2)
+        {
+            <a href="/Book/?genre=0&order=0&search=@author.Name">
+            <div>
+                <li>
+                    <div>
+                        <h3>@author.Name</h3>
+                        <p>Rating: @author.Rating</p>
+                    </div>
+                </li>
+            </div>
+            </a>
+        }
+        </ol>
+    
 </div>
