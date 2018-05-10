@@ -1,6 +1,6 @@
 namespace BookCave.Data.EntityModels
 {
-    public class OrderBookConnection
+    public class OrderBook
     {
         public int Id { get; set; }
         public int BookId { get; set; }

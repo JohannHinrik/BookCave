@@ -65,6 +65,8 @@ namespace BookCave.Migrations
 
                     b.Property<int>("BookId");
 
+                    b.Property<int>("Quantity");
+
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
@@ -94,7 +96,7 @@ namespace BookCave.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("BookCave.Data.EntityModels.OrderBookConnection", b =>
+            modelBuilder.Entity("BookCave.Data.EntityModels.OrderBook", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -103,9 +105,11 @@ namespace BookCave.Migrations
 
                     b.Property<int>("OrderId");
 
+                    b.Property<int>("Quantity");
+
                     b.HasKey("Id");
 
-                    b.ToTable("OrderBookConnections");
+                    b.ToTable("OrderBooks");
                 });
 
             modelBuilder.Entity("BookCave.Data.EntityModels.Review", b =>
