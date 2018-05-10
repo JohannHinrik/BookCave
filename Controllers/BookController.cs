@@ -77,24 +77,23 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Details(ReviewListViewModel review, int Id)     
+        public IActionResult Details(ReviewListViewModel review, int id)     
         {            
             //If the comment was not valid:
             if(ModelState.IsValid)
             {
                 var newReview = new ReviewListViewModel()
                 {
-                    BookId = _reviewService.FindBookId(),
-                    AccountId = _reviewService.FindAccountId(),
+                    BookId = id,
+                    AccountId = _reviewService.FindAccountId(), //MUNA að breyta þessu
                     Comment = review.Comment,
-                    Id = _reviewService.FindReviewID(),
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
-                var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
+                var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
                 return View(bookDetails1);
             }
-            var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
+            var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
             return View(bookDetails2);
         }
 
