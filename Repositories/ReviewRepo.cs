@@ -32,19 +32,13 @@ namespace BookCave.Repositories
                               }).ToList();
             return reviewList;
         }
-
-        public int FindReviewID()
-        {
-            var newId = 2;
-            return newId; 
-        }
-
+/* 
         public string FindAccountId()
         {
-            var newId = "3425";
-            return newId;
-        }
 
+            return userId;
+        }
+*/
         public int FindBookId()
         {
             var newId = 1;

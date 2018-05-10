@@ -10,6 +10,7 @@ using BookCave.Data.EntityModels;
 using BookCave.Models.ViewModels;
 using BookCave.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookCave.Controllers
 {
@@ -18,6 +19,7 @@ namespace BookCave.Controllers
         private BookService _bookService;
         private AuthorService _authorService;
         private ReviewService _reviewService;
+
 
         public BookController()
         {
@@ -75,27 +77,6 @@ namespace BookCave.Controllers
             return View(bookDetails);
         }
 
-        [Authorize]
-        [HttpPost]
-        public IActionResult Details(ReviewListViewModel review, int id)     
-        {            
-            //If the comment was not valid:
-            if(ModelState.IsValid)
-            {
-                var newReview = new ReviewListViewModel()
-                {
-                    BookId = id,
-                    AccountId = _reviewService.FindAccountId(), //MUNA að breyta þessu
-                    Comment = review.Comment,
-                    Rating =  review.Rating
-                };
-                _reviewService.AddReviewToDB(newReview);
-                var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-                return View(bookDetails1);
-            }
-            var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-            return View(bookDetails2);
-        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
