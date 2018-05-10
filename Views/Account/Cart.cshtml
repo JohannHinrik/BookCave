@@ -23,7 +23,11 @@
 							</td>
 							<td data-th="Price">@book.Price</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center"  placeholder="@book.Quantity">
+							<form method="POST">
+								<input type="number" class="form-control text-center" name="amount" value="@book.Quantity">
+								<input type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account">
+							</form>
+								<input type="number" class="form-control text-center" value="@book.Quantity">
 							</td>
 							<td class="actions" data-th="">
 								<button class="btn btn-info btn-sm"><i class="fas fa-sync"></i></button>

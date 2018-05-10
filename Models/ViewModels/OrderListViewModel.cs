@@ -1,3 +1,5 @@
+using BookCave.Data.EntityModels;
+
 namespace BookCave.Models.ViewModels
 {
     public class OrderListViewModel
@@ -10,5 +12,6 @@ namespace BookCave.Models.ViewModels
         public string Country { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
+        public CreditCard PaymentInfo { get; set; }
     }
 }

@@ -26,9 +26,9 @@ namespace BookCave.Services
         {
             _cartRepo.DeleteItem(userId, bookId);
         }
-        /* public void UpdateCart(string userId, int bookId, string amount)
+        public void UpdateCart(string userId, int bookId, int amount)
         {
             _cartRepo.UpdateCart(userId, bookId, amount);
-        } */
+        }
     }
 }

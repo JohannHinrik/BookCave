@@ -53,7 +53,7 @@ namespace BookCave.Controllers
             });
         }
 
- [Authorize]
+        [Authorize]
         public async Task<IActionResult> EditAccount()
         {
             //Get user data
@@ -191,9 +191,9 @@ namespace BookCave.Controllers
             return RedirectToAction("Cart","Account");
         }
 
-        /* [Authorize]
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> UpdateCart(int id, string amount)
+        public async Task<IActionResult> UpdateCart(int id, int amount)
         {
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
@@ -202,7 +202,7 @@ namespace BookCave.Controllers
 
             return RedirectToAction("Cart","Account");
         }
- */
+
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -245,34 +245,44 @@ namespace BookCave.Controllers
 
 
         [Authorize]
+        [HttpPost]
         public async Task<IActionResult> FirstPaymentStep()
         {
             //Get user data
             var user = await _userManager.GetUserAsync(User);
 
-            return View(new ProfileViewModel {
+            var UserPay= new ProfileViewModel {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                FavoriteBook = user.FavoriteBook,
                 City = user.City,
                 Country = user.Country,
                 Address = user.Address,
-                Image = user.Image
                 /* TODO: Later Add email and username */
-            });
+            };
+
+            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
+
+            return View(PaymentInfo);
         }
 
         [Authorize]
-        public async Task<IActionResult> FirstPaymentStep()
+        public async Task<IActionResult> OverviewStep()
         {
             //Get user data
             var user = await _userManager.GetUserAsync(User);
-            
-            return View(new CreditCardViewModel {
-               
-            });
+
+            var UserPay= new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                City = user.City,
+                Country = user.Country,
+                Address = user.Address,
+                /* TODO: Later Add email and username */
+            };
+
+            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
+
+            return View(PaymentInfo);
         }
-
-
     }
 }
