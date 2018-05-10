@@ -262,6 +262,17 @@ namespace BookCave.Controllers
             });
         }
 
+        [Authorize]
+        public async Task<IActionResult> FirstPaymentStep()
+        {
+            //Get user data
+            var user = await _userManager.GetUserAsync(User);
+            
+            return View(new CreditCardViewModel {
+               
+            });
+        }
+
 
     }
 }
