@@ -10,7 +10,5 @@ namespace BookCave.Repositories
         {
             _db = new DataContext();
         }
-
-        //var orderBook = (from )
     }
 }

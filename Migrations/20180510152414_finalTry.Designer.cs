@@ -11,8 +11,8 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180510143418_allNewMigration")]
-    partial class allNewMigration
+    [Migration("20180510152414_finalTry")]
+    partial class finalTry
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
