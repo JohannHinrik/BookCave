@@ -37,7 +37,9 @@
                 }
             </div>
             <div class="addToButtons">
-                <button type="button" class="cartButton">Add to Cart</button>
+            <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+                <button type="submit" class="cartButton">Add to Cart</button>
+            </form>
                 <br/>
                 <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
             </div>

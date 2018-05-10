@@ -33,26 +33,20 @@ $('.cartButton').click(function(id) {
 
 });
 
-function AddToCart(id) {
-    $.ajax({
-      url: '@Url.Action("AddToCart", "CartController")',
-      type: 'GET',
-      dataType: 'json',
-      cache: false,
-      data: { 'id': id },
-      success: function (results) {
-           alert(results)
-      },
-      error: function () {
-       alert('Error occured');
-      }
-      });
-      }
 
 $('.wishListButton').click(function() { 
     swal({
         title: "Success!",
         text: "Book has been added to your wishlist!",
+        icon: "success",
+        button: "Continue Browsing",
+      });
+});
+
+$('.cartButton').click(function() { 
+    swal({
+        title: "Success!",
+        text: "Book has been added to your cart!",
         icon: "success",
         button: "Continue Browsing",
       });

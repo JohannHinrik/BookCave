@@ -158,5 +158,16 @@ namespace BookCave.Controllers
         {
             return View();
         }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddingToCart(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            
+            return RedirectToAction("Index","Book");
+        }
+
     }
 }
