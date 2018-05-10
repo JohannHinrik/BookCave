@@ -22,24 +22,8 @@ $('.search-button').addEventListener("keyup", function(event) {
     }
   });
 
-$('.cartButton').click(function(id, qty) {
-
-    let oldCart = window.sessionStorage.getItem('cart');
-    
-    console.log(oldCart);
-
-    let newCart = { bookId: id,
-                    qty: qty }
-
-    console.log(newCart)
-
-    newCart = newCart + oldCart
-
-    console.log(newCart)
-
-    window.sessionStorage.setItem('cart', newCart)
-
-
+$('.cartButton').click(function(id) {
+    AddToCart(id);
     swal({
         title: "Success!",
         text: "Book has been added to your cart!",
@@ -48,6 +32,22 @@ $('.cartButton').click(function(id, qty) {
       });
 
 });
+
+function AddToCart(id) {
+    $.ajax({
+      url: '@Url.Action("AddToCart", "CartController")',
+      type: 'GET',
+      dataType: 'json',
+      cache: false,
+      data: { 'id': id },
+      success: function (results) {
+           alert(results)
+      },
+      error: function () {
+       alert('Error occured');
+      }
+      });
+      }
 
 $('.wishListButton').click(function() { 
     swal({
