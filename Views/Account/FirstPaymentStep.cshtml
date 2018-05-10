@@ -1,30 +1,69 @@
+@model BookCave.Models.ViewModels.ProfileViewModel
+
 @{
 
 }
 
+<div>
+  You are signed in as: @Model.FirstName @Model.LastName
+</div>
 
 <div id="AccountInfo">
     <div id=name>
-      Name: <!-- @Model.Name --> 
+      First Name: @Model.FirstName <br/>
+      Last Name:  @Model.LastName
     </div>
     <div id=address>
-        Address: <!-- @Model.Address --> 
+        Address: <@Model.Address 
             <div id=city>
-              City: <!-- @Model.City --> 
+              City: @Model.City 
             </div>
             <div id=country>
-              Country: <!-- @Model.Country --> 
+              Country: @Model.Country 
             </div>
     </div>
     <div id=email>
-      Email: <!-- @Model.Email --> 
+      Email: @Model.Email 
     </div>
 </div>
 
 <div id="cardInfo">
-    <form>
-      <!-- ÁKVEÐA HVERNIG VIÐ VILJUM HAFA HÉR, MUNA EFTIR DISCOUNT!!-->
-    </form>
+    <form asp-action="FirstPaymentStep" asp-controller="" class="from-horizontal">
+        <div class="form-group">
+        <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter first name.."/>
+    </div>
+    <div class="form-group">
+        <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address.."/>
+    </div>
+
+        <div class="form-group">
+        <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.."/>
+    </div>
+
+        <div class="form-group">
+        <input type="text" asp-for="Country" class="form-control" placeholder="Enter your country.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email.."/>
+    </div>
+
+    <div class="form-group">
+        <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.."/>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="SignUpButton">Create account!</button>
+    </div>
+</form>
 </div>
 
 <button type="button">Cancel</button>

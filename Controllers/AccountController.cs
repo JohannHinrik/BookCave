@@ -28,8 +28,6 @@ namespace BookCave.Controllers
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
-
-
         }
 
         public IActionResult SignUp()
@@ -244,6 +242,26 @@ namespace BookCave.Controllers
             return RedirectToAction("Details", "Book", new { id = idbook});
 
         }
+
+
+        [Authorize]
+        public async Task<IActionResult> FirstPaymentStep()
+        {
+            //Get user data
+            var user = await _userManager.GetUserAsync(User);
+
+            return View(new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                FavoriteBook = user.FavoriteBook,
+                City = user.City,
+                Country = user.Country,
+                Address = user.Address,
+                Image = user.Image
+                /* TODO: Later Add email and username */
+            });
+        }
+
 
     }
 }
