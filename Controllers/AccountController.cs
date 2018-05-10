@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
 using BookCave.Services;
+using System.Collections.Generic;
 
 namespace BookCave.Controllers
 {
@@ -17,12 +18,18 @@ namespace BookCave.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
         private CartService _cartService;
-        
+        private ReviewService _reviewService;
+        private BookService _bookService;
+
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _cartService = new CartService();
+            _reviewService = new ReviewService();
+            _bookService = new BookService();
+
+
         }
 
         public IActionResult SignUp()
@@ -207,14 +214,36 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-        /* public async Task<IActionResult> FirstPaymentStep(int id)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            var userId = user.Id;
 
-            _cartService.DeleteItem(userId, id);
+        // Testing if commenting in Book-Detail works: 
 
-            return RedirectToAction("FirstPaymentStep","Account");
-        } */
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Details(ReviewListViewModel review, int idbook)     
+        {            
+            //If the comment was not valid:
+            if(ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                var userId = user.Id;
+
+                var newReview = new ReviewListViewModel()
+                {
+                    BookId = idbook,
+                    AccountId = user.Id,
+                    Comment = review.Comment,
+                    Rating =  review.Rating
+                }; 
+                _reviewService.AddReviewToDB(newReview);
+                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+                return RedirectToAction("Details", "Book", new { id = idbook});
+                //return View(bookDetails1);
+            }
+            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
+            //return View(bookDetails2);
+            return RedirectToAction("Details", "Book", new { id = idbook});
+
+        }
+
     }
 }
