@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
+using BookCave.Services;
 
 namespace BookCave.Controllers
 {
@@ -14,11 +15,14 @@ namespace BookCave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+
+        private CartService _cartService;
         
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _cartService = new CartService();
         }
 
         public IActionResult SignUp()
@@ -158,5 +162,26 @@ namespace BookCave.Controllers
         {
             return View();
         }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddingToCart(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _cartService.AddItem(userId, id);
+
+            return RedirectToAction("Index","Book");
+        }
+
+        public async Task<IActionResult> Cart()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var books = _cartService.GetBooks(userId);
+            return View(books);
+        }
+
     }
 }

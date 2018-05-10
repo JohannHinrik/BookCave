@@ -66,7 +66,7 @@ namespace BookCave.Controllers
         public IActionResult Details(int Id)          
         {
             //bookDetails keeps the book details and all the reviews from the users (from DB):
-            var bookDetails = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+            var bookDetails = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),null,_reviewService.GetAllReviews(Id));
 
             if(bookDetails == null)
             {
@@ -77,27 +77,25 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Details(ReviewListViewModel review, int Id)     
+        public IActionResult Details(ReviewListViewModel review, int id)     
         {            
             //If the comment was not valid:
             if(ModelState.IsValid)
             {
                 var newReview = new ReviewListViewModel()
                 {
-                    BookId = _reviewService.FindBookId(),
-                    //AccountId = _reviewService.FindAccountId(),
+                    BookId = id,
+                    AccountId = _reviewService.FindAccountId(), //MUNA að breyta þessu
                     Comment = review.Comment,
-                    Id = _reviewService.FindReviewID(),
                     Rating =  review.Rating
                 };
                 _reviewService.AddReviewToDB(newReview);
-                var bookDetails1 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+                var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
                 return View(bookDetails1);
             }
-            var bookDetails2 = new Tuple<BookListViewModel, List<ReviewListViewModel>>(_bookService.GetBookDetails(Id),_reviewService.GetAllReviews(Id));
+            var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
             return View(bookDetails2);
         }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

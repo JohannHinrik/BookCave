@@ -5,7 +5,6 @@ namespace BookCave.Data.EntityModels
     public partial class Order
     {
         public int Id { get; set; }
-        public int BookId { get; set; }
         public int UserId { get; set; }
         public string Address { get; set; }
         public string City { get; set; }

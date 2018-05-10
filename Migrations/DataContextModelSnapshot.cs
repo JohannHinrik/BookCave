@@ -60,12 +60,16 @@ namespace BookCave.Migrations
 
             modelBuilder.Entity("BookCave.Data.EntityModels.Cart", b =>
                 {
-                    b.Property<int>("BookId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("UserId");
+                    b.Property<int>("BookId");
 
-                    b.HasKey("BookId");
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Carts");
                 });
@@ -76,8 +80,6 @@ namespace BookCave.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address");
-
-                    b.Property<int>("BookId");
 
                     b.Property<string>("City");
 
@@ -94,12 +96,28 @@ namespace BookCave.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("BookCave.Data.EntityModels.OrderBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderBooks");
+                });
+
             modelBuilder.Entity("BookCave.Data.EntityModels.Review", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AccountId");
+                    b.Property<string>("AccountId");
 
                     b.Property<int>("BookId");
 
