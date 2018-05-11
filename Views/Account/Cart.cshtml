@@ -1,7 +1,8 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
 
 @{
-
+	int cartTotal = 0;
+	int bookTotal = 0;
 }
 <!-- List of all books in cart: -->
     
@@ -21,29 +22,37 @@
 									</div>
 								</div>
 							</td>
-							<td data-th="Price">@book.Price</td>
+							<td>Price: @(book.Price * book.Quantity)</td>
+							<div>
 							<td data-th="Quantity">
 							<form method="POST">
 								<input type="number" class="form-control text-center" name="amount" value="@book.Quantity">
-								<input type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account" method="POST">
+								<button class="btn btn-info btn-sm" type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account" method="POST"><i class="fas fa-sync"></i></button>
 							</form>
 							</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fas fa-sync"></i></button>
                                 <form asp-action="DeleteItem" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>	
                                 </form>							
 							</td>
+							</div>
 						</tr>
 					</tbody>
 				</table>
     }
+    @foreach(var book in Model) 
+	{
+		cartTotal += book.Price * book.Quantity;
+		bookTotal += book.Quantity;
+	}
+
     <tfoot>
 		<tr>
 			<td colspan="2" class="hidden-xs"></td>
-			<td class="hidden-xs text-center"><strong>Total: </strong></td>
-			<td><a href="#" class="btn btn-success btn-block"><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Checkout!</a></a></td>
-			<td><a href="#" class="btn btn-success btn-block"><a asp-area="" asp-controller="Book" asp-action="Index">Continue Shopping</a></a></td>
+			<td><strong>Books in cart: @bookTotal</strong></td><br>
+			<td><strong>Total: @cartTotal Kr</strong></td>
+			<td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep"  class="btn btn-success btn-block">Checkout!</a></td>
+			<td><a asp-area="" asp-controller="Book" asp-action="Index" class="btn btn-failure btn-block">Continue Shopping</a></td>
 		</tr>
 	</tfoot>
 </div>

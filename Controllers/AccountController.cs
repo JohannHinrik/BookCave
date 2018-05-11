@@ -16,6 +16,7 @@ namespace BookCave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ISignUpService _signUpService;
 
         private CartService _cartService;
         private ReviewService _reviewService;
@@ -27,10 +28,11 @@ namespace BookCave.Controllers
         {
             return View();
         }
-        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ISignUpService signUpService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _signUpService = signUpService;
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
@@ -105,12 +107,13 @@ namespace BookCave.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel model, string image)
         {
+            _signUpService.ProcessSignUp(model);
             //Returning the view if not valid.
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            //If the register goes through 
+            //If the register goes through
             //make the username the same as the password.
             var user = new ApplicationUser
             {
@@ -178,6 +181,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddingToCart(int id)
@@ -214,6 +218,7 @@ namespace BookCave.Controllers
             return RedirectToAction("Cart","Account");
         }
 
+       [Authorize]
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);

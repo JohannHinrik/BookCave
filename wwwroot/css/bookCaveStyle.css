@@ -262,3 +262,9 @@ h2
     border-radius: 50%;
     border: 2px solid red;
 }
+
+.continuePayment
+{
+    color: white;
+    background: green;
+}

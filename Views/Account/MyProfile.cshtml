@@ -54,6 +54,7 @@
                     <label for="inputCountry" class="control-label">Country:</label>
                       <input type="text" class="form-control" id="inputCountry" value="@Model.Country">
                   </div> 
+                  
                   <div class="col-sm-2">
                     <label for="inputBook" class="control-label">Favorite Book:</label>
                       <input type="text" class="form-control" id="inputBook" value="@Model.FavoriteBook">
@@ -69,7 +70,8 @@
       
           
             <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
-            <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>
+            <button><a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a></button>
+            <button><a asp-area="" asp-controller="Account" asp-action="Wishlist">Wishlist</a></button>
 
             <button type="button">Order History</button>
           </div>
