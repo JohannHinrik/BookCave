@@ -21,6 +21,10 @@ namespace BookCave.Controllers
         private ReviewService _reviewService;
         private BookService _bookService;
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
@@ -48,7 +52,9 @@ namespace BookCave.Controllers
                 City = user.City,
                 Country = user.Country,
                 Address = user.Address,
-                Image = user.Image
+                Image = user.Image,
+                Email = user.Email,
+                UserName = user.UserName
                 /* TODO: Later Add email and username */
             });
         }
