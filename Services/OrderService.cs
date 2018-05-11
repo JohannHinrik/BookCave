@@ -12,11 +12,9 @@ namespace BookCave.Services
         {
             _orderRepo = new OrderRepo();
         }
-
-       /* public AddOrderToDB(OrderListViewModel newOrder)
+        public void AddToOrderHistory(string userId)
         {
-
-
-        }*/
+            _orderRepo.AddToOrderHistory(userId);
+        }
     }
 }
