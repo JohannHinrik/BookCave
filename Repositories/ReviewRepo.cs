@@ -11,7 +11,7 @@ namespace BookCave.Repositories
     {
         /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
-        
+
         /* Constructor: */
         public ReviewRepo()
         {
@@ -26,21 +26,21 @@ namespace BookCave.Repositories
                               where b.Id == id
                               select new ReviewListViewModel
                               {
-                                    BookId = r.Id,
-                                    //AccountId = r.AccountId,
-                                    Comment = r.Comment,
-                                    Id = r.Id,
-                                    Rating = r.Rating
+                                  BookId = r.Id,
+                                  //AccountId = r.AccountId,
+                                  Comment = r.Comment,
+                                  Id = r.Id,
+                                  Rating = r.Rating
                               }).ToList();
             return reviewList;
         }
-/* 
-        public string FindAccountId()
-        {
+        /* 
+                public string FindAccountId()
+                {
 
-            return userId;
-        }
-*/
+                    return userId;
+                }
+        */
         public int FindBookId()
         {
             var newId = 1;
@@ -49,17 +49,17 @@ namespace BookCave.Repositories
 
         public void AddReviewToDB(ReviewListViewModel NewReview)
         {
-                var newReview = new Review()
-                {
-                    BookId = NewReview.BookId,
-                    AccountId = NewReview.AccountId,
-                    Comment = NewReview.Comment,
-                    Rating = NewReview.Rating
-                };
+            var newReview = new Review()
+            {
+                BookId = NewReview.BookId,
+                AccountId = NewReview.AccountId,
+                Comment = NewReview.Comment,
+                Rating = NewReview.Rating
+            };
             _db.Add(newReview);
             _db.SaveChanges();
             return;
         }
     }
-    
+
 }

@@ -1,43 +1,37 @@
 /*Navigation bar */
-#nav-Margin
-{
+#nav-Margin {
     margin-top: 5px;
     margin-right: 5px;
 }
-#siteName-div
-{
+
+#siteName-div {
     text-align: center;
     background: rgb(113, 200, 207);
     margin-bottom: 0%;
-
 }
 
 /* For the banner with the site name above the navigation bar */
-#siteName
-{
+#siteName {
     width: 25%;
     margin-bottom: 0%;
     background: rgb(113, 200, 207);
 }
 
 /* Book cover (image fixes so it fits) */
-.bookCover
-{
+.bookCover {
     width: 150px;
     height: 227px;
     float: left;
 }
 
 /* For cart and wishlistbuttons */
-.addToButtons
-{
+.addToButtons {
     bottom: 0%;
     margin-left: 10px;
 }
 
 /* For add to cart button */
-.cartButton
-{
+.cartButton {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 12px;
@@ -48,15 +42,13 @@
     color: white;
 }
 
-.cartButton:hover
-{
-    background-color: rgb(28, 94, 146);
-    color: white;
-}
+    .cartButton:hover {
+        background-color: rgb(28, 94, 146);
+        color: white;
+    }
 
 /* For add to wishlist button */
-.wishListButton
-{
+.wishListButton {
     font-size: 15px;
     padding: 8px 15px;
     border-radius: 5px;
@@ -68,54 +60,46 @@
     display: inline;
 }
 
-.wishListButton:hover
-{
-    background-color: lightgrey;
-    color: black;
-}
+    .wishListButton:hover {
+        background-color: lightgrey;
+        color: black;
+    }
 
 /* To make the price bold */
-.bookPrice
-{
+.bookPrice {
     font-weight: bold;
 }
 
 /* Body of the whole site */
-body
-{
+body {
     background: #F6F6F6;
     width: 100%;
     min-height: 100%;
 }
 
 /* So each h2 element will be at the correct place */
-h2
-{
+h2 {
     text-align: left;
 }
 
 /* For top rated site */
-#topBooksH2
-{
+#topBooksH2 {
     float: left;
 }
 
-#topAuthorH2
-{
+#topAuthorH2 {
     float: right;
     padding-bottom: 10px;
 }
 
 /* For the book cover on the details site */
-.detailBookCover
-{
+.detailBookCover {
     height: 40%;
     width: 40%;
 }
 
 /* To make the book Title bold */
-.bookTitle
-{
+.bookTitle {
     font-weight: bold;
     font-size: 17px;
     color: black;
@@ -124,23 +108,23 @@ h2
 
 /* For toprated and index */
 
-#list ol
-{
+#list ol {
     margin-top: 100px;
 }
+
 #list div {
     margin: 20px;
-  }
-  
+}
+
 #list ul {
     list-style-type: none;
     width: 500px;
-  }
+}
 
 #list h3 {
     font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
-  }
-  
+}
+
 #list li p {
     font: 200 12px/1.5 Georgia, Times New Roman, serif;
 }
@@ -149,20 +133,18 @@ h2
     padding: 10px;
     overflow: auto;
     background: lightgray;
-
 }
 
-#list li:hover {
-    background: #eee;
-    cursor: pointer;
-}
+    #list li:hover {
+        background: #eee;
+        cursor: pointer;
+    }
 
 /* Team photo on the About us site */
-#teamPhoto
-{
-    height: auto; 
-    width: auto; 
-    max-width: 80%; 
+#teamPhoto {
+    height: auto;
+    width: auto;
+    max-width: 80%;
     max-height: 40%;
     display: block;
     margin-left: auto;
@@ -170,52 +152,45 @@ h2
 }
 
 /* Individualphotos on the About us site */
-#individualPhotos
-{
+#individualPhotos {
     text-align: center;
 }
 
-#individualPhotos img
-{
-    height: auto; 
-    width: auto; 
-    max-width: 60%; 
-    max-height: 70%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    float: left;
-    overflow: hidden;
-}
+    #individualPhotos img {
+        height: auto;
+        width: auto;
+        max-width: 60%;
+        max-height: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        float: left;
+        overflow: hidden;
+    }
 
-#individualPhotos div
-{
-    margin-top: 10px;
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: lightgrey;
-    height: 250px;
-    width: 500px;
-    float: left;
-    margin-left: 20px;
-    
-}
+    #individualPhotos div {
+        margin-top: 10px;
+        border-style: solid;
+        border-width: 0.5px;
+        border-color: lightgrey;
+        height: 250px;
+        width: 500px;
+        float: left;
+        margin-left: 20px;
+    }
 
-#individualPhotos div p
-{
-    font-weight: bold;
-    padding-top: 10px;
-}
+        #individualPhotos div p {
+            font-weight: bold;
+            padding-top: 10px;
+        }
 
 /* Carosel in home index */
 
-#myCarousel img
-{
-        height: 380px;
-        width: 100%;
-        text-align: center;
-        
+#myCarousel img {
+    height: 380px;
+    width: 100%;
+    text-align: center;
 }
 
 /* So that the rating stars come in the right color */
@@ -225,7 +200,7 @@ h2
     color: yellow;
 }
 
-#blackStar.fas{
+#blackStar.fas {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     color: transparent;
@@ -233,41 +208,38 @@ h2
 
 /* To hide the radio button for the chosen image in edit profile*/
 .avatar > input {
-    visibility: hidden; 
+    visibility: hidden;
     position: absolute;
-  }
-
-/*avatar image style*/
-.avatar > input + img {
-    cursor: pointer;
-    border: 2px solid transparent;
-    height: 200px;
 }
 
-/*red border if checked*/
-.avatar > input:checked + img {
-    border-radius: 50%;
-    border: 2px solid red;
-}
+    /*avatar image style*/
+    .avatar > input + img {
+        cursor: pointer;
+        border: 2px solid transparent;
+        height: 200px;
+    }
+
+    /*red border if checked*/
+    .avatar > input:checked + img {
+        border-radius: 50%;
+        border: 2px solid red;
+    }
 
 /* For the payment continue/confirm buttons in cart */
-.continuePayment
-{
+.continuePayment {
     color: white;
     background: green;
 }
 
-.continuePayment a 
-{
-    color: white;
-}
+    .continuePayment a {
+        color: white;
+    }
 
 #orderConfirmation {
     text-align: center;
     background: rgb(231, 248, 228);
     color: rgb(96, 138, 105);
     padding: 30px;
-
 }
 
 .orderText {
@@ -278,7 +250,7 @@ h2
 html, body {
     height: 100%;
     margin: 0;
-  }
+}
 
 /*Making room for the footer*/
 #container {

@@ -34,14 +34,14 @@ namespace BookCave.Controllers
             var book = _bookService.GetTopRatedBooks();
             return View(book);
         }
-        
+
         /* Function that returns the About view: */
         public IActionResult About()
         {
             return View();
-        } 
+        }
 
-         /* Function that returns an Error page */
+        /* Function that returns an Error page */
         public IActionResult Error()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();

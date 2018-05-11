@@ -62,7 +62,7 @@
 	</table>
     }
     <!-- Quantity and price of all books in cart -->
-    @foreach(var book in Model.Item2) 
+    @foreach(var book in Model.Item2)
 	{
 		cartTotal += book.Price * book.Quantity;
 		bookTotal += book.Quantity;
@@ -71,11 +71,11 @@
 			<strong>Total: @cartTotal Kr</strong>
     </div>
 </div>
- <!-- Buttons for the user to go back to cart (cancel), to the first payment step (back) or to confirm the payment (confirm)--> 
-<div class="container"> 
+ <!-- Buttons for the user to go back to cart (cancel), to the first payment step (back) or to confirm the payment (confirm)-->
+<div class="container">
 <button><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></button>
- 
+
 <button><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></button>
-  
+
 <button class="continuePayment"><a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a></button>
 </div>

@@ -1,136 +1,132 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookCave</title>
-    <!-- Bootstrap and js from dotnet new mvc -->
-    <environment include="Development">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />       
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - BookCave</title>
+  <!-- Bootstrap and js from dotnet new mvc -->
+  <environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    <!-- Our added css stylesheet -->
-    <link href="~/css/bookCaveStyle.css" rel="stylesheet">
-    <!-- Font awesome for icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
-    <!-- For advanced pop up windows (Such as when adding to cart/wishlist) -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </environment>
+  <environment exclude="Development">
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+  </environment>
+  <!-- Our added css stylesheet -->
+  <link href="~/css/bookCaveStyle.css" rel="stylesheet">
+  <!-- Font awesome for icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+  <!-- For advanced pop up windows (Such as when adding to cart/wishlist) -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-    <div class="banner">
-        <!-- So that banner is clickable -->
-        <div id="siteName-div">
-            <a a asp-area="" asp-controller="Home" asp-action="Index"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
-        </div>
+  <div class="banner">
+    <!-- So that banner is clickable -->
+    <div id="siteName-div">
+      <a a asp-area="" asp-controller="Home" asp-action="Index"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
     </div>
-    <!-- For the dropdown menu -->
-    <nav class="container navbar navbar-inverse">
-        <div id="nav-Margin" class="nav navbar-right">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a asp-area="" asp-controller="Account" asp-action="Cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                    @await Html.PartialAsync("_LoginPartial")
-                </ul>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" a asp-area="" asp-controller="Home" asp-action="Index">The Book Cave</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li ><a asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
-                <li><a asp-area="" asp-controller="Book" asp-action="TopRated">Top Rated</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-            </ul>
-            <div class="container">
-
-                <!-- Search bar -->
-                <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
-                    <div class="input-group">
-                        <div id="search-bar-bookcave">
-                            @using (Html.BeginForm("Index", "Book", FormMethod.Get))
-                            {
-                                @Html.DropDownList("genre", new SelectList(
-                                new List<Object>{ 
-                                    new { value = 0 , text = "Genre:"  },
-                                    new { value = 1 , text = "Adventure" },
-                                    new { value = 2 , text = "Autobiography"},
-                                    new { value = 3 , text = "Fiction"},
-                                    new { value = 4 , text = "Studies"},
-                                    new { value = 5 , text = "Romance"},
-                                    new { value = 6 , text = "Cookbooks"},
-                                    new { value = 7 , text = "Science Fiction"},
-                                    new { value = 8 , text = "Novel"}
-                                },
-                                "value",
-                                "text",
-                                0))
-
-                                @Html.DropDownList("order", new SelectList(
-                                new List<Object>{ 
-                                    new { value = 0 , text = "Order by:"  },
-                                    new { value = 1 , text = "Price low to high" },
-                                    new { value = 2 , text = "Price high to low"},
-                                    new { value = 3 , text = "Alphabetical order"},
-                                    new { value = 4 , text = "Reversed alphabet"}
-                                },
-                                "value",
-                                "text",
-                                0))
-
-                                @Html.TextBox("search", null, new {@placeholder = "Search.."})
-                                <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
-                            }
-                        </div>
-                    </div>
-                </form>
-            </div>
-    <!-- </form>-->
-        </div>
-    </nav>
-    <!-- Here the navigation bar ends -->
-    <div class="container body-content">
-        @RenderBody()
-        <div class ="push"></div>
+  </div>
+  <!-- For the dropdown menu -->
+  <nav class="container navbar navbar-inverse">
+    <div id="nav-Margin" class="nav navbar-right">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a asp-area="" asp-controller="Account" asp-action="Cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+          @await Html.PartialAsync("_LoginPartial")
+        </ul>
+      </div>
     </div>
-    <footer class="footer">
-        <p>&copy; 2018 - BookCave</p>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" a asp-area="" asp-controller="Home" asp-action="Index">The Book Cave</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a asp-area="" asp-controller="Book" asp-action="Index">Books</a></li>
+        <li><a asp-area="" asp-controller="Book" asp-action="TopRated">Top Rated</a></li>
         <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-        <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
-        <li>Company Phone number: 555-5555</li>
-        <li>Address: BookStreet 2</li>
-    </footer>
-   
-   <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+      </ul>
+      <div class="container">
+        <!-- Search bar -->
+        <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
+          <div class="input-group">
+            <div id="search-bar-bookcave">
+              @using (Html.BeginForm("Index", "Book", FormMethod.Get))
+              {
+                @Html.DropDownList("genre", new SelectList(
+                new List<Object>{
+                    new { value = 0 , text = "Genre:"  },
+                    new { value = 1 , text = "Adventure" },
+                    new { value = 2 , text = "Autobiography"},
+                    new { value = 3 , text = "Fiction"},
+                    new { value = 4 , text = "Studies"},
+                    new { value = 5 , text = "Romance"},
+                    new { value = 6 , text = "Cookbooks"},
+                    new { value = 7 , text = "Science Fiction"},
+                    new { value = 8 , text = "Novel"}
+                },
+                "value",
+                "text",
+                0))
 
-    @RenderSection("Scripts", required: false)
+                @Html.DropDownList("order", new SelectList(
+                new List<Object>{
+                    new { value = 0 , text = "Order by:"  },
+                    new { value = 1 , text = "Price low to high" },
+                    new { value = 2 , text = "Price high to low"},
+                    new { value = 3 , text = "Alphabetical order"},
+                    new { value = 4 , text = "Reversed alphabet"}
+                },
+                "value",
+                "text",
+                0))
+
+                @Html.TextBox("search", null, new { @placeholder = "Search.." })
+                <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
+              }
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- </form>-->
+    </div>
+  </nav>
+  <!-- Here the navigation bar ends -->
+  <div class="container body-content">
+    @RenderBody()
+    <div class="push"></div>
+  </div>
+  <footer class="footer">
+    <p>&copy; 2018 - BookCave</p>
+    <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+    <li>Mail: <a href="mailto: info@bookcave.com">info@bookcave.com</a></li>
+    <li>Company Phone number: 555-5555</li>
+    <li>Address: BookStreet 2</li>
+  </footer>
+
+  <environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+  </environment>
+  <environment exclude="Development">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+  </environment>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+  @RenderSection("Scripts", required: false)
 </body>
 </html>

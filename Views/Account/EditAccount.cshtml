@@ -1,68 +1,67 @@
 @model BookCave.Models.ViewModels.ProfileViewModel
 
 @{
-    ViewData["Title"] = "Edit Account";
+  ViewData["Title"] = "Edit Account";
 }
-
 <!-- This page is very similar to the signup page, the user can edit all his information except email, username and password -->
 <form asp-action="EditAccount" asp-controller="Account" class="form-horizontal" method="POST">
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
-    </div>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
-    </div>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="FavoriteBook" placeholder="Enter your favorite book..." value="@Model.FavoriteBook" />
-    </div>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
-    </div>
-    <!-- A dropdown list for the user to select a country, that we ship to -->
-    <div class="form-group">
-        <select asp-for="Country" class="form-control">
-            <option value="Austria">Austria</option>
-            <option value="Britain">Britain</option>
-            <option value="Danmark">Danmark</option>
-            <option value="Faroe Islands">Faroe Islands</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Greenland">Greenland</option>
-            <option value="Iceland">Iceland</option>
-            <option value="Norway">Norway</option>
-            <option value="Russia">Russia</option>
-            <option value="Sweden">Sweden</option>
-        </select>
-    </div>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
-    </div>
-    
-    <div class="Image-choosing">
-        <p>Select a new avatar if you would like to change it!</p> 
-        @{string path = Model.Image;}
-        <!--finding the image the user picked before -->
-        <label class="avatar">
-                <input type="radio" name="image" value="@Url.Content(path)" checked="checked" style="display:none" <img src="@Url.Content(path)" alt="Avatar" class="avatar">
-        </label>
-        <!-- Images for the user to select from if he would like to change it -->
-        <label class="avatar">
-                <input type="radio" name="image" value="~/images/avatars/captain.png"> <img src="~/images/avatars/captain.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-                <input type="radio" name="image" value="~/images/avatars/detective.png"> <img src="~/images/avatars/detective.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-                <input type="radio" name="image" value="~/images/avatars/nun.png"> <img src="~/images/avatars/nun.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-                <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
-        </label>
-    </div>
-<!-- Update the profile with all the edited information by clicking this button -->
-<div class="form-group">
-        <input type="submit" class="updateProfile" value="Update profile!"/>
-    </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
+  </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
+  </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="FavoriteBook" placeholder="Enter your favorite book..." value="@Model.FavoriteBook" />
+  </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
+  </div>
+  <!-- A dropdown list for the user to select a country, that we ship to -->
+  <div class="form-group">
+    <select asp-for="Country" class="form-control">
+      <option value="Austria">Austria</option>
+      <option value="Britain">Britain</option>
+      <option value="Danmark">Danmark</option>
+      <option value="Faroe Islands">Faroe Islands</option>
+      <option value="Finland">Finland</option>
+      <option value="France">France</option>
+      <option value="Greenland">Greenland</option>
+      <option value="Iceland">Iceland</option>
+      <option value="Norway">Norway</option>
+      <option value="Russia">Russia</option>
+      <option value="Sweden">Sweden</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
+  </div>
+
+  <div class="Image-choosing">
+    <p>Select a new avatar if you would like to change it!</p>
+    @{string path = Model.Image;}
+    <!--finding the image the user picked before -->
+    <label class="avatar">
+      <input type="radio" name="image" value="@Url.Content(path)" checked="checked" style="display:none" <img src="@Url.Content(path)" alt="Avatar" class="avatar">
+    </label>
+    <!-- Images for the user to select from if he would like to change it -->
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/captain.png"> <img src="~/images/avatars/captain.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/detective.png"> <img src="~/images/avatars/detective.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/nun.png"> <img src="~/images/avatars/nun.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
+    </label>
+  </div>
+  <!-- Update the profile with all the edited information by clicking this button -->
+  <div class="form-group">
+    <input type="submit" class="updateProfile" value="Update profile!" />
+  </div>
 </form>
 <!-- Button that send you back to your user profile -->
 <a asp-area="" asp-controller="Account" asp-action="MyProfile">Go Back to profile</a>

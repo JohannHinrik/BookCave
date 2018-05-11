@@ -1,84 +1,77 @@
 @model BookCave.Models.ViewModels.SignUpViewModel
 @{
-    ViewData["Title"] = "Sign Up";
+  ViewData["Title"] = "Sign Up";
 }
 <!-- Sign up page for new users -->
 <h1>Sign up!</h1>
-
 <form asp-action="SignUp" asp-controller="Account" class="from-horizontal">
-        <div class="form-group">
-        <input type="text" autofocus="autofocus" asp-for="FirstName" class="form-control" placeholder="Enter first name.."/>
-        <span asp-validation-for="FirstName" class="text-danger"></span>
-    </div>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" asp-for="FirstName" class="form-control" placeholder="Enter first name.." />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.." />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username.." />
+    <span asp-validation-for="UserName" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address.." />
+    <span asp-validation-for="Address" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.." />
+    <span asp-validation-for="City" class="text-danger"></span>
+  </div>
+  <!-- A dropdown list for the user to select a country, that we ship to -->
+  <div class="form-group">
+    <select asp-for="Country" class="form-control">
+      <option selected disabled>Select a country..</option>
+      <option value="Austria">Austria</option>
+      <option value="Britain">Britain</option>
+      <option value="Danmark">Danmark</option>
+      <option value="Faroe Islands">Faroe Islands</option>
+      <option value="Finland">Finland</option>
+      <option value="France">France</option>
+      <option value="Greenland">Greenland</option>
+      <option value="Iceland">Iceland</option>
+      <option value="Norway">Norway</option>
+      <option value="Russia">Russia</option>
+      <option value="Sweden">Sweden</option>
+    </select>
+    <span asp-validation-for="Country" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email.." />
+    <span asp-validation-for="Email" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.." />
+    <span asp-validation-for="Password" class="text-danger"></span>
+  </div>
 
-    <div class="form-group">
-        <input type="text" asp-for="LastName" class="form-control" placeholder="Enter last name.."/>
-        <span asp-validation-for="LastName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="text" asp-for="UserName" class="form-control" placeholder="Enter username.."/>
-        <span asp-validation-for="UserName" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address.."/>
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.."/>
-        <span asp-validation-for="City" class="text-danger"></span>
-    </div>
-    <!-- A dropdown list for the user to select a country, that we ship to -->
-    <div class="form-group">
-        <select asp-for="Country" class="form-control">
-            <option selected disabled>Select a country..</option>
-            <option value="Austria">Austria</option>
-            <option value="Britain">Britain</option>
-            <option value="Danmark">Danmark</option>
-            <option value="Faroe Islands">Faroe Islands</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Greenland">Greenland</option>
-            <option value="Iceland">Iceland</option>
-            <option value="Norway">Norway</option>
-            <option value="Russia">Russia</option>
-            <option value="Sweden">Sweden</option>
-        </select>
-        <span asp-validation-for="Country" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email.."/>
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.."/>
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    
-    <h5>*Password must contain: at least one uppercase letter, number and alphanumeric</h5>
-    </br>
-    <!-- Images for the user to select from for his profile -->
-    <div id="Image-choosing">
-        <p>Please choose an avatar that you like!</p> 
-        <label class="avatar">
-            <input type="radio" name="image" value="~/images/avatars/captain.png"> <img src="~/images/avatars/captain.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-            <input type="radio" name="image" value="~/images/avatars/detective.png"> <img src="~/images/avatars/detective.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-            <input type="radio" name="image" value="~/images/avatars/nun.png"> <img src="~/images/avatars/nun.png" alt="Avatar" class="avatar">
-        </label>
-        <label class="avatar">
-            <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
-        </label>
-    </div>
-    <!-- Button that creates the account -->
-    <div class="form-group">
-        <button type="submit" class="SignUpButton">Create account!</button>
-    </div>
+  <h5>*Password must contain: at least one uppercase letter, number and alphanumeric</h5>
+  </br>
+  <!-- Images for the user to select from for his profile -->
+  <div id="Image-choosing">
+    <p>Please choose an avatar that you like!</p>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/captain.png"> <img src="~/images/avatars/captain.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/detective.png"> <img src="~/images/avatars/detective.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/nun.png"> <img src="~/images/avatars/nun.png" alt="Avatar" class="avatar">
+    </label>
+    <label class="avatar">
+      <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
+    </label>
+  </div>
+  <!-- Button that creates the account -->
+  <div class="form-group">
+    <button type="submit" class="SignUpButton">Create account!</button>
+  </div>
 </form>

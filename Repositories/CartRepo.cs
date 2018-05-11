@@ -11,7 +11,7 @@ namespace BookCave.Repositories
     {
         /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
-        
+
         /* Constructor: */
         public CartRepo()
         {
@@ -24,7 +24,7 @@ namespace BookCave.Repositories
             var connection = (from c in _db.Carts
                               where c.UserId == userId && c.BookId == bookId
                               select c).FirstOrDefault();
-            if(connection != null)
+            if (connection != null)
             {
                 connection.Quantity++;
                 connection.Payed = false;
@@ -53,11 +53,11 @@ namespace BookCave.Repositories
                          where c.UserId == userId && c.Quantity != 0 && c.Payed == false
                          select new BookListViewModel()
                          {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Author = a.Name,
-                            Price = b.Price,
-                            Quantity = c.Quantity
+                             BookId = b.Id,
+                             Title = b.Title,
+                             Author = a.Name,
+                             Price = b.Price,
+                             Quantity = c.Quantity
                          }).ToList();
             return books;
         }
@@ -67,18 +67,18 @@ namespace BookCave.Repositories
                               where c.UserId == userId && c.BookId == bookId
                               select c).FirstOrDefault();
             connection.Quantity = 0;
-             _db.Carts.Update(connection);
-                _db.SaveChanges();
-            }
+            _db.Carts.Update(connection);
+            _db.SaveChanges();
+        }
         public void UpdateCart(string userId, int bookId, int amount)
         {
             var connection = (from c in _db.Carts
                               where c.UserId == userId && c.BookId == bookId
                               select c).FirstOrDefault();
             connection.Quantity = amount;
-             _db.Carts.Update(connection);
-                _db.SaveChanges();
-        } 
+            _db.Carts.Update(connection);
+            _db.SaveChanges();
+        }
 
         public List<CartViewModel> getOrderList(string userId, string userName)
         {
@@ -87,20 +87,20 @@ namespace BookCave.Repositories
                                 select new CartViewModel
                                 {
                                     Books = (from b in _db.Books
-                                            join a in _db.Authors on b.AuthorId equals a.Id
-                                            where c.UserId == userId && b.  Id == c.BookId && c.Payed == true
-                                            select new BookListViewModel()
-                                            {
-                                                BookId = b.Id,
-                                                Title = b.Title,
-                                                Author = a.Name,
-                                                Price = b.Price,
-                                                Quantity = c.Quantity
-                                            }).ToList(),
+                                             join a in _db.Authors on b.AuthorId equals a.Id
+                                             where c.UserId == userId && b.Id == c.BookId && c.Payed == true
+                                             select new BookListViewModel()
+                                             {
+                                                 BookId = b.Id,
+                                                 Title = b.Title,
+                                                 Author = a.Name,
+                                                 Price = b.Price,
+                                                 Quantity = c.Quantity
+                                             }).ToList(),
                                     User = userName
                                 }).ToList();
 
-             return ListOfOrders;
+            return ListOfOrders;
         }
 
         public void UpdateCartPay(string userId)
@@ -108,15 +108,15 @@ namespace BookCave.Repositories
             var connection = (from c in _db.Carts
                               where c.UserId == userId
                               select c).ToList();
-                              
-            foreach(var c in connection)
+
+            foreach (var c in connection)
             {
                 c.Payed = true;
                 c.Quantity = 0;
             }
-             _db.Carts.UpdateRange(connection);
-                _db.SaveChanges();
-        } 
+            _db.Carts.UpdateRange(connection);
+            _db.SaveChanges();
+        }
 
     }
 }

@@ -12,13 +12,10 @@ namespace BookCave.Repositories
         {
             _db = new DataContext();
         }
-         
+
         public void AddToOrderHistory(string userId)
-        { 
-            
+        {
 
         }
-
-        
     }
 }

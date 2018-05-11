@@ -37,5 +37,5 @@ namespace BookCave.Services
             var searchedBooks = _bookRepo.GetSearchedBooks(genre, order);
             return searchedBooks;
         }
-  }
+    }
 }
