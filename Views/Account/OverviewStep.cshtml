@@ -1,5 +1,9 @@
 @model Tuple<BookCave.Models.ViewModels.CheckoutViewModel, List<BookCave.Models.ViewModels.BookListViewModel>>
 
+@{
+	int cartTotal = 0;
+	int bookTotal = 0;
+}
 
 <h1>2. Order overview</h1>
     <form>
@@ -53,6 +57,13 @@
 					</tbody>
 				</table>
     }
+    @foreach(var book in Model.Item2) 
+	{
+		cartTotal += book.Price * book.Quantity;
+		bookTotal += book.Quantity;
+	}
+ <strong>Books in cart: @bookTotal</strong></br>
+			<strong>Total: @cartTotal Kr</strong>
     </div>
 </div>
 <table>
