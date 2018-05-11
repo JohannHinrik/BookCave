@@ -12,5 +12,10 @@ namespace BookCave.Services
         {
             _wishlistRepo = new WishlistRepo();
         }
+
+        public List<BookListViewModel> GetBooks(string userId)
+        {
+            return _wishlistRepo.GetBooks(userId);
+        }
     }
 }

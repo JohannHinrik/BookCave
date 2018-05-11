@@ -300,5 +300,15 @@ namespace BookCave.Controllers
 
             return View();
         }*/
+
+        //The Wishlist view
+        public async Task<IActionResult> Wishlist()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var books = _cartService.GetBooks(userId);
+            return View(books);
+        }
     }
 }
