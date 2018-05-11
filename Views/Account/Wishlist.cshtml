@@ -25,5 +25,10 @@
 			</tr>
 		</tbody>
 	</table>
+	<div class="addToButtons">
+		<form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+			<button type="submit" class="cartButton">Add to Cart</button>
+		</form>
+	</div>
     }
 </div>

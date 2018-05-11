@@ -4,6 +4,7 @@
     ViewData["Title"] = "Login";
 }
 
+<!-- The login page for existing users -->
 <h1>Login!</h1>
 
 <form asp-action="Login" asp-controller="Account" class="form-horizontal">
@@ -28,5 +29,6 @@
     <input type="submit" class="LoginButton" value="Login"/>
 </div>
 
+<!-- Redirect to signup page for new users -->
 Dont have an account? <button type="button"><a asp-area="" asp-controller="Account" asp-action="SignUp">Sign up!</a></button>
 </form>

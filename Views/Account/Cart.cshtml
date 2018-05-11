@@ -38,12 +38,14 @@
 					</tbody>
 				</table>
     }
+	<!-- Calculating the total price of all books in cart and total quantity of books in cart -->
     @foreach(var book in Model) 
 	{
 		cartTotal += book.Price * book.Quantity;
 		bookTotal += book.Quantity;
 	}
 
+	<!-- Printing out the total price and quantity in cart, and buttons to continue to checkout page or go to the book page -->
     <tfoot>
 		<tr>
 			<td colspan="2" class="hidden-xs"></td>

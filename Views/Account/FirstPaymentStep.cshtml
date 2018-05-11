@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Payment";
 }
-
+<!-- Here we output all the information that the user has saved on his profile, he can change it if he would like to-->
 <h1>1. Payment details</h1>
 
 <form asp-action="OverviewStep" asp-controller="Account" class="form-horizontal" method="POST">
@@ -22,7 +22,7 @@
     <h4>Country:</h4>
     <div class="form-group">
         <select asp-for="Country" class="form-control">
-            <option value="Antartica">Antarctica</option>
+            <option value="Austria">Austria</option>
             <option value="Britain">Britain</option>
             <option value="Danmark">Danmark</option>
             <option value="Faroe Islands">Faroe Islands</option>
@@ -61,6 +61,7 @@
             <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
+    <!-- The user inputs card information, we dont save it to our database -->
     <h4>Card Number:</h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="CardNumber" placeholder="Enter your card number..." value="@Model.CardNumber" />
@@ -84,7 +85,7 @@
             <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryMonth" placeholder="Enter expiry month..." value="@Model.ExpiryMonth" />
             <span asp-validation-for="ExpiryMonth" class="text-danger"></span>
     </div>
-
+    <!-- The user can continue to overview step or cancel and go back to the cart -->
     <div class="form-group">
         <input type="submit" class="continuePayment" value="Continue"/>
     </div>

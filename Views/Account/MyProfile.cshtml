@@ -4,6 +4,7 @@
     ViewData["Title"] = "Profile";
 }
 
+<!-- Showing all user profile information, user cant edit it unless clicking edit button -->
 <div class="">
   <div class="ui-67">
         <div class="ui-image">
@@ -12,9 +13,8 @@
           <img src="@Url.Content(path)" alt="Avatar" class="avatar" class="img-responsive" width="100" height="100">
         </div>
       </div>
-    <!-- UI - X Starts -->
+    <!-- All other information -->
     <div class="ui-67">
-  
       <div class="ui-content">
         <div class="row">
           <div class="col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 acc-col">
@@ -62,24 +62,17 @@
                 </div>
                 </form>
         </section>
-
+    
+          </br>
+          </br>
            
-          </br>
-          </br>
-          
-      
-          
-            <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
+            <!-- Buttons that refer the user to his wishlist or order history, or to a page that lets him update his profile information -->
             <button><a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a></button>
             <button><a asp-area="" asp-controller="Account" asp-action="Wishlist">Wishlist</a></button>
 
             <button><a asp-area="" asp-controller="Account" asp-action="OrderHistory">Order History</a></button>
           </div>
-          <!-- col-8 -->
         </div>
-
       </div>
-      <!-- Content Ends -->
     </div>
-    <!-- UI - X Ends -->
 </div>
