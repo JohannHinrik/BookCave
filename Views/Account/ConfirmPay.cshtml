@@ -1,5 +1,6 @@
 @model BookCave.Models.ViewModels.CheckoutViewModel
 
-<h1> Thank you for the business! </h1>
-<h2> You will recieve a confirmation email before you know it,</h2> <br>
-<h2> happy reading and hopefully we will see you soon again @Model.FirstName! </h2>
+<h1 id="orderConfirmation" class="orderText"> Order Completed! </h1> <br/>
+<h2 class="orderText"> Thank you for your purchase! </h2>
+<h2 class="orderText"> You will recieve a confirmation email at @Model.Email </h2>
+<h2 class="orderText"> Happy reading and hopefully we will see you again soon @Model.FirstName! </h2>
