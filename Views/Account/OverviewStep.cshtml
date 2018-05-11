@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div id="booksInCart">
+<div class="col-xs-6 col-lg-6">
   <h2>Books in Cart</h2>
     @foreach(var book in Model.Item2)
     {
@@ -44,7 +44,7 @@
 									</div>
 								</div>
 							</td>
-							<td data-th="Price">@book.Price</td>
+							<td> Price: @book.Price</td>
 							<td> Quantity: @book.Quantity </td>
 						</tr>
 					</tbody>
