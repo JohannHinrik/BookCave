@@ -1,7 +1,8 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
 
 @{
-
+	int cartTotal = 0;
+	int bookTotal = 0;
 }
 <!-- List of all books in cart: -->
     
@@ -21,7 +22,7 @@
 									</div>
 								</div>
 							</td>
-							<td>Price: @book.Price</td>
+							<td>Price: @(book.Price * book.Quantity)</td>
 							<div>
 							<td data-th="Quantity">
 							<form method="POST">
@@ -39,10 +40,17 @@
 					</tbody>
 				</table>
     }
+    @foreach(var book in Model) 
+	{
+		cartTotal += book.Price * book.Quantity;
+		bookTotal += book.Quantity;
+	}
+
     <tfoot>
 		<tr>
 			<td colspan="2" class="hidden-xs"></td>
-			<td><strong>Total: </strong></td>
+			<td><strong>Books in cart: @bookTotal</strong></td><br>
+			<td><strong>Total: @cartTotal</strong></td>
 			<td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep"  class="btn btn-success btn-block">Checkout!</a></td>
 			<td><a asp-area="" asp-controller="Book" asp-action="Index" class="btn btn-failure btn-block">Continue Shopping</a></td>
 		</tr>

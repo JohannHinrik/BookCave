@@ -2,34 +2,37 @@
 
 
 <h1>2. Order overview</h1>
-
-<div id="overview">
-    <div id=firstName>
-      Name: @Model.Item1.FirstName @Model.Item1.LastName
+    <form>
+      <h4>Name:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.FirstName @Model.Item1.LastName" readonly="readonly" />
     </div>
-    <div id=address>
-        Address: @Model.Item1.Address
-            <div id=city>
-              City: @Model.Item1.City
-            </div>
-            <div id=country>
-              Country: @Model.Item1.Country
-            </div>
+    <h4>Address:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Address" readonly="readonly" />
     </div>
-    <div id=cardNumber>
-      Card Number: @Model.Item1.CardNumber
+    <h4>City:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.City" readonly="readonly" />
     </div>
-
-    <div id="cvc">
-      CVC: @Model.Item1.Cvc
+    <h4>Country:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Country" readonly="readonly" />
     </div>
-
-    <div id=expDate>
-      Expiry Date: @Model.Item1.ExpiryMonth / @Model.Item1.ExpiryYear
+    <h4>CardNumber:</h4>
+     <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.CardNumber" readonly="readonly" />
     </div>
-</div>
-
-<div class="col-xs-6 col-lg-6">
+    <h4>CVC:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Cvc" readonly="readonly" />
+    </div>
+    <h4>Expiry Date (Month/year)</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.ExpiryMonth / @Model.Item1.ExpiryYear" readonly="readonly" />
+    </div>
+</form>
+<div class="col-xs-6 col-lg-8">
   <h2>Books in Cart</h2>
     @foreach(var book in Model.Item2)
     {
@@ -50,13 +53,15 @@
 					</tbody>
 				</table>
     }
-
+    </div>
 </div>
-
-<a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a>
-
-<a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a>
-
-<form asp-area="" asp-controller="Account" asp-action="ConfirmPay">
-            <button class="confirmPayButton">Confirm</i></button>
-</form>
+<table>
+  <td colspan="3"></td>
+  <td><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></td>
+  <td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></td>
+  <td>
+    <form asp-area="" asp-controller="Account" asp-action="ConfirmPay">
+        <button class="confirmPayButton">Confirm</i></button>
+    </form>
+  </td>
+</table>
