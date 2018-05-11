@@ -65,7 +65,8 @@
         @foreach(var review in Model.Item3)
         {
             <div id="OneComment">
-                Anonymous: @review.Comment
+                Anonymous: @review.Comment <br/><br/>
+                User gave this book the rating: @review.Rating
             </div>
             <hr>
         }
