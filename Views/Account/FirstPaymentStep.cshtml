@@ -3,46 +3,47 @@
 <h1>1. Payment details</h1>
 
 <form asp-action="OverviewStep" asp-controller="Account" class="form-horizontal" method="POST">
+        <h4>First Name:</h4>
     <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
     </div>
-
+        <h4>Last Name:</h4>
     <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
     </div>
-
+        <h4>Country:</h4>
         <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="Country" placeholder="Enter your country..." value="@Model.Country" />
     </div>
-
+        <h4>City:</h4>
     <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
     </div>
-
+        <h4>ZipCode:</h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="ZipCode" placeholder="Enter expiry ZIP code..." value="@Model.ZipCode" />
     </div>
-
+        <h4>Address:</h4>
     <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
     </div>
-
+        <h4>Email:</h4>
     <div class="form-group">
             <input type="email" autofocus="autofocus" class="form-control" asp-for="Email" placeholder="Enter your email..." value="@Model.Email" />
     </div>
-
+        <h4>Card Number:</h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="CardNumber" placeholder="Enter your card number..." value="@Model.CardNumber" />
     </div>
-
+        <h4>CVC:</h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="Cvc" placeholder="Enter CVC number..." value="@Model.Cvc" />
     </div>
-
+        <h4>Expiry Year:</h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryYear" placeholder="Enter expiry year..." value="@Model.ExpiryYear" />
     </div>
-
+        <h4>Expiry Month: </h4>
     <div class="form-group">
             <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryMonth" placeholder="Enter expiry month..." value="@Model.ExpiryMonth" />
     </div>
