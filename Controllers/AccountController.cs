@@ -107,6 +107,7 @@ namespace BookCave.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel model, string image)
         {
+            _signUpService.ProcessSignUp(model);
             //Returning the view if not valid.
             if (!ModelState.IsValid)
             {
