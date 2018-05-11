@@ -250,11 +250,16 @@ h2
     border: 2px solid red;
 }
 
-/* For the payment in cart */
+/* For the payment continue/confirm buttons in cart */
 .continuePayment
 {
     color: white;
     background: green;
+}
+
+.continuePayment a 
+{
+    color: white;
 }
 
 #orderConfirmation {
