@@ -1,58 +1,58 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
+  @{
+    int cartTotal = 0;
+    int bookTotal = 0;
+    ViewData["Title"] = "Cart";
+  }
+  <!-- List of all books in cart: -->
 
-@{
-	int cartTotal = 0;
-	int bookTotal = 0;
-	ViewData["Title"] = "Cart";
-}
-<!-- List of all books in cart: -->
-    
-<div class="container">
-    @foreach(var book in Model) {
-	<table id="cart" class="table table-hover table-condensed">
-					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
-									</div>
-								</div>
-							</td>
-							<td>Price: @(book.Price * book.Quantity)</td>
-							<div>
-							<td data-th="Quantity">
-							<form method="POST">
-								<input type="number" class="form-control text-center" name="amount" value="@book.Quantity">
-								<button class="btn btn-info btn-sm" type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account" method="POST"><i class="fas fa-sync"></i></button>
-							</form>
-							</td>
-							<td class="actions" data-th="">
-                                <form asp-action="DeleteItem" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>	
-                                </form>							
-							</td>
-							</div>
-						</tr>
-					</tbody>
-				</table>
+  <div class="container">
+    @foreach (var book in Model)
+    {
+      <table id="cart" class="table table-hover table-condensed">
+        <tbody>
+          <tr>
+            <td data-th="Product">
+              <div class="row">
+                <div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive" /></div>
+                <div class="col-sm-10">
+                  <h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
+                </div>
+              </div>
+            </td>
+            <td>Price: @(book.Price * book.Quantity)</td>
+            <div>
+              <td data-th="Quantity">
+                <form method="POST">
+                  <input type="number" class="form-control text-center" name="amount" value="@book.Quantity">
+                  <button class="btn btn-info btn-sm" type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account" method="POST"><i class="fas fa-sync"></i></button>
+                </form>
+              </td>
+              <td class="actions" data-th="">
+                <form asp-action="DeleteItem" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+                  <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
+            </div>
+          </tr>
+        </tbody>
+      </table>
     }
-	<!-- Calculating the total price of all books in cart and total quantity of books in cart -->
-    @foreach(var book in Model) 
-	{
-		cartTotal += book.Price * book.Quantity;
-		bookTotal += book.Quantity;
-	}
-
-	<!-- Printing out the total price and quantity in cart, and buttons to continue to checkout page or go to the book page -->
+    <!-- Calculating the total price of all books in cart and total quantity of books in cart -->
+    @foreach (var book in Model)
+    {
+      cartTotal += book.Price * book.Quantity;
+      bookTotal += book.Quantity;
+    }
+    <!-- Printing out the total price and quantity in cart, and buttons to continue to checkout page or go to the book page -->
     <tfoot>
-		<tr>
-			<td colspan="2" class="hidden-xs"></td>
-			<td><strong>Books in cart: @bookTotal</strong></td><br>
-			<td><strong>Total: @cartTotal Kr</strong></td>
-			<td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep"  class="btn btn-success btn-block">Checkout!</a></td>
-			<td><a asp-area="" asp-controller="Book" asp-action="Index" class="btn btn-failure btn-block">Continue Shopping</a></td>
-		</tr>
-	</tfoot>
-</div>
+      <tr>
+        <td colspan="2" class="hidden-xs"></td>
+        <td><strong>Books in cart: @bookTotal</strong></td>
+        <br>
+        <td><strong>Total: @cartTotal Kr</strong></td>
+        <td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep" class="btn btn-success btn-block">Checkout!</a></td>
+        <td><a asp-area="" asp-controller="Book" asp-action="Index" class="btn btn-failure btn-block">Continue Shopping</a></td>
+      </tr>
+    </tfoot>
+  </div>

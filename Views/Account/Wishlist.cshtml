@@ -1,36 +1,35 @@
 @model List<BookCave.Models.ViewModels.BookListViewModel>
 
 @{
-    ViewData["Title"] = "Wishlist";
+  ViewData["Title"] = "Wishlist";
 }
 
 <h1>This is your wishlist!</h1>
-
 <!-- List of all books in wishlist: -->
 <div class="container">
-    @foreach(var book in Model) 
-    {
-	<table id="wishlist" class="table table-hover table-condensed">
-    	<thead>
-		</thead>
-		<tbody>
-			<tr>
-				<td data-th="Product">
-					<div class="row">
-					<div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/></div>
-					<div class="col-sm-10">
-						<h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
-					</div>
-					</div>
-				</td>
-				<td data-th="Price">@book.Price</td>				
-			</tr>
-		</tbody>
-	</table>
-	<div class="addToButtons">
-		<form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
-			<button type="submit" class="cartButton">Add to Cart</button>
-		</form>
-	</div>
-    }
+  @foreach (var book in Model)
+  {
+    <table id="wishlist" class="table table-hover table-condensed">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-th="Product">
+            <div class="row">
+              <div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive" /></div>
+              <div class="col-sm-10">
+                <h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
+              </div>
+            </div>
+          </td>
+          <td data-th="Price">@book.Price</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="addToButtons">
+      <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+        <button type="submit" class="cartButton">Add to Cart</button>
+      </form>
+    </div>
+  }
 </div>

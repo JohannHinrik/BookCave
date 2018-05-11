@@ -15,11 +15,11 @@ namespace BookCave.Controllers
 {
     public class CartController : Controller
     {
-        /* Private variables that connect the Controller to the Service-Layers */
+        // Private variables that connect the Controller to the Service-Layers 
         private CartService _cartService;
 
-        /* Constructor: */
-          public CartController()
+        // Constructor: 
+        public CartController()
         {
             _cartService = new CartService();
         }

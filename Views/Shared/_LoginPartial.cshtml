@@ -3,33 +3,33 @@
 @using BookCave.Models
 @inject SignInManager<ApplicationUser> SignInManager
 
-@{
+  @{
     <!-- Getting the claim for the name -->
-    var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
-}
+    var claim = ((ClaimsIdentity)User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
+  }
 
-<!-- Navigation bar changes depending on if the user is signed in or not -->
-@if (SignInManager.IsSignedIn(User))
-{
+  <!-- Navigation bar changes depending on if the user is signed in or not -->
+  @if (SignInManager.IsSignedIn(User))
+  {
     <form asp-action="LogOut" asp-controller="Account" method="POST">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a class="btn btn-link navbar-btn navbar-link" asp-controller="Account" asp-action="MyProfile"><span class="glyphicon glyphicon-user"></span> @claim</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-log-out"></span> Log out</button>
-            </li>
-        </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a class="btn btn-link navbar-btn navbar-link" asp-controller="Account" asp-action="MyProfile"><span class="glyphicon glyphicon-user"></span> @claim</a>
+        </li>
+        <li>
+          <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-log-out"></span> Log out</button>
+        </li>
+      </ul>
     </form>
-}
-else
-{
+  }
+  else
+  {
     <ul class="nav navbar-nav">
-        <li>
-            <a asp-area="" asp-controller="Account" asp-action="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-        </li>
-        <li>
-            <a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-        </li>
+      <li>
+        <a asp-area="" asp-controller="Account" asp-action="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+      </li>
+      <li>
+        <a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+      </li>
     </ul>
-}
+  }

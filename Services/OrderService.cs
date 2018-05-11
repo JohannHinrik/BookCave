@@ -4,13 +4,13 @@ using BookCave.Repositories;
 
 namespace BookCave.Services
 {
-    /* SEE FINAL REPORT FOR EXPLANATION */
+    // SEE FINAL REPORT FOR EXPLANATION 
     public class OrderService
     {
-         /* Private variable that connect the Controller to the Repo-Layer */
+         // Private variable that connect the Controller to the Repo-Layer 
         private OrderRepo _orderRepo;
 
-        /* Constructor: */
+        // Constructor: 
         public OrderService()
         {
             _orderRepo = new OrderRepo();

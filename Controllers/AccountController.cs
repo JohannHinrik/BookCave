@@ -14,19 +14,19 @@ namespace BookCave.Controllers
 {
     public class AccountController : Controller
     {
-        /* Private variables that enable authentication */
+        // Private variables that enable authentication
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ISignUpService _signUpService;
 
-        /* Private variables that connect the Controller to the Service-Layers */
+        // Private variables that connect the Controller to the Service-Layers 
         private CartService _cartService;
         private ReviewService _reviewService;
         private BookService _bookService;
         private OrderService _orderService;
         private WishlistService _wishlistService;
 
-        /* Constructor: */
+        // Constructor: 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ISignUpService signUpService)
         {
             _signInManager = signInManager;
@@ -39,26 +39,27 @@ namespace BookCave.Controllers
             _wishlistService = new WishlistService();
         }
 
-        /* Function that returns the front page: */
+        // Function that returns the front page: 
         public IActionResult Index()
         {
             return View();
         }
 
-        /* Function that returns the Sign Up View: */
+        // Function that returns the Sign Up View: 
         public IActionResult SignUp()
         {
             return View();
         }
 
-        /* Authorized Function that returns the users data to the MyProfile view: */
-        [Authorize] 
+        // Authorized Function that returns the users data to the MyProfile view: 
+        [Authorize]
         public async Task<IActionResult> MyProfile()
         {
             // User data is fetched: 
             var user = await _userManager.GetUserAsync(User);
             // The data is kept in an instance of a ProfileViewModel: 
-            return View(new ProfileViewModel {
+            return View(new ProfileViewModel
+            {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 FavoriteBook = user.FavoriteBook,
@@ -71,16 +72,17 @@ namespace BookCave.Controllers
             });
         }
 
-        /* Authorized function that returns the view before the user submits his new account info: */
+        // Authorized function that returns the view before the user submits his new account info: 
         [Authorize]
         public async Task<IActionResult> EditAccount()
         {
             // User data is fetched: 
             var user = await _userManager.GetUserAsync(User);
-                Debug.WriteLine(user.FirstName);
+            Debug.WriteLine(user.FirstName);
 
             // Users old account info returned in the View: 
-            return View(new ProfileViewModel {
+            return View(new ProfileViewModel
+            {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 FavoriteBook = user.FavoriteBook,
@@ -92,7 +94,7 @@ namespace BookCave.Controllers
         }
 
 
-        /* Auhorized function that takes the users new account info as a ProfileViewModel parameter and updates the DB:  */
+        // Auhorized function that takes the users new account info as a ProfileViewModel parameter and updates the DB: 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditAccount(ProfileViewModel model)
@@ -112,7 +114,7 @@ namespace BookCave.Controllers
             return View(model);
         }
 
-        /* Function that registers a new user to the database, takes the new user info and image as parameters: */
+        // Function that registers a new user to the database, takes the new user info and image as parameters: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel model, string image)
@@ -122,7 +124,7 @@ namespace BookCave.Controllers
             {
                 return View();
             }
-            
+
             //Error Messages
             _signUpService.ProcessForm(model);
             //If the register goes through
@@ -157,14 +159,14 @@ namespace BookCave.Controllers
             // If the upper didn't succeed, return the view
             return View();
         }
-        
-        /* Function that returns the Login View before the user has filled in his info: */
+
+        // Function that returns the Login View before the user has filled in his info: 
         public IActionResult Login()
         {
             return View();
         }
-        
-        /* Function that sends the user to front page, takes submitted users info as parameter: */
+
+        // Function that sends the user to front page, takes submitted users info as parameter: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -184,7 +186,7 @@ namespace BookCave.Controllers
             return View();
         }
 
-        /* Function that logs out the currently logged in user: */
+        // Function that logs out the currently logged in user: 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOut()
@@ -193,14 +195,14 @@ namespace BookCave.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        /* Function that returns the AccessDenied view if the user did not exist in database: */
+        // Function that returns the AccessDenied view if the user did not exist in database: 
         public IActionResult AccessDenied()
         {
             return View();
         }
 
 
-        /* Authorized function that adds a book to the users cart in database: */
+        // Authorized function that adds a book to the users cart in database: 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddingToCart(int id)
@@ -210,10 +212,10 @@ namespace BookCave.Controllers
             // Sends the request to the service layer - that sends it to the repository layer
             _cartService.AddItem(userId, id);
 
-            return RedirectToAction("Index","Book");
+            return RedirectToAction("Index", "Book");
         }
 
-        /* Authorized function that delets an item from the users cart in the database: */
+        // Authorized function that delets an item from the users cart in the database: 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeleteItem(int id)
@@ -223,10 +225,10 @@ namespace BookCave.Controllers
 
             _cartService.DeleteItem(userId, id);
 
-            return RedirectToAction("Cart","Account");
+            return RedirectToAction("Cart", "Account");
         }
 
-        /* Authorized function that updates the cart in the database: */
+        // Authorized function that updates the cart in the database: 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> UpdateCart(int id, int amount)
@@ -236,11 +238,11 @@ namespace BookCave.Controllers
 
             _cartService.UpdateCart(userId, id, amount);
 
-            return RedirectToAction("Cart","Account");
+            return RedirectToAction("Cart", "Account");
         }
 
-        /* Authorized function that returns the list of books connected to the users cart to the Cart view: */
-       [Authorize]
+        // Authorized function that returns the list of books connected to the users cart to the Cart view: 
+        [Authorize]
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -250,13 +252,13 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-        /* Authorized function that resieves comment+rating (ReviewListViewModel) and the book id and adds the review to the database: */
+        // Authorized function that resieves comment+rating (ReviewListViewModel) and the book id and adds the review to the database: 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Details(ReviewListViewModel review, int id)     
-        {            
+        public async Task<IActionResult> Details(ReviewListViewModel review, int id)
+        {
             // If the review is valid
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(User);
                 var userId = user.Id;
@@ -266,17 +268,17 @@ namespace BookCave.Controllers
                     BookId = id,
                     AccountId = user.Id,
                     Comment = review.Comment,
-                    Rating =  review.Rating
-                }; 
+                    Rating = review.Rating
+                };
                 // The instance is added to the database through the sevice layer
                 _reviewService.AddReviewToDB(newReview);
-                return RedirectToAction("Details", "Book", new { id = id});
+                return RedirectToAction("Details", "Book", new { id = id });
             }
-            return RedirectToAction("Details", "Book", new { id = id});
+            return RedirectToAction("Details", "Book", new { id = id });
         }
 
 
-        /* Authorized function that returns the users info through an instance of CheckoutViewModel to the FirstPaymentStep view: */
+        // Authorized function that returns the users info through an instance of CheckoutViewModel to the FirstPaymentStep view: 
         [Authorize]
         public async Task<IActionResult> FirstPaymentStep()
         {
@@ -286,9 +288,9 @@ namespace BookCave.Controllers
             var checkout = new CheckoutViewModel
             {
                 FirstName = user.FirstName,
-                LastName = user.LastName, 
+                LastName = user.LastName,
                 City = user.City,
-                Country = user.Country, 
+                Country = user.Country,
                 Address = user.Address,
                 Email = user.Email
             };
@@ -296,7 +298,7 @@ namespace BookCave.Controllers
             return View(checkout);
         }
 
-        /* Authorized function that takes in the submitted user info from the first payment step and returns it in OviewView view: */
+        // Authorized function that takes in the submitted user info from the first payment step and returns it in OviewView view: 
         [Authorize]
         public async Task<IActionResult> OverviewStep(CheckoutViewModel checkout)
         {
@@ -309,7 +311,7 @@ namespace BookCave.Controllers
         }
 
 
-        /* Authorized function that gives thanks to the user for buying the books: */
+        // Authorized function that gives thanks to the user for buying the books: 
         [Authorize]
         public async Task<IActionResult> ConfirmPay()
         {
@@ -320,20 +322,20 @@ namespace BookCave.Controllers
             var checkout = new CheckoutViewModel
             {
                 FirstName = user.FirstName,
-                LastName = user.LastName, 
+                LastName = user.LastName,
                 City = user.City,
-                Country = user.Country, 
+                Country = user.Country,
                 Address = user.Address,
                 Email = user.Email,
             };
-                
+
             // 2. Make bool variable "payed" in the cart database turn true:
-                _cartService.UpdateCartPay(userId);
+            _cartService.UpdateCartPay(userId);
 
             return View(checkout);
         }
-        
-        /* Authorized function that returns the WishList view and all the books in wishlist */
+
+        // Authorized function that returns the WishList view and all the books in wishlist 
         [Authorize]
         public async Task<IActionResult> Wishlist()
         {
@@ -344,7 +346,7 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-        /* Authorized function that adds a chosen book (id in parameter) to the users wishlist: */
+        // Authorized function that adds a chosen book (id in parameter) to the users wishlist: 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddToWishlist(int id)
@@ -354,19 +356,19 @@ namespace BookCave.Controllers
 
             _wishlistService.AddToWishlist(userId, id);
 
-            return RedirectToAction("Index","Book");
+            return RedirectToAction("Index", "Book");
         }
 
-        /* Authorized function that returns a list of CartViewModels to the users OrderHistory View: */
-       public async Task<IActionResult> OrderHistory()
+        // Authorized function that returns a list of CartViewModels to the users OrderHistory View: 
+        public async Task<IActionResult> OrderHistory()
         {
             var user = await _userManager.GetUserAsync(User);
-            var userId = user.Id; 
+            var userId = user.Id;
             var userName = user.FirstName;
 
             var orderList = _cartService.getOrderList(userId, userName);
 
-            return View(orderList); 
+            return View(orderList);
 
         }
 

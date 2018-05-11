@@ -10,24 +10,24 @@ namespace BookCave.Repositories
     public class CartRepo
     {
 
-        /* Private variable that connect the Controller to the database */
+        // Private variable that connect the Controller to the database 
         private DataContext _db;
-        
-        /* Constructor: */
+
+        // Constructor: 
         public CartRepo()
         {
             _db = new DataContext();
         }
 
 
-        /* function that adds an item to the users cart */
+        // function that adds an item to the users cart 
         public void AddItem(string userId, int bookId)
         {
             // finds the connectopn between cart, user and books
             var connection = (from c in _db.Carts
                               where c.UserId == userId && c.BookId == bookId
                               select c).FirstOrDefault();
-            if(connection != null)
+            if (connection != null)
             {
                 connection.Quantity++;
                 connection.Payed = false;
@@ -53,7 +53,7 @@ namespace BookCave.Repositories
         }
 
 
-        /* Returns the list of books from the users cart */
+        // Returns the list of books from the users cart 
         public List<BookListViewModel> GetBooks(string userId)
         {
             // Makes a new list of BookListViewModel that holds all the books from the cart
@@ -63,17 +63,17 @@ namespace BookCave.Repositories
                          where c.UserId == userId && c.Quantity != 0 && c.Payed == false
                          select new BookListViewModel()
                          {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Author = a.Name,
-                            Price = b.Price,
-                            Quantity = c.Quantity
+                             BookId = b.Id,
+                             Title = b.Title,
+                             Author = a.Name,
+                             Price = b.Price,
+                             Quantity = c.Quantity
                          }).ToList();
             return books;
         }
 
 
-        /* function that delets a book from the cart */
+        // function that delets a book from the cart
         public void DeleteItem(string userId, int bookId)
         {
             // Finds and selects the connection
@@ -85,12 +85,11 @@ namespace BookCave.Repositories
             connection.Quantity = 0;
 
             //Update the database
-             _db.Carts.Update(connection);
-             _db.SaveChanges();
-            }
-
-
-        /* Function that updates the quantity of a chosen book in the cart*/
+            _db.Carts.Update(connection);
+            _db.SaveChanges();
+        }
+        // Function that updates the quantity of a chosen book in the cart
+          
         public void UpdateCart(string userId, int bookId, int amount)
         {
             // finds the right connection
@@ -102,12 +101,12 @@ namespace BookCave.Repositories
             connection.Quantity = amount;
 
             // Updateing the database
-             _db.Carts.Update(connection);
-             _db.SaveChanges();
-        } 
+            _db.Carts.Update(connection);
+            _db.SaveChanges();
+        }
 
 
-        /* Function that returns a list of CartViewModels (that keeps a list of all books in a users cart) */
+        // Function that returns a list of CartViewModels (that keeps a list of all books in a users cart) 
         public List<CartViewModel> getOrderList(string userId, string userName)
         {
             // Gets a list of all CartViewModels connected to the user
@@ -116,23 +115,23 @@ namespace BookCave.Repositories
                                 select new CartViewModel
                                 {
                                     Books = (from b in _db.Books
-                                            join a in _db.Authors on b.AuthorId equals a.Id
-                                            where c.UserId == userId && b.  Id == c.BookId && c.Payed == true
-                                            select new BookListViewModel()
-                                            {
-                                                BookId = b.Id,
-                                                Title = b.Title,
-                                                Author = a.Name,
-                                                Price = b.Price,
-                                                Quantity = c.Quantity
-                                            }).ToList(),
+                                             join a in _db.Authors on b.AuthorId equals a.Id
+                                             where c.UserId == userId && b.Id == c.BookId && c.Payed == true
+                                             select new BookListViewModel()
+                                             {
+                                                 BookId = b.Id,
+                                                 Title = b.Title,
+                                                 Author = a.Name,
+                                                 Price = b.Price,
+                                                 Quantity = c.Quantity
+                                             }).ToList(),
                                     User = userName
                                 }).ToList();
 
-             return ListOfOrders;
+            return ListOfOrders;
         }
 
-        /* Function that empties the cart after an order has been payed */
+        // Function that empties the cart after an order has been payed 
         public void UpdateCartPay(string userId)
         {
             // Gets a list of all the connections connected to the user
@@ -142,16 +141,16 @@ namespace BookCave.Repositories
 
             // Sets the variable Payed to true 
             // and sets the variable Quantity to zero               
-            foreach(var c in connection)
+            foreach (var c in connection)
             {
                 c.Payed = true;
                 c.Quantity = 0;
             }
 
             // Updates the database
-             _db.Carts.UpdateRange(connection);
-                _db.SaveChanges();
-        } 
+            _db.Carts.UpdateRange(connection);
+            _db.SaveChanges();
+        }
 
     }
 }

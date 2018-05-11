@@ -16,32 +16,32 @@ namespace BookCave.Controllers
 {
     public class HomeController : Controller
     {
-        /* Private variables that connect the Controller to the Service-Layers */
+        // Private variables that connect the Controller to the Service-Layers 
         private AuthorService _authorService;
         private BookService _bookService;
 
-        /* Constructor: */
+        // Constructor: 
         public HomeController()
         {
             _authorService = new AuthorService();
             _bookService = new BookService();
         }
 
-        /* Function that returns the front page: */
+        // Function that returns the front page: 
         public IActionResult Index()
         {
             // A short list of top rated books is returned to the view
             var book = _bookService.GetTopRatedBooks();
             return View(book);
         }
-        
-        /* Function that returns the About view: */
+
+        // Function that returns the About view: 
         public IActionResult About()
         {
             return View();
-        } 
+        }
 
-         /* Function that returns an Error page */
+        // Function that returns an Error page 
         public IActionResult Error()
         {
             var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();

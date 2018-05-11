@@ -7,28 +7,28 @@ namespace BookCave.Repositories
 {
     public class AuthorRepo
     {
-        /* Private variable that connect the Controller to the database */
+        // Private variable that connect the Controller to the database 
         private DataContext _db;
 
-        /* Constructor: */
+        // Constructor: 
         public AuthorRepo()
         {
             _db = new DataContext();
-        } 
+        }
 
-        /* function that returns all authors from database: */
+        // function that returns all authors from database: 
         public List<AuthorListViewModel> GetAllAuthors()
         {
-           var authors = (from a in _db.Authors
-                         select new AuthorListViewModel
-                         {
-                             Id = a.Id,
-                             Name = a.Name
-                         }).ToList();
+            var authors = (from a in _db.Authors
+                           select new AuthorListViewModel
+                           {
+                               Id = a.Id,
+                               Name = a.Name
+                           }).ToList();
             return authors;
         }
 
-        /* function that returns the top rated authors from database */
+        // function that returns the top rated authors from database 
         public List<AuthorListViewModel> GetTopRatedAuthors()
         {
             // Gets a list of all the user ratings the author has resieved for all his books

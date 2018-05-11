@@ -1,96 +1,84 @@
 @model BookCave.Models.ViewModels.CheckoutViewModel
 
 @{
-    ViewData["Title"] = "Payment";
+  ViewData["Title"] = "Payment";
 }
 <!-- Here we output all the information that the user has saved on his profile, he can change it if he would like to-->
 <h1>1. Payment details</h1>
-
 <form asp-action="OverviewStep" asp-controller="Account" class="form-horizontal" method="POST">
-    <h4>First Name:</h4>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
-    </div>
+  <h4>First Name:</h4>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+  </div>
+  <h4>Last Name:</h4>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
+    <span asp-validation-for="LastName" class="text-danger"></span>
+  </div>
+  <h4>Country:</h4>
+  <div class="form-group">
+    <select asp-for="Country" class="form-control">
+      <option value="Austria">Austria</option>
+      <option value="Britain">Britain</option>
+      <option value="Danmark">Danmark</option>
+      <option value="Faroe Islands">Faroe Islands</option>
+      <option value="Finland">Finland</option>
+      <option value="France">France</option>
+      <option value="Greenland">Greenland</option>
+      <option value="Iceland">Iceland</option>
+      <option value="Norway">Norway</option>
+      <option value="Russia">Russia</option>
+      <option value="Sweden">Sweden</option>
+    </select>
+    <span asp-validation-for="Country" class="text-danger"></span>
+  </div>
+  <h4>City:</h4>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
+    <span asp-validation-for="City" class="text-danger"></span>
+  </div>
+  <h4>ZipCode:</h4>
+  <div class="form-group">
+    <input type="number" autofocus="autofocus" class="form-control" asp-for="ZipCode" placeholder="Enter expiry ZIP code..." value="@Model.ZipCode" />
+    <span asp-validation-for="ZipCode" class="text-danger"></span>
+  </div>
+  <h4>Address:</h4>
+  <div class="form-group">
+    <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+  </div>
+  <h4>Email:</h4>
+  <div class="form-group">
+    <input type="email" autofocus="autofocus" class="form-control" asp-for="Email" placeholder="Enter your email..." value="@Model.Email" />
+    <span asp-validation-for="Email" class="text-danger"></span>
+  </div>
+  <!-- The user inputs card information, we dont save it to our database -->
+  <h4>Card Number:</h4>
+  <div class="form-group">
+    <input type="number" autofocus="autofocus" class="form-control" asp-for="CardNumber" placeholder="Enter your card number..." value="@Model.CardNumber" />
+    <span asp-validation-for="CardNumber" class="text-danger"></span>
+  </div>
+  <h4>CVC:</h4>
+  <div class="form-group">
+    <input type="number" autofocus="autofocus" class="form-control" asp-for="Cvc" placeholder="Enter CVC number..." value="@Model.Cvc" />
+    <span asp-validation-for="Cvc" class="text-danger"></span>
+  </div>
+  <h4>Expiry Year:</h4>
+  <div class="form-group">
+    <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryYear" placeholder="Enter expiry year..." value="@Model.ExpiryYear" />
+    <span asp-validation-for="ExpiryYear" class="text-danger"></span>
+  </div>
 
-    <h4>Last Name:</h4>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
-            <span asp-validation-for="LastName" class="text-danger"></span>
-    </div>
-
-    <h4>Country:</h4>
-    <div class="form-group">
-        <select asp-for="Country" class="form-control">
-            <option value="Austria">Austria</option>
-            <option value="Britain">Britain</option>
-            <option value="Danmark">Danmark</option>
-            <option value="Faroe Islands">Faroe Islands</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Greenland">Greenland</option>
-            <option value="Iceland">Iceland</option>
-            <option value="Norway">Norway</option>
-            <option value="Russia">Russia</option>
-            <option value="Sweden">Sweden</option>
-        </select>
-        <span asp-validation-for="Country" class="text-danger"></span>
-    </div>
-
-    <h4>City:</h4>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
-            <span asp-validation-for="City" class="text-danger"></span>
-    </div>
-
-    <h4>ZipCode:</h4>
-    <div class="form-group">
-            <input type="number" autofocus="autofocus" class="form-control" asp-for="ZipCode" placeholder="Enter expiry ZIP code..." value="@Model.ZipCode" />
-            <span asp-validation-for="ZipCode" class="text-danger"></span>
-    </div>
-
-    <h4>Address:</h4>
-    <div class="form-group">
-            <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
-            <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-
-    <h4>Email:</h4>
-    <div class="form-group">
-            <input type="email" autofocus="autofocus" class="form-control" asp-for="Email" placeholder="Enter your email..." value="@Model.Email" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-
-    <!-- The user inputs card information, we dont save it to our database -->
-    <h4>Card Number:</h4>
-    <div class="form-group">
-            <input type="number" autofocus="autofocus" class="form-control" asp-for="CardNumber" placeholder="Enter your card number..." value="@Model.CardNumber" />
-            <span asp-validation-for="CardNumber" class="text-danger"></span>
-    </div>
-
-    <h4>CVC:</h4>
-    <div class="form-group">
-            <input type="number" autofocus="autofocus" class="form-control" asp-for="Cvc" placeholder="Enter CVC number..." value="@Model.Cvc" />
-            <span asp-validation-for="Cvc" class="text-danger"></span>
-    </div>
-
-    <h4>Expiry Year:</h4>
-    <div class="form-group">
-            <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryYear" placeholder="Enter expiry year..." value="@Model.ExpiryYear" />
-            <span asp-validation-for="ExpiryYear" class="text-danger"></span>
-    </div>
-    
-    <h4>Expiry Month: </h4>
-    <div class="form-group">
-            <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryMonth" placeholder="Enter expiry month..." value="@Model.ExpiryMonth" />
-            <span asp-validation-for="ExpiryMonth" class="text-danger"></span>
-    </div>
-    <!-- The user can continue to overview step or cancel and go back to the cart -->
-    <div class="form-group">
-        <input type="submit" class="continuePayment" value="Continue"/>
-    </div>
+  <h4>Expiry Month: </h4>
+  <div class="form-group">
+    <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryMonth" placeholder="Enter expiry month..." value="@Model.ExpiryMonth" />
+    <span asp-validation-for="ExpiryMonth" class="text-danger"></span>
+  </div>
+  <!-- The user can continue to overview step or cancel and go back to the cart -->
+  <div class="form-group">
+    <input type="submit" class="continuePayment" value="Continue" />
+  </div>
 </form>
 <button><a asp-area="" asp-controller="Account" asp-action="Cart"> Cancel</a></button>
-
-
 

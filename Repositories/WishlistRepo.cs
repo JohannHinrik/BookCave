@@ -9,17 +9,17 @@ namespace BookCave.Repositories
 {
     public class WishlistRepo
     {
-        /* Private variable that connect the Controller to the database */
+        // Private variable that connect the Controller to the database 
         private DataContext _db;
-        
-        /* Constructor: */
+
+        // Constructor: 
         public WishlistRepo()
         {
             _db = new DataContext();
         }
 
 
-        /* Function that returns a list of books from a users wishlist */
+        // Function that returns a list of books from a users wishlist 
         public List<BookListViewModel> GetBooks(string userId)
         {
             var books = (from b in _db.Books
@@ -28,22 +28,21 @@ namespace BookCave.Repositories
                          where c.UserId == userId
                          select new BookListViewModel()
                          {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Author = a.Name,
-                            Price = b.Price
+                             BookId = b.Id,
+                             Title = b.Title,
+                             Author = a.Name,
+                             Price = b.Price
                          }).ToList();
             return books;
         }
 
-
-        /* Function that adds a book to the users wishlist in the database */
-         public void AddToWishlist(string userId, int bookId)
+        // Function that adds a book to the users wishlist in the database 
+        public void AddToWishlist(string userId, int bookId)
         {
             var connection = (from c in _db.Wishlists
                               where c.UserId == userId && c.BookId == bookId
                               select c).FirstOrDefault();
-            if(connection == null)
+            if (connection == null)
             {
                 var newConnection = new Wishlist()
                 {

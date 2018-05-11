@@ -1,81 +1,81 @@
 @model Tuple<BookCave.Models.ViewModels.CheckoutViewModel, List<BookCave.Models.ViewModels.BookListViewModel>>
 
 @{
-     int cartTotal = 0;
-     int bookTotal = 0;
-     ViewData["Title"] = "Overview";
+  int cartTotal = 0;
+  int bookTotal = 0;
+  ViewData["Title"] = "Overview";
 }
 
 <!-- Overview step in the order, user can view a readonly version of the info he input before -->
 <h1>2. Order overview</h1>
     <form>
       <h4>Name:</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.FirstName @Model.Item1.LastName" readonly="readonly" />
-    </div>
-    <h4>Address:</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Address" readonly="readonly" />
-    </div>
-    <h4>City:</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.City" readonly="readonly" />
-    </div>
-    <h4>Country:</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Country" readonly="readonly" />
-    </div>
-    <h4>CardNumber:</h4>
-     <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.CardNumber" readonly="readonly" />
-    </div>
-    <h4>CVC:</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Cvc" readonly="readonly" />
-    </div>
-    <h4>Expiry Date (Month/year)</h4>
-    <div class="form-group">
-            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.ExpiryMonth / @Model.Item1.ExpiryYear" readonly="readonly" />
-    </div>
-</form>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.FirstName @Model.Item1.LastName" readonly="readonly" />
+      </div>
+      <h4>Address:</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Address" readonly="readonly" />
+      </div>
+      <h4>City:</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.City" readonly="readonly" />
+      </div>
+      <h4>Country:</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Country" readonly="readonly" />
+      </div>
+        <h4>CardNumber:</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.CardNumber" readonly="readonly" />
+      </div>
+      <h4>CVC:</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Cvc" readonly="readonly" />
+      </div>
+      <h4>Expiry Date (month/year)</h4>
+      <div class="form-group">
+        <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.ExpiryMonth / @Model.Item1.ExpiryYear" readonly="readonly" />
+      </div>
+    </form>
 
-<!-- Overview of all the books the user is buying -->
-<div class="col-xs-6 col-lg-8">
-  <h2>Books in Cart</h2>
-    @foreach(var book in Model.Item2)
-    {
-        <table id="overview" class="table table-hover table-condensed">
-					<tbody>
-						<tr>
-							<td data-th="Product">
-								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/></div>
-									<div class="col-sm-10">
-										<h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
-									</div>
-								</div>
-							</td>
-							<td> Price: @book.Price</td>
-							<td> Quantity: @book.Quantity </td>
-						</tr>
-					</tbody>
-	</table>
-    }
-    <!-- Quantity and price of all books in cart -->
-    @foreach(var book in Model.Item2) 
-	{
-		cartTotal += book.Price * book.Quantity;
-		bookTotal += book.Quantity;
-	}
- <strong>Books in cart: @bookTotal</strong></br>
-			<strong>Total: @cartTotal Kr</strong>
-    </div>
-</div>
- <!-- Buttons for the user to go back to cart (cancel), to the first payment step (back) or to confirm the payment (confirm)--> 
-<div class="container"> 
-<button><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></button>
- 
-<button><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></button>
-  
-<button class="continuePayment"><a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a></button>
-</div>
+      <!-- Overview of all the books the user is buying -->
+      <div class="col-xs-6 col-lg-8">
+        <h2>Books in Cart</h2>
+        @foreach (var book in Model.Item2)
+        {
+          <table id="overview" class="table table-hover table-condensed">
+            <tbody>
+              <tr>
+                <td data-th="Product">
+                  <div class="row">
+                    <div class="col-sm-2 hidden-xs">
+                      <img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/>
+                    </div>
+                    <div class="col-sm-10">
+                      <h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
+                    </div>
+                  </div>
+                </td>
+                <td> Price: @book.Price</td>
+                <td> Quantity: @book.Quantity </td>
+              </tr>
+            </tbody>
+          </table>
+      }
+        <!-- Quantity and price of all books in cart -->
+        @foreach (var book in Model.Item2)
+        {
+          cartTotal += book.Price * book.Quantity;
+          bookTotal += book.Quantity;
+        }
+        <strong>Books in cart: @bookTotal</strong></br>
+        <strong>Total: @cartTotal Kr</strong>
+      </div>
+
+      <!-- Buttons for the user to go back to cart (cancel), to the first payment step (back) or to confirm the payment (confirm)-->
+      <div class="container">
+        <button><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></button>
+        <button><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></button>
+        <button class="continuePayment"><a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a></button>
+      </div>

@@ -1,78 +1,75 @@
 @model BookCave.Models.ViewModels.ProfileViewModel
 
 @{
-    ViewData["Title"] = "Profile";
+  ViewData["Title"] = "Profile";
 }
-
 <!-- Showing all user profile information, user cant edit it unless clicking edit button -->
 <div class="">
   <div class="ui-67">
-        <div class="ui-image">
-          <!-- User Image -->
-          @{string path = Model.Image;}
-          <img src="@Url.Content(path)" alt="Avatar" class="avatar" class="img-responsive" width="100" height="100">
-        </div>
-      </div>
-    <!-- All other information -->
-    <div class="ui-67">
-      <div class="ui-content">
-        <div class="row">
-          <div class="col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 acc-col">
-            <section>
-              <h3>Contact Information</h3>
-              <form class="ng-pristine ng-valid" role="form">
-                <div class="row">
-                   <div class="col-sm-12">
-                    <label for="inputName" class="control-label">Name:</label>
-                      <input type="text" class="form-control" id="inputName" value="@Model.FirstName @Model.LastName" readonly="readonly"> 
-                  </div>               
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <label for="inputEmail" class="control-label">Email:</label>
-                      <input type="email" class="form-control" id="inputEmail" value="@Model.Email" readonly="readonly">
-                  </div>
-                </div>
+    <div class="ui-image">
+      <!-- User Image -->
+      @{string path = Model.Image;}
+      <img src="@Url.Content(path)" alt="Avatar" class="avatar" class="img-responsive" width="100" height="100">
+    </div>
+  </div>
+  <!-- All other information -->
+  <div class="ui-67">
+    <div class="ui-content">
+      <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 acc-col">
+          <section>
+            <h3>Contact Information</h3>
+            <form class="ng-pristine ng-valid" role="form">
               <div class="row">
-                  <div class="col-sm-6">
-                    <label for="inputUsername" class="control-label">Username:</label>
-                      <input type="email" class="form-control" id="inputUsername" value="@Model.UserName" readonly="readonly">
-                  </div>
+                <div class="col-sm-12">
+                  <label for="inputName" class="control-label">Name:</label>
+                  <input type="text" class="form-control" id="inputName" value="@Model.FirstName @Model.LastName" readonly="readonly">
                 </div>
-          
-                <div class="row">
-                  <div class="col-sm-4">
-                    <label for="inputAddress" class="control-label">Address:</label>
-                      <input type="email" class="form-control" id="inputAddress" value="@Model.Address" readonly="readonly">
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="inputCity" class="control-label">City:</label>
-                      <input type="text" class="form-control" id="inputCity" value="@Model.City" readonly="readonly">
-                  </div> 
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label for="inputEmail" class="control-label">Email:</label>
+                  <input type="email" class="form-control" id="inputEmail" value="@Model.Email" readonly="readonly">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <label for="inputUsername" class="control-label">Username:</label>
+                  <input type="email" class="form-control" id="inputUsername" value="@Model.UserName" readonly="readonly">
+                </div>
+              </div>
 
-                  <div class="col-sm-3">
-                    <label for="inputCountry" class="control-label">Country:</label>
-                      <input type="text" class="form-control" id="inputCountry" value="@Model.Country" readonly="readonly">
-                  </div> 
-                  
-                  <div class="col-sm-8">
-                    <label for="inputBook" class="control-label">Favorite Book:</label>
-                      <input type="text" class="form-control" id="inputBook" value="@Model.FavoriteBook" readonly="readonly">
-                  </div> 
+              <div class="row">
+                <div class="col-sm-4">
+                  <label for="inputAddress" class="control-label">Address:</label>
+                  <input type="email" class="form-control" id="inputAddress" value="@Model.Address" readonly="readonly">
                 </div>
-                </form>
-        </section>
-    
+                <div class="col-sm-4">
+                  <label for="inputCity" class="control-label">City:</label>
+                  <input type="text" class="form-control" id="inputCity" value="@Model.City" readonly="readonly">
+                </div>
+                <div class="col-sm-3">
+                  <label for="inputCountry" class="control-label">Country:</label>
+                  <input type="text" class="form-control" id="inputCountry" value="@Model.Country" readonly="readonly">
+                </div>
+
+                <div class="col-sm-8">
+                  <label for="inputBook" class="control-label">Favorite Book:</label>
+                  <input type="text" class="form-control" id="inputBook" value="@Model.FavoriteBook" readonly="readonly">
+                </div>
+              </div>
+            </form>
+          </section>
+
           </br>
           </br>
-           
-            <!-- Buttons that refer the user to his wishlist or order history, or to a page that lets him update his profile information -->
-            <button><a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a></button>
-            <button><a asp-area="" asp-controller="Account" asp-action="Wishlist">Wishlist</a></button>
 
-            <button><a asp-area="" asp-controller="Account" asp-action="OrderHistory">Order History</a></button>
-          </div>
+          <!-- Buttons that refer the user to his wishlist or order history, or to a page that lets him update his profile information -->
+          <button><a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a></button>
+          <button><a asp-area="" asp-controller="Account" asp-action="Wishlist">Wishlist</a></button>
+          <button><a asp-area="" asp-controller="Account" asp-action="OrderHistory">Order History</a></button>
         </div>
       </div>
     </div>
+  </div>
 </div>
