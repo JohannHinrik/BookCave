@@ -25,7 +25,7 @@
 							<td data-th="Quantity">
 							<form method="POST">
 								<input type="number" class="form-control text-center" name="amount" value="@book.Quantity">
-								<input type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account">
+								<input type="submit" asp-route-id="@book.BookId" asp-action="UpdateCart" asp-controller="Account" method="POST">
 							</form>
 								<input type="number" class="form-control text-center" value="@book.Quantity">
 							</td>
