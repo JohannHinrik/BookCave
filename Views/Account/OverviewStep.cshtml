@@ -1,4 +1,4 @@
-@model BookCave.Models.ViewModels.CheckoutViewModel
+@model tuple<BookCave.Models.ViewModels.CheckoutViewModel, BookCave.Models.ViewModels.CartViewModel >
 
 
 <h1>2. Order overview</h1>
@@ -31,6 +31,8 @@
 
 <div id="booksInCart">
   <h2>Books in Cart</h2>
+
+
 </div>
 
 <a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a>

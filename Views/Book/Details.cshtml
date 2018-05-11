@@ -43,14 +43,14 @@
     <form method="post" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='2'> 2
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='3'> 3
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='1'> 1
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='2'> 2
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='3'> 3
         <br>
 
         <!-- Leave a comment: -->
         <div class="form-group">
-            <input type="text" asp-for="@Model.Item2.Comment" class="form-control"/>
+            <input type="text" asp-for="@Model.Item2.Comment" name="comment" class="form-control"/>
         </div>
 
         <!-- Submit rating and comment: -->

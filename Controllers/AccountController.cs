@@ -225,7 +225,7 @@ namespace BookCave.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Details(ReviewListViewModel review, int idbook)     
+        public async Task<IActionResult> Details(ReviewListViewModel review, int id)     
         {            
             //If the comment was not valid:
             if(ModelState.IsValid)
@@ -235,19 +235,19 @@ namespace BookCave.Controllers
 
                 var newReview = new ReviewListViewModel()
                 {
-                    BookId = idbook,
+                    BookId = id,
                     AccountId = user.Id,
                     Comment = review.Comment,
                     Rating =  review.Rating
                 }; 
                 _reviewService.AddReviewToDB(newReview);
                 //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-                return RedirectToAction("Details", "Book", new { id = idbook});
+                return RedirectToAction("Details", "Book", new { id = id});
                 //return View(bookDetails1);
             }
             //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
             //return View(bookDetails2);
-            return RedirectToAction("Details", "Book", new { id = idbook});
+            return RedirectToAction("Details", "Book", new { id = id});
         }
 
 

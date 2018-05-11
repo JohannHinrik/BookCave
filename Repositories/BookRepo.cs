@@ -185,7 +185,7 @@ namespace BookCave.Repositories
                             Author = au.Name,
                             Rating = b.Rating,
                             Price = b.Price
-                        }).First();
+                        }).FirstOrDefault();
             return book;
         }
     }
