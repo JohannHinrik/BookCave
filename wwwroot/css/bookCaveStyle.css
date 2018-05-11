@@ -274,7 +274,7 @@ html, body {
     margin: 0;
   }
 
-.wrapper {
+#container {
     min-height: 100%;
   
     /* Equal to height of footer */

@@ -5,7 +5,7 @@ namespace BookCave.Services
 {
     public class SignUpService : ISignUpService
     {
-        public void ProcessSignUp(SignUpViewModel signUp)
+        public void ProcessForm(SignUpViewModel signUp)
         {
             if (string.IsNullOrEmpty(signUp.FirstName)) { throw new Exception("First name is missing"); }
             if (string.IsNullOrEmpty(signUp.LastName)) { throw new Exception("Last name is missing"); }
