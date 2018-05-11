@@ -17,11 +17,11 @@
             <h4><span>@Model.Item1.Price Kr</span></h4>
             @for(var i = Math.Round(@Model.Item1.Rating); i > 0; i--)
             {
-                <i id="yes" class="fas fa-star"></i>
+                <i id="goldStar" class="fas fa-star"></i>
             }
             @for(var i = Math.Round(@Model.Item1.Rating); i < 5; i++)
             {
-                <i id="no" class="fas fa-star"></i>
+                <i id="blackStar" class="fas fa-star"></i>
             }
             <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@Model.Item1.BookId" method="POST">
                 <button type="submit" class="cartButton">Add to Cart</button>

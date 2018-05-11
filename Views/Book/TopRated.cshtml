@@ -18,11 +18,11 @@
                 <p class="bookPrice">@book.Price Kr</p>
                 @for(var i = Math.Round(@book.Rating); i > 0; i--)
                 {
-                    <i id="yes" class="fas fa-star"></i>
+                    <i id="goldStar" class="fas fa-star"></i>
                 }
                 @for(var i = Math.Round(@book.Rating); i < 5; i++)
                 {
-                    <i id="no" class="fas fa-star"></i>
+                    <i id="blackStar" class="fas fa-star"></i>
                 }
             </div>
             <div class="addToButtons">
@@ -47,7 +47,7 @@
                 <li>
                     <div>
                         <h3>@author.Name</h3>
-                        <p>Rating: @author.Rating</p>
+                        <p>Rating: @(Math.Round(@author.Rating, 1))</p>
                     </div>
                 </li>
             </div>

@@ -1,3 +1,4 @@
+/*Navigation bar */
 #nav-Margin
 {
     margin-top: 5px;
@@ -11,6 +12,7 @@
 
 }
 
+/* For the banner with the site name above the navigation bar */
 #siteName
 {
     width: 25%;
@@ -18,6 +20,7 @@
     background: rgb(113, 200, 207);
 }
 
+/* Book cover (image fixes so it fits) */
 .bookCover
 {
     width: 150px;
@@ -25,12 +28,14 @@
     float: left;
 }
 
+/* For cart and wishlistbuttons */
 .addToButtons
 {
     bottom: 0%;
     margin-left: 10px;
 }
 
+/* For add to cart button */
 .cartButton
 {
     margin-top: 10px;
@@ -49,6 +54,7 @@
     color: white;
 }
 
+/* For add to wishlist button */
 .wishListButton
 {
     font-size: 15px;
@@ -68,34 +74,13 @@
     color: black;
 }
 
-/* Book Details */
-
-.bookInfoDetails
-{
-    width: 70%;
-    float: left;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    background: white;
-}
-
-.bookDetailsPayment
-{
-    background: white;
-    float: right;
-    width: 25%;
-}
-.BookDetailsInfo
-{
-    float: left;
-    overflow: hidden;
-    width: 50%;
-}
+/* To make the price bold */
 .bookPrice
 {
     font-weight: bold;
 }
 
+/* Body of the whole site */
 body
 {
     background: #F6F6F6;
@@ -103,33 +88,32 @@ body
     min-height: 100%;
 }
 
+/* So each h2 element will be at the correct place */
 h2
 {
     text-align: left;
 }
 
-/* Top Rated Books */
-#topAuthors
-{
-    float: right;
-}
-
+/* For top rated site */
 #topBooksH2
 {
     float: left;
 }
+
 #topAuthorH2
 {
     float: right;
     padding-bottom: 10px;
 }
 
-
+/* For the book cover on the details site */
 .detailBookCover
 {
     height: 40%;
     width: 40%;
 }
+
+/* To make the book Title bold */
 .bookTitle
 {
     font-weight: bold;
@@ -137,6 +121,8 @@ h2
     color: black;
     padding-right: 3px;
 }
+
+/* For toprated and index */
 
 #list ol
 {
@@ -155,8 +141,6 @@ h2
     font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
   }
   
-
-  
 #list li p {
     font: 200 12px/1.5 Georgia, Times New Roman, serif;
 }
@@ -173,7 +157,7 @@ h2
     cursor: pointer;
 }
 
-/* Team photo  */
+/* Team photo on the About us site */
 #teamPhoto
 {
     height: auto; 
@@ -185,10 +169,12 @@ h2
     margin-right: auto;
 }
 
+/* Individualphotos on the About us site */
 #individualPhotos
 {
     text-align: center;
 }
+
 #individualPhotos img
 {
     height: auto; 
@@ -232,19 +218,20 @@ h2
         
 }
 
-#yes.fas {
+/* So that the rating stars come in the right color */
+#goldStar.fas {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     color: yellow;
 }
 
-#no.fas{
+#blackStar.fas{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     color: transparent;
 }
 
-/*hide radio button*/
+/* To hide the radio button for the chosen image in edit profile*/
 .avatar > input {
     visibility: hidden; 
     position: absolute;
@@ -263,8 +250,38 @@ h2
     border: 2px solid red;
 }
 
+/* For the payment in cart */
 .continuePayment
 {
     color: white;
     background: green;
+}
+
+#orderConfirmation {
+    text-align: center;
+    background: rgb(231, 248, 228);
+    color: rgb(96, 138, 105);
+    padding: 30px;
+
+}
+
+.orderText {
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+.wrapper {
+    min-height: 100%;
+  
+    /* Equal to height of footer */
+    /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+
+.footer, .push {
+    height: 50px;
 }
