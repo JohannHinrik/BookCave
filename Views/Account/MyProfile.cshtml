@@ -5,17 +5,16 @@
 }
 
 <div class="">
-    <!-- UI - X Starts -->
-    <div class="ui-67">
-    
-      <!-- Head Starts -->
-      <div class="ui-head bg-lblue">
-        <!-- Details -->
-        <div class="ui-details">
-          <!-- Name -->
-          <h3 id="name-header">@Model.FirstName @Model.LastName</h3>
+  <div class="ui-67">
+        <div class="ui-image">
+          <!-- User Image -->
+          @{string path = Model.Image;}
+          <img src="@Url.Content(path)" alt="Avatar" class="avatar" class="img-responsive" width="100" height="100">
         </div>
       </div>
+    <!-- UI - X Starts -->
+    <div class="ui-67">
+  
       <div class="ui-content">
         <div class="row">
           <div class="col-sm-8 col-md-8 col-lg-8 col-lg-offset-2 acc-col">
@@ -30,43 +29,34 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label for="inputEmail3" class="control-label">Email:</label>
-                      <input type="email" class="form-control" id="inputEmail3" value=" @Model.Email">
+                    <label for="inputEmail" class="control-label">Email:</label>
+                      <input type="email" class="form-control" id="inputEmail" value="@Model.Email">
                   </div>
                 </div>
-
-                <!--IMAGE
-                <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-                  <div class="form-group">
-                      <div class="col-md-10">
-                          <p>Upload an image:</p>
-                          <input type="file" name="files" multiple />
-                      </div>
+              <div class="row">
+                  <div class="col-sm-6">
+                    <label for="inputUsername" class="control-label">Username:</label>
+                      <input type="email" class="form-control" id="inputUsername" value="@Model.UserName">
                   </div>
-                  <div class="form-group">
-                      <div class="col-md-10">
-                          <input type="submit" value="Upload" />
-                      </div>
-                  </div>
-              </form>
--->
+                </div>
+          
                 <div class="row">
                   <div class="col-sm-4">
-                    <label for="inputEmail3" class="control-label">Address:</label>
-                      <input type="email" class="form-control" id="inputEmail3" value="@Model.Address">
+                    <label for="inputAddress" class="control-label">Address:</label>
+                      <input type="email" class="form-control" id="inputAddress" value="@Model.Address">
                   </div>
                   <div class="col-sm-4">
-                    <label for="inputPassword3" class="control-label">City:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.City">
+                    <label for="inputCity" class="control-label">City:</label>
+                      <input type="text" class="form-control" id="inputCity" value="@Model.City">
                   </div> 
 
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label">Country:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.Country">
+                    <label for="inputCountry" class="control-label">Country:</label>
+                      <input type="text" class="form-control" id="inputCountry" value="@Model.Country">
                   </div> 
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label">Favorite Book:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.FavoriteBook">
+                    <label for="inputBook" class="control-label">Favorite Book:</label>
+                      <input type="text" class="form-control" id="inputBook" value="@Model.FavoriteBook">
                   </div> 
                 </div>
                 </form>
@@ -76,13 +66,10 @@
           </br>
           </br>
           
-          @{string path = Model.Image;}
-          <img src="@Url.Content(path)" alt="Avatar" class="avatar">
+      
           
             <!--ÞARF AÐ SKILGREINA HVERN BUTTON - VEIT BARA EKKI HVERNIG! SKAL SKOÐA BETUR -kv G -->
             <a asp-area="" asp-controller="Account" asp-action="EditAccount">Edit</a>
-
-             <button type="button" class="DeleteAccountButton">Delete Account</button>
 
             <button type="button">Order History</button>
           </div>

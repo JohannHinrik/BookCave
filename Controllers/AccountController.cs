@@ -21,7 +21,12 @@ namespace BookCave.Controllers
         private ReviewService _reviewService;
         private BookService _bookService;
         private OrderService _orderService;
+        private WishlistService _wishlistService;
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
@@ -30,6 +35,7 @@ namespace BookCave.Controllers
             _reviewService = new ReviewService();
             _bookService = new BookService();
             _orderService = new OrderService();
+            _wishlistService = new WishlistService();
         }
 
         public IActionResult SignUp()
@@ -50,7 +56,9 @@ namespace BookCave.Controllers
                 City = user.City,
                 Country = user.Country,
                 Address = user.Address,
-                Image = user.Image
+                Image = user.Image,
+                Email = user.Email,
+                UserName = user.UserName
                 /* TODO: Later Add email and username */
             });
         }
@@ -286,4 +294,27 @@ namespace BookCave.Controllers
         return View(checkout);
         }
   }
+
+        //The Wishlist view
+        public async Task<IActionResult> Wishlist()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var books = _wishlistService.GetBooks(userId);
+            return View(books);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddToWishlist(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _wishlistService.AddToWishlist(userId, id);
+
+            return RedirectToAction("Index","Book");
+        }
+    }
 }
