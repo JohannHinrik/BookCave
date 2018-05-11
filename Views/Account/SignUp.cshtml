@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Sign Up";
 }
-
+<!-- Sign up page for new users -->
 <h1>Sign up!</h1>
 
 <form asp-action="SignUp" asp-controller="Account" class="from-horizontal">
@@ -30,7 +30,7 @@
         <input type="text" asp-for="City" class="form-control" placeholder="Enter your city.."/>
         <span asp-validation-for="City" class="text-danger"></span>
     </div>
-
+    <!-- A dropdown list for the user to select a country, that we ship to -->
     <div class="form-group">
         <select asp-for="Country" class="form-control">
             <option selected disabled>Select a country..</option>
@@ -58,7 +58,7 @@
         <input type="password" asp-for="Password" class="form-control" placeholder="Enter a password.."/>
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
-
+    <!-- Images for the user to select from for his profile -->
     <div id="Image-choosing">
         <p>Please choose an avatar that you like!</p> 
         <label class="avatar">
@@ -74,7 +74,7 @@
             <input type="radio" name="image" value="~/images/avatars/waiter.png"> <img src="~/images/avatars/waiter.png" alt="Avatar" class="avatar">
         </label>
     </div>
-
+    <!-- Button that creates the account -->
     <div class="form-group">
         <button type="submit" class="SignUpButton">Create account!</button>
     </div>
