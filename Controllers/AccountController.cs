@@ -217,6 +217,7 @@ namespace BookCave.Controllers
             return RedirectToAction("Cart","Account");
         }
 
+       [Authorize]
         public async Task<IActionResult> Cart()
         {
             var user = await _userManager.GetUserAsync(User);
