@@ -1,14 +1,19 @@
 @model Tuple<BookCave.Models.ViewModels.BookListViewModel, BookCave.Models.ViewModels.ReviewListViewModel, List<BookCave.Models.ViewModels.ReviewListViewModel>>
 
+@{
+    ViewData["Title"] = "Details Page";
+}
+
+<!--  Printing the specific Book-->
 <div class ="row">
     <h2>@Model.Item1.Title</h2>
     <div class="col-xs-6 col-lg-6">
-        <!-- Too print out the book cover -->
+        <!-- Book Cover  -->
         <div>
             <img src="~/images/books/(@Model.Item1.BookId).jpg" alt="@Model.Item1.Title" class="detailBookCover">
         </div>
     </div>
-    <!-- Info box about the book -->
+    <!-- Book info  -->
     <div class="col-xs-6 col-lg-6">
         Genre: @Model.Item1.Genre <br/>
         Author: @Model.Item1.Author <br/>
