@@ -65,6 +65,8 @@ namespace BookCave.Migrations
 
                     b.Property<int>("BookId");
 
+                    b.Property<bool>("Payed");
+
                     b.Property<int>("Quantity");
 
                     b.Property<string>("UserId");
