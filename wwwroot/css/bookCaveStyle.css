@@ -268,3 +268,19 @@ h2
     color: white;
     background: green;
 }
+
+hr {
+    width: 5px;
+}
+
+#orderConfirmation {
+    text-align: center;
+    background: rgb(231, 248, 228);
+    color: rgb(96, 138, 105);
+    padding: 30px;
+
+}
+
+.orderText {
+    text-align: center;
+}

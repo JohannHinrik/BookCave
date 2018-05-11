@@ -30,5 +30,15 @@ namespace BookCave.Services
         {
             _cartRepo.UpdateCart(userId, bookId, amount);
         }
+
+        public void UpdateCartPay(string userId)
+        {
+            _cartRepo.UpdateCartPay(userId);
+        }
+        public List<CartViewModel> getOrderList(string userId, string userName)
+        {
+            var ListOfOrders =_cartRepo.getOrderList(userId, userName);
+            return ListOfOrders;
+        }
     }
 }
