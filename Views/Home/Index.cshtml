@@ -67,3 +67,38 @@
         </div>
     </div>
 </div>
+
+@foreach(var book in Model)
+    {
+        <div class="col-xs-6 col-lg-6">
+        <hr>
+            <!-- Book Cover  -->
+            <div class="bookCover">
+                <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
+            </div>
+            <!-- Book info  -->
+            <div class="col-xs-6 col-lg-6">
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> <br/>
+                Genre: @book.Genre <br/>
+                Author: @book.Author <br/>
+               <p class="bookPrice">@book.Price Kr</p>
+                @for(var i = Math.Round(@book.Rating); i > 0; i--)
+                {
+                    <i id="yes" class="fas fa-star"></i>
+                }
+                @for(var i = Math.Round(@book.Rating); i < 5; i++)
+                {
+                    <i id="no" class="fas fa-star"></i>
+                }
+            </div>
+            <div class="addToButtons">
+            <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+                <button type="submit" class="cartButton">Add to Cart</button>
+            </form>
+                <br/>
+               <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
+                <button type="submit" class="wishListButton"><i class="far fa-heart"></i></button>
+            </form>
+            </div>
+        </div>
+    }
