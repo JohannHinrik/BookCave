@@ -3,6 +3,6 @@ namespace BookCave.Services
 {
     public interface ILoginService
     {
-        void ProcessLogin(LoginViewModel login);
+        void ProcessForm(LoginViewModel login);
     }
 }

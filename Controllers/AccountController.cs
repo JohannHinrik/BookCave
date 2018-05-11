@@ -17,7 +17,6 @@ namespace BookCave.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ISignUpService _signUpService;
-        private readonly ILoginService _loginService;
 
         private CartService _cartService;
         private ReviewService _reviewService;
@@ -30,12 +29,11 @@ namespace BookCave.Controllers
             return View();
         }
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager,
-                                 ISignUpService signUpService, ILoginService loginService)
+                                 ISignUpService signUpService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _signUpService = signUpService;
-            _loginService = loginService;
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
@@ -87,7 +85,6 @@ namespace BookCave.Controllers
             });
         }
 
-
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditAccount(ProfileViewModel model)
@@ -116,7 +113,7 @@ namespace BookCave.Controllers
                 return View();
             }
             //Error Messages
-            _signUpService.ProcessSignUp(model);
+            _signUpService.ProcessForm(model);
             //If the register goes through
             //make the username the same as the password.
             var user = new ApplicationUser
@@ -159,10 +156,12 @@ namespace BookCave.Controllers
         //The views returned when the user signs in.
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            
             if (!ModelState.IsValid)
             {
                 return View();
             }
+
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.Remember, false);
             if (result.Succeeded)
             {
