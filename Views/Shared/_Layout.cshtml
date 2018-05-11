@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BookCave</title>
-
+    <!-- Bootstrap and js from dotnet new mvc -->
     <environment include="Development">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />       
     <link rel="stylesheet" href="~/css/site.css" />
@@ -15,19 +15,22 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <!-- Our added css stylesheet -->
     <link href="~/css/bookCaveStyle.css" rel="stylesheet">
+    <!-- Font awesome for icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <!-- For advanced pop up windows (Such as when adding to cart/wishlist) -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="banner">
+        <!-- So that banner is clickable -->
         <div id="siteName-div">
-            <a href="http://localhost:5000"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
+            <a a asp-area="" asp-controller="Home" asp-action="Index"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
         </div>
     </div>
-    <!-- ADDED -->
+    <!-- For the dropdown menu -->
     <nav class="container navbar navbar-inverse">
-        <!-- LOGIN  -->
         <div id="nav-Margin" class="nav navbar-right">
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
@@ -92,7 +95,7 @@
     <!-- </form>-->
         </div>
     </nav>
-    <!-- HERE IT ENDS -->
+    <!-- Here the navigation bar ends -->
     <div class="container body-content">
         @RenderBody()
         <div class ="push"></div>

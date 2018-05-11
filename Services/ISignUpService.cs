@@ -4,6 +4,6 @@ namespace BookCave.Services
 {
     public interface ISignUpService
     {
-        void ProcessSignUp(SignUpViewModel signUp);
+        void ProcessForm(SignUpViewModel signUp);
     }
 }
