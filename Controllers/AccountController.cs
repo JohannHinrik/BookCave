@@ -315,7 +315,7 @@ namespace BookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
-            var books = _cartService.GetBooks(userId);
+            var books = _wishlistService.GetBooks(userId);
             return View(books);
         }
 

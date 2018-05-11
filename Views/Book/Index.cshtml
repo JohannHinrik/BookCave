@@ -37,7 +37,7 @@
                 <button type="submit" class="cartButton">Add to Cart</button>
             </form>
                 <br/>
-               <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.Item1.BookId" method="POST">
+               <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
                 <button type="submit" class="wishListButton"><i class="far fa-heart"></i></button>
             </form>
             </div>
