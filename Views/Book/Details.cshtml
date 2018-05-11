@@ -3,18 +3,20 @@
 <div class ="row">
     <h2>@Model.Item1.Title</h2>
     <div class="col-xs-6 col-lg-6">
+        <!-- Too print out the book cover -->
         <div>
             <img src="~/images/books/(@Model.Item1.BookId).jpg" alt="@Model.Item1.Title" class="detailBookCover">
         </div>
     </div>
+    <!-- Info box about the book -->
     <div class="col-xs-6 col-lg-6">
         Genre: @Model.Item1.Genre <br/>
         Author: @Model.Item1.Author <br/>
         About: <br/>
         @Model.Item1.About
         <br/>
-        <div class="addToButtons">
-            <h4><span>@Model.Item1.Price Kr</span></h4>
+        <!-- A loop to print out the rating in stars -->
+        <h4><span>@Model.Item1.Price Kr</span></h4>
             @for(var i = Math.Round(@Model.Item1.Rating); i > 0; i--)
             {
                 <i id="goldStar" class="fas fa-star"></i>
@@ -23,6 +25,8 @@
             {
                 <i id="blackStar" class="fas fa-star"></i>
             }
+            <!-- Buttons to add to cart and wishlist -->
+        <div class="addToButtons">
             <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@Model.Item1.BookId" method="POST">
                 <button type="submit" class="cartButton">Add to Cart</button>
             </form>
@@ -35,9 +39,8 @@
 </div>
 
 
-
+<!-- To add a comment -->
 <div class="col-xs-6 col-lg-6">
-   
     <h4>Leave a Comment:</h4>
 
     <form method="post" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
@@ -46,6 +49,8 @@
         <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='1'> 1
         <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='2'> 2
         <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='3'> 3
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='4'> 4
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='5'> 5
         <br>
 
         <!-- Leave a comment: -->
@@ -58,7 +63,7 @@
     </form>
 
     <br><br>
-
+<!-- Print all the comments from users about a speific book -->
     <h4><small>RECENT POSTS</small></h4>
     <hr>
     <div class="ListOfComments">
