@@ -33,7 +33,8 @@ namespace BookCave.Repositories
                 {
                     UserId = userId,
                     BookId = bookId,
-                    Quantity = 1
+                    Quantity = 1,
+                    Payed = false
                 };
                 _db.Carts.Add(newConnection);
                 _db.SaveChanges();
@@ -45,7 +46,7 @@ namespace BookCave.Repositories
             var books = (from b in _db.Books
                          join c in _db.Carts on b.Id equals c.BookId
                          join a in _db.Authors on b.AuthorId equals a.Id
-                         where c.UserId == userId && c.Quantity != 0
+                         where c.UserId == userId && c.Quantity != 0 && c.Payed == false
                          select new BookListViewModel()
                          {
                             BookId = b.Id,
@@ -74,5 +75,43 @@ namespace BookCave.Repositories
              _db.Carts.Update(connection);
                 _db.SaveChanges();
         } 
+
+        public List<CartViewModel> getOrderList(string userId, string userName)
+        {
+            var ListOfOrders = (from c in _db.Carts
+                                where c.UserId == userId
+                                select new CartViewModel
+                                {
+                                    Books = (from b in _db.Books
+                                            join a in _db.Authors on b.AuthorId equals a.Id
+                                            where c.UserId == userId && b.  Id == c.BookId && c.Payed == true
+                                            select new BookListViewModel()
+                                            {
+                                                BookId = b.Id,
+                                                Title = b.Title,
+                                                Author = a.Name,
+                                                Price = b.Price,
+                                                Quantity = c.Quantity
+                                            }).ToList(),
+                                    User = userName
+                                }).ToList();
+
+             return ListOfOrders;
+        }
+
+        public void UpdateCartPay(string userId)
+        {
+            var connection = (from c in _db.Carts
+                              where c.UserId == userId
+                              select c).ToList();
+                              
+            foreach(var c in connection)
+            {
+                c.Payed = true;
+            }
+             _db.Carts.UpdateRange(connection);
+                _db.SaveChanges();
+        } 
+
     }
 }
