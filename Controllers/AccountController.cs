@@ -52,7 +52,9 @@ namespace BookCave.Controllers
                 City = user.City,
                 Country = user.Country,
                 Address = user.Address,
-                Image = user.Image
+                Image = user.Image,
+                Email = user.Email,
+                UserName = user.UserName
                 /* TODO: Later Add email and username */
             });
         }
