@@ -20,7 +20,6 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-    <div class="wrapper">
     <div class="banner">
         <div id="siteName-div">
             <a href="http://localhost:5000"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
@@ -48,66 +47,64 @@
                 <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
             </ul>
             <div class="container">
- 
-  
-            <!-- Search bar -->
-            <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
-                <div class="input-group">
-                    <div id="search-bar-bookcave">
-                        @using (Html.BeginForm("Index", "Book", FormMethod.Get))
-                        {
-                            @Html.DropDownList("genre", new SelectList(
-                            new List<Object>{ 
-                                new { value = 0 , text = "Genre:"  },
-                                new { value = 1 , text = "Adventure" },
-                                new { value = 2 , text = "Autobiography"},
-                                new { value = 3 , text = "Fiction"},
-                                new { value = 4 , text = "Studies"},
-                                new { value = 5 , text = "Romance"},
-                                new { value = 6 , text = "Cookbooks"},
-                                new { value = 7 , text = "Science Fiction"},
-                                new { value = 8 , text = "Novel"}
-                            },
-                            "value",
-                            "text",
-                            0))
 
-                            @Html.DropDownList("order", new SelectList(
-                            new List<Object>{ 
-                                new { value = 0 , text = "Order by:"  },
-                                new { value = 1 , text = "Price low to high" },
-                                new { value = 2 , text = "Price high to low"},
-                                new { value = 3 , text = "Alphabetical order"},
-                                new { value = 4 , text = "Reversed alphabet"}
-                            },
-                            "value",
-                            "text",
-                            0))
+                <!-- Search bar -->
+                <form class="navbar-form" role="search" asp-controller="Book" asp-action="Index">
+                    <div class="input-group">
+                        <div id="search-bar-bookcave">
+                            @using (Html.BeginForm("Index", "Book", FormMethod.Get))
+                            {
+                                @Html.DropDownList("genre", new SelectList(
+                                new List<Object>{ 
+                                    new { value = 0 , text = "Genre:"  },
+                                    new { value = 1 , text = "Adventure" },
+                                    new { value = 2 , text = "Autobiography"},
+                                    new { value = 3 , text = "Fiction"},
+                                    new { value = 4 , text = "Studies"},
+                                    new { value = 5 , text = "Romance"},
+                                    new { value = 6 , text = "Cookbooks"},
+                                    new { value = 7 , text = "Science Fiction"},
+                                    new { value = 8 , text = "Novel"}
+                                },
+                                "value",
+                                "text",
+                                0))
 
-                            @Html.TextBox("search", null, new {@placeholder = "Search.."})
-                            <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
-                        }
+                                @Html.DropDownList("order", new SelectList(
+                                new List<Object>{ 
+                                    new { value = 0 , text = "Order by:"  },
+                                    new { value = 1 , text = "Price low to high" },
+                                    new { value = 2 , text = "Price high to low"},
+                                    new { value = 3 , text = "Alphabetical order"},
+                                    new { value = 4 , text = "Reversed alphabet"}
+                                },
+                                "value",
+                                "text",
+                                0))
+
+                                @Html.TextBox("search", null, new {@placeholder = "Search.."})
+                                <button type="submit" id="search-button" value="search"><i class="fas fa-search"></i></button>
+                            }
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+    <!-- </form>-->
         </div>
-       <!-- </form>-->
-    </div>
-</nav>
-<!-- HERE IT ENDS -->
+    </nav>
+    <!-- HERE IT ENDS -->
     <div class="container body-content">
         @RenderBody()
-         <div class ="push"></div>
-         </div>
-        <footer class="footer">
-            <p>&copy; 2018 - BookCave</p>
-            <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-            <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
-            <li>Company Phone number: 555-5555</li>
-            <li>Address: BookStreet 2</li>
-        </footer>
+        <div class ="push"></div>
     </div>
-
+    <footer class="footer">
+        <p>&copy; 2018 - BookCave</p>
+        <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+        <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
+        <li>Company Phone number: 555-5555</li>
+        <li>Address: BookStreet 2</li>
+    </footer>
+   
    <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
