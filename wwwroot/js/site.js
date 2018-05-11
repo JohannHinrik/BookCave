@@ -40,10 +40,8 @@ $('.DeleteAccountButton').click(function() {
 
 $("#Image-choosing input[type='radio']:checked").attr("checked", "checked");
 
-/*$("#Image-choosing input[type='radio']:checked").css("border", '2px solid red');*/
 
-
-$('.confirmPay').click(function() { 
+$('.confirmPayButton').click(function() { 
     swal("Please confirm your payment!", {
         buttons: ["Go back", true],
       });
