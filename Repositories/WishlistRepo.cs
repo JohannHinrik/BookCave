@@ -9,7 +9,7 @@ namespace BookCave.Repositories
 {
     public class WishlistRepo
     {
-        /* Private variable that connect the Controller to the Repo-Layer */
+        /* Private variable that connect the Controller to the database */
         private DataContext _db;
         
         /* Constructor: */
@@ -18,6 +18,8 @@ namespace BookCave.Repositories
             _db = new DataContext();
         }
 
+
+        /* Function that returns a list of books from a users wishlist */
         public List<BookListViewModel> GetBooks(string userId)
         {
             var books = (from b in _db.Books
@@ -34,6 +36,8 @@ namespace BookCave.Repositories
             return books;
         }
 
+
+        /* Function that adds a book to the users wishlist in the database */
          public void AddToWishlist(string userId, int bookId)
         {
             var connection = (from c in _db.Wishlists
@@ -46,6 +50,8 @@ namespace BookCave.Repositories
                     UserId = userId,
                     BookId = bookId
                 };
+
+                // Add to the database
                 _db.Wishlists.Add(newConnection);
                 _db.SaveChanges();
             }

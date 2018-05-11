@@ -7,7 +7,7 @@ namespace BookCave.Repositories
 {
     public class AuthorRepo
     {
-        /* Private variable that connect the Controller to the Repo-Layer */
+        /* Private variable that connect the Controller to the database */
         private DataContext _db;
 
         /* Constructor: */
@@ -28,9 +28,10 @@ namespace BookCave.Repositories
             return authors;
         }
 
-        /* function that returns the top rated authors from database*/
+        /* function that returns the top rated authors from database */
         public List<AuthorListViewModel> GetTopRatedAuthors()
         {
+            // Gets a list of all the user ratings the author has resieved for all his books
             var topRatedBooks = ( from b in _db.Books
                                     join r in _db.Reviews on b.Id equals r.BookId
                                     select new AuthorListViewModel
@@ -40,7 +41,8 @@ namespace BookCave.Repositories
                                     });
                                     
             
-
+            // Top rated authors are calculated from the table above,
+            // by getting the average of the authors user ratings
             var topRatedAuthors = ( from a in _db.Authors
                                     join b in topRatedBooks on a.Id equals b.Id
                                     orderby b.Rating descending
@@ -51,6 +53,7 @@ namespace BookCave.Repositories
                                         Rating = BooksRated.Average(a => a.Rating)
                                     });
 
+            // Making sure the list is ordered correctly
             var topTen = topRatedAuthors.OrderByDescending(average => average.Rating);
 
             return topTen.Take(10).ToList();

@@ -2,9 +2,10 @@ using BookCave.Data;
 
 namespace BookCave.Repositories
 {
+    /* SEE FINAL REPORT FOR EXPLANATIONS */
     public class OrderRepo
     {
-        /* Private variable that connect the Controller to the Repo-Layer */
+        /* Private variable that connect the Controller to the database */
         private DataContext _db;
 
         /* Constructor: */
@@ -12,13 +13,6 @@ namespace BookCave.Repositories
         {
             _db = new DataContext();
         }
-         
-        public void AddToOrderHistory(string userId)
-        { 
-            
-
-        }
-
         
     }
 }

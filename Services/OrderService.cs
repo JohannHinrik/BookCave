@@ -4,17 +4,17 @@ using BookCave.Repositories;
 
 namespace BookCave.Services
 {
+    /* SEE FINAL REPORT FOR EXPLANATION */
     public class OrderService
     {
+         /* Private variable that connect the Controller to the Repo-Layer */
         private OrderRepo _orderRepo;
 
+        /* Constructor: */
         public OrderService()
         {
             _orderRepo = new OrderRepo();
         }
-        public void AddToOrderHistory(string userId)
-        {
-            _orderRepo.AddToOrderHistory(userId);
-        }
+
     }
 }
