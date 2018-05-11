@@ -17,6 +17,7 @@ namespace BookCave.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ISignUpService _signUpService;
+        private readonly ILoginService _loginService;
 
         private CartService _cartService;
         private ReviewService _reviewService;
@@ -28,11 +29,13 @@ namespace BookCave.Controllers
         {
             return View();
         }
-        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ISignUpService signUpService)
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager,
+                                 ISignUpService signUpService, ILoginService loginService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _signUpService = signUpService;
+            _loginService = loginService;
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
