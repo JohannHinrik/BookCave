@@ -293,7 +293,7 @@ namespace BookCave.Controllers
             };
         return View(checkout);
         }
-  }
+  
 
         //The Wishlist view
         public async Task<IActionResult> Wishlist()
