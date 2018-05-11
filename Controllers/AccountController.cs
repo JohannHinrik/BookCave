@@ -293,9 +293,9 @@ namespace BookCave.Controllers
                 Email = user.Email,
             };
 
-            // 1. Bæta öllu úr Cart í Orders-gagnagrunn
-                _orderService.AddToOrderHistory(userId);
-                
+            // 1. Sækjum allar bækur
+                var Cart = 
+
             // 2. Eyða öllu úr cart (nota cart-repo)
 
         return View(checkout);
