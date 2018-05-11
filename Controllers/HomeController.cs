@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Diagnostics;
 using BookCave.Models;
 using BookCave.Services;
 using BookCave.Data;
@@ -43,6 +44,15 @@ namespace BookCave.Controllers
          /* Function that returns an Error page */
         public IActionResult Error()
         {
+            var exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+
+            if (exceptionFeature != null)
+            {
+                //Logging the error if necessary
+                string path = exceptionFeature.Path;
+                Exception ex = exceptionFeature.Error;
+            }
+            //Returning the default error view
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

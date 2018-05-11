@@ -117,13 +117,16 @@ namespace BookCave.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp(SignUpViewModel model, string image)
         {
-            _signUpService.ProcessSignUp(model);
-
             // Returning the SignUp view if the SignUpViewModel is not valid.
             if (!ModelState.IsValid)
             {
                 return View();
             }
+            
+            //Error Messages
+            _signUpService.ProcessForm(model);
+            //If the register goes through
+            //make the username the same as the password.
             // If the register goes through, a new instance application user is made
             var user = new ApplicationUser
             {
