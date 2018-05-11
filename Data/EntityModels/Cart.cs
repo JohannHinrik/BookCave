@@ -9,5 +9,6 @@ namespace BookCave.Data.EntityModels
         public int BookId { get; set; }
         public string UserId{ get; set; }
         public int Quantity { get; set; }
+        public bool Payed { get; set; }
     }
 }
