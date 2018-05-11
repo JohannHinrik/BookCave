@@ -30,43 +30,34 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
-                    <label for="inputEmail3" class="control-label">Email:</label>
-                      <input type="email" class="form-control" id="inputEmail3" value=" @Model.Email">
+                    <label for="inputEmail" class="control-label">Email:</label>
+                      <input type="email" class="form-control" id="inputEmail" value="@Model.Email">
                   </div>
                 </div>
-
-                <!--IMAGE
-                <form method="post" enctype="multipart/form-data" asp-controller="UploadFiles" asp-action="Index">
-                  <div class="form-group">
-                      <div class="col-md-10">
-                          <p>Upload an image:</p>
-                          <input type="file" name="files" multiple />
-                      </div>
+              <div class="row">
+                  <div class="col-sm-6">
+                    <label for="inputUsername" class="control-label">Username:</label>
+                      <input type="email" class="form-control" id="inputUsername" value="@Model.UserName">
                   </div>
-                  <div class="form-group">
-                      <div class="col-md-10">
-                          <input type="submit" value="Upload" />
-                      </div>
-                  </div>
-              </form>
--->
+                </div>
+          
                 <div class="row">
                   <div class="col-sm-4">
-                    <label for="inputEmail3" class="control-label">Address:</label>
-                      <input type="email" class="form-control" id="inputEmail3" value="@Model.Address">
+                    <label for="inputAddress" class="control-label">Address:</label>
+                      <input type="email" class="form-control" id="inputAddress" value="@Model.Address">
                   </div>
                   <div class="col-sm-4">
-                    <label for="inputPassword3" class="control-label">City:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.City">
+                    <label for="inputCity" class="control-label">City:</label>
+                      <input type="text" class="form-control" id="inputCity" value="@Model.City">
                   </div> 
 
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label">Country:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.Country">
+                    <label for="inputCountry" class="control-label">Country:</label>
+                      <input type="text" class="form-control" id="inputCountry" value="@Model.Country">
                   </div> 
                   <div class="col-sm-2">
-                    <label for="inputPassword3" class="control-label">Favorite Book:</label>
-                      <input type="text" class="form-control" id="inputPassword3" value="@Model.FavoriteBook">
+                    <label for="inputBook" class="control-label">Favorite Book:</label>
+                      <input type="text" class="form-control" id="inputBook" value="@Model.FavoriteBook">
                   </div> 
                 </div>
                 </form>
