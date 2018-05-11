@@ -14,19 +14,27 @@ namespace BookCave.Repositories
         {
             _db = new DataContext();
         }
-
         public List<BookListViewModel> GetAllBooks()
         {
+            var getRating = ( from b in _db.Books
+                                    join r in _db.Reviews on b.Id equals r.BookId
+                                    group r by new { r.BookId, b.Id } into BooksRated
+                                    select new BookListViewModel
+                                    {
+                                        BookId = BooksRated.Key.Id,
+                                        Rating = BooksRated.Average(a => a.Rating)
+                                    });
+            
             var books = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
+                        join r in getRating on b.Id equals r.BookId
                         select new BookListViewModel
                         {
                             BookId = b.Id,
                             Title = b.Title,
                             Genre = b.Genre,
-                            //ReviewId = b.Id,
                             About = b.About,
-                            Rating = b.Rating,
+                            Rating = r.Rating,
                             Author = au.Name,
                             Price = b.Price
                         }).ToList();
@@ -54,7 +62,6 @@ namespace BookCave.Repositories
                             BookId = b.Id,
                             Title = b.Title,
                             Genre = b.Genre,
-                            //ReviewId = b.Id,
                             About = b.About,
                             Rating = r.Rating,
                             Author = au.Name,
@@ -62,35 +69,29 @@ namespace BookCave.Repositories
                         }).Take(10);
                                     
             return topReturn.ToList();
-            
-            /*var topRatedbooks = (from b in _db.Books
-                        join au in _db.Authors on b.AuthorId equals au.Id
-                        orderby b.Rating descending
-                        select new BookListViewModel
-                        {
-                            BookId = b.Id,
-                            Title = b.Title,
-                            Genre = b.Genre,
-                            //ReviewId = b.Id,
-                            About = b.About,
-                            Rating = b.Rating,
-                            Author = au.Name,
-                            Price = b.Price
-                        }).Take(10).ToList();
-            return topRatedbooks;*/
         }
 
     public List<BookListViewModel> GetSearchedBooks(int genre, int order)
     {
+        var getRating = ( from b in _db.Books
+                            join r in _db.Reviews on b.Id equals r.BookId
+                            group r by new { r.BookId, b.Id } into BooksRated
+                            select new BookListViewModel
+                            {
+                                BookId = BooksRated.Key.Id,
+                                Rating = BooksRated.Average(a => a.Rating)
+                            });
+        
         var filteredBooks = (from b in _db.Books
                                 join au in _db.Authors on b.AuthorId equals au.Id
+                                join r in getRating on b.Id equals r.BookId
                                 select new BookListViewModel
                                 {
                                     BookId = b.Id,
                                     Title = b.Title,
                                     Genre = b.Genre,
                                     About = b.About,
-                                    Rating = b.Rating,
+                                    Rating = r.Rating,
                                     Author = au.Name,
                                     Price = b.Price
                                 });
@@ -141,17 +142,27 @@ namespace BookCave.Repositories
 
     public List<BookListViewModel> GetSearchedBooks(int genre, int order, string search)
         {
+            var getRating = ( from b in _db.Books
+                                join r in _db.Reviews on b.Id equals r.BookId
+                                group r by new { r.BookId, b.Id } into BooksRated
+                                select new BookListViewModel
+                                {
+                                    BookId = BooksRated.Key.Id,
+                                    Rating = BooksRated.Average(a => a.Rating)
+                                });
+
             var filteredBooks = (from b in _db.Books
                                 join au in _db.Authors on b.AuthorId equals au.Id
                                 where b.Title.ToLower().Contains(search.ToLower())
                                       || au.Name.ToLower().Contains(search.ToLower())
+                                join r in getRating on b.Id equals r.BookId
                                 select new BookListViewModel
                                 {
                                     BookId = b.Id,
                                     Title = b.Title,
                                     Genre = b.Genre,
                                     About = b.About,
-                                    Rating = b.Rating,
+                                    Rating = r.Rating,
                                     Author = au.Name,
                                     Price = b.Price
                                 });
@@ -202,9 +213,19 @@ namespace BookCave.Repositories
         
         public BookListViewModel GetBookDetails(int Id)
         {
+            var getRating = ( from b in _db.Books
+                            join r in _db.Reviews on b.Id equals r.BookId
+                            group r by new { r.BookId, b.Id } into BooksRated
+                            select new BookListViewModel
+                            {
+                                BookId = BooksRated.Key.Id,
+                                Rating = BooksRated.Average(a => a.Rating)
+                            });
+
             var book = (from b in _db.Books
                         join au in _db.Authors on b.AuthorId equals au.Id
                         where b.Id == Id
+                        join r in getRating on b.Id equals r.BookId
                         select new BookListViewModel
                         {
                             BookId = b.Id,
@@ -212,7 +233,7 @@ namespace BookCave.Repositories
                             Genre = b.Genre,
                             About = b.About,
                             Author = au.Name,
-                            Rating = b.Rating,
+                            Rating = r.Rating,
                             Price = b.Price
                         }).FirstOrDefault();
             return book;
