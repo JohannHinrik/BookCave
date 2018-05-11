@@ -241,12 +241,8 @@ namespace BookCave.Controllers
                     Rating =  review.Rating
                 }; 
                 _reviewService.AddReviewToDB(newReview);
-                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
                 return RedirectToAction("Details", "Book", new { id = id});
-                //return View(bookDetails1);
             }
-            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-            //return View(bookDetails2);
             return RedirectToAction("Details", "Book", new { id = id});
         }
 
@@ -271,9 +267,14 @@ namespace BookCave.Controllers
         }
 
         [Authorize]
-        public IActionResult OverviewStep(CheckoutViewModel checkout)
+        public async Task<IActionResult> OverviewStep(CheckoutViewModel checkout)
         {
-            return View(checkout);
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+            // Tuple that keeps the chekout info and all books in the users cart: 
+            var checkoutTuple = new Tuple<CheckoutViewModel, List<BookListViewModel>>(checkout, _cartService.GetBooks(userId));
+
+            return View(checkoutTuple);
         }
 
         [Authorize]
