@@ -1,11 +1,14 @@
-@model List<BookCave.Models.ViewModels.OrderListViewModel>
+@model List<BookCave.Models.ViewModels.CartViewModel>
 
 @{
 
 }
-<!-- List of all books in wishlist: -->
-<div class="container">
-    @foreach(var book in Model) 
+
+<h1>This is your order history! </h1>
+
+<div class="container"> 
+
+    @foreach(var book in Model.Books) 
     {
 	<table id="orderHistory" class="table table-hover table-condensed">
     	<thead>
@@ -25,3 +28,5 @@
 	</table>
     }
 </div>
+
+Hallo hallo
