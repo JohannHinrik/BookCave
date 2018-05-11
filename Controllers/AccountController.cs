@@ -110,7 +110,6 @@ namespace BookCave.Controllers
             //Returning the view if not valid.
             if (!ModelState.IsValid)
             {
-                ViewData["Error Message"] = "Error";
                 return View();
             }
             //Error Messages
