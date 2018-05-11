@@ -4,10 +4,11 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
-    //Getting the claim for the name
+    <!-- Getting the claim for the name -->
     var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault(c => c.Type == "Name")?.Value;
 }
 
+<!-- Navigation bar changes depending on if the user is signed in or not -->
 @if (SignInManager.IsSignedIn(User))
 {
     <form asp-action="LogOut" asp-controller="Account" method="POST">

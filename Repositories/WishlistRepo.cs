@@ -9,7 +9,10 @@ namespace BookCave.Repositories
 {
     public class WishlistRepo
     {
+        /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
+        
+        /* Constructor: */
         public WishlistRepo()
         {
             _db = new DataContext();

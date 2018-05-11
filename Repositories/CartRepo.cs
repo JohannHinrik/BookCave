@@ -9,7 +9,10 @@ namespace BookCave.Repositories
 {
     public class CartRepo
     {
+        /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
+        
+        /* Constructor: */
         public CartRepo()
         {
             _db = new DataContext();

@@ -8,8 +8,10 @@ namespace BookCave.Repositories
 {
     public class BookRepo
     {
+        /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
         
+        /* Constructor: */
         public BookRepo()
         {
             _db = new DataContext();

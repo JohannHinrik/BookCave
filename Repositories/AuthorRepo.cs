@@ -7,11 +7,16 @@ namespace BookCave.Repositories
 {
     public class AuthorRepo
     {
+        /* Private variable that connect the Controller to the Repo-Layer */
         private DataContext _db;
+
+        /* Constructor: */
         public AuthorRepo()
         {
             _db = new DataContext();
         } 
+
+        /* function that returns all authors from database: */
         public List<AuthorListViewModel> GetAllAuthors()
         {
            var authors = (from a in _db.Authors
@@ -23,6 +28,7 @@ namespace BookCave.Repositories
             return authors;
         }
 
+        /* function that returns the top rated authors from database*/
         public List<AuthorListViewModel> GetTopRatedAuthors()
         {
             var topRatedBooks = ( from b in _db.Books

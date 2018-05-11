@@ -56,7 +56,7 @@
 							<td> Quantity: @book.Quantity </td>
 						</tr>
 					</tbody>
-				</table>
+	</table>
     }
     @foreach(var book in Model.Item2) 
 	{
@@ -67,9 +67,11 @@
 			<strong>Total: @cartTotal Kr</strong>
     </div>
 </div>
-<table>
-  <td colspan="3"></td>
-  <td><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></td>
-  <td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></td>
-  <td><a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a></td>
-</table>
+  
+<div class="container"> 
+<button><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></button>
+ 
+<button><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></button>
+  
+<button><a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a></button>
+</div>

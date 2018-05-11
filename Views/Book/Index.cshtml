@@ -14,7 +14,9 @@
         <hr>
             <!-- Book Cover  -->
             <div class="bookCover">
-                <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">
+                    <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
+                </a>
             </div>
             <!-- Book info  -->
             <div class="col-xs-6 col-lg-6">
