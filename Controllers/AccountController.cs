@@ -20,6 +20,7 @@ namespace BookCave.Controllers
         private CartService _cartService;
         private ReviewService _reviewService;
         private BookService _bookService;
+        private WishlistService _wishlistService;
 
         public IActionResult Index()
         {
@@ -32,6 +33,7 @@ namespace BookCave.Controllers
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
+            _wishlistService = new WishlistService();
         }
 
         public IActionResult SignUp()
@@ -315,6 +317,18 @@ namespace BookCave.Controllers
 
             var books = _cartService.GetBooks(userId);
             return View(books);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddToWishlist(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            _wishlistService.AddToWishlist(userId, id);
+
+            return RedirectToAction("Index","Book");
         }
     }
 }

@@ -17,5 +17,9 @@ namespace BookCave.Services
         {
             return _wishlistRepo.GetBooks(userId);
         }
+        public void AddToWishlist(string userId, int bookId)
+        {
+            _wishlistRepo.AddToWishlist(userId, bookId);
+        }
     }
 }

@@ -2,6 +2,8 @@ using System.Linq;
 using BookCave.Models.ViewModels;
 using System.Collections.Generic;
 using BookCave.Data;
+using System;
+using BookCave.Data.EntityModels;
 
 namespace BookCave.Repositories
 {
@@ -28,6 +30,23 @@ namespace BookCave.Repositories
                             Quantity = c.Quantity
                          }).ToList();
             return books;
+        }
+
+         public void AddToWishlist(string userId, int bookId)
+        {
+            var connection = (from c in _db.Wishlists
+                              where c.UserId == userId && c.BookId == bookId
+                              select c).FirstOrDefault();
+            if(connection == null)
+            {
+                var newConnection = new Wishlist()
+                {
+                    UserId = userId,
+                    BookId = bookId
+                };
+                _db.Wishlists.Add(newConnection);
+                _db.SaveChanges();
+            }
         }
     }
 }
