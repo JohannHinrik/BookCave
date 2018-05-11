@@ -268,3 +268,7 @@ h2
     color: white;
     background: green;
 }
+
+hr {
+    width: 5px;
+}
