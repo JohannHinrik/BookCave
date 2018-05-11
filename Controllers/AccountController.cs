@@ -178,6 +178,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+        
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddingToCart(int id)
