@@ -1,34 +1,31 @@
-@model Tuple<BookCave.Models.ViewModels.ProfileViewModel, BookCave.Models.ViewModels.OrderListViewModel>
+@model BookCave.Models.ViewModels.CheckoutViewModel
 
-@{
 
-}
-
-<h1>Order Overview</h1>
+<h1>2. Order overview</h1>
 
 <div id="overview">
     <div id=firstName>
-      Name: @Model.Item1.FirstName @Model.Item1.LastName
+      Name: @Model.FirstName @Model.LastName
     </div>
     <div id=address>
-        Address: @Model.Item1.Address
+        Address: @Model.Address
             <div id=city>
-              City: @Model.Item1.City
+              City: @Model.City
             </div>
             <div id=country>
-              Country: @Model.Item1.Country
+              Country: @Model.Country
             </div>
     </div>
     <div id=cardNumber>
-      Card Number: @Model.Item2.PaymentInfo.CardNumber
+      Card Number: @Model.CardNumber
     </div>
 
     <div id="cvc">
-      CVC: @Model.Item2.PaymentInfo.Cvc
+      CVC: @Model.Cvc
     </div>
 
     <div id=expDate>
-      Expiry Date: @Model.Item2.PaymentInfo.ExpiryMonth / @Model.Item2.PaymentInfo.ExpiryYear
+      Expiry Date: @Model.ExpiryMonth / @Model.ExpiryYear
     </div>
 </div>
 
@@ -36,8 +33,8 @@
   <h2>Books in Cart</h2>
 </div>
 
-<button type="button" id="cancelCheckout">Cancel</button>
+<a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a>
 
-<button type="button" id="backToCart">Back</button>
+<a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a>
 
-<button type="button" id="continueCheckout2">Continue</button>
+<a asp-area="" asp-controller="Account" asp-action="ConfirmPay">Confirm</a>

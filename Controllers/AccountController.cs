@@ -20,6 +20,7 @@ namespace BookCave.Controllers
         private CartService _cartService;
         private ReviewService _reviewService;
         private BookService _bookService;
+        private OrderService _orderService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
@@ -28,6 +29,7 @@ namespace BookCave.Controllers
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
+            _orderService = new OrderService();
         }
 
         public IActionResult SignUp()
@@ -213,9 +215,6 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-
-        // Testing if commenting in Book-Detail works: 
-
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Details(ReviewListViewModel review, int idbook)     
@@ -243,62 +242,48 @@ namespace BookCave.Controllers
             return RedirectToAction("Details", "Book", new { id = idbook});
         }
 
+
         [Authorize]
         public async Task<IActionResult> FirstPaymentStep()
         {
-            //Get user data
             var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
 
-            var UserPay= new ProfileViewModel {
+            var checkout = new CheckoutViewModel
+            {
                 FirstName = user.FirstName,
-                LastName = user.LastName,
+                LastName = user.LastName, 
                 City = user.City,
-                Country = user.Country,
+                Country = user.Country, 
                 Address = user.Address,
-                /* TODO: Later Add email and username */
+                Email = user.Email,
             };
 
-            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
-
-            return View(PaymentInfo);
+            return View(checkout);
         }
 
-        /*[Authorize]
-        public async Task<IActionResult> OverviewStep(OrderListViewModel cardInfo)
+        [Authorize]
+        public IActionResult OverviewStep(CheckoutViewModel checkout)
         {
-            // 1. Add cardInfo to database: 
-            if(ModelState.IsValid)
+            return View(checkout);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ConfirmPay()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var checkout = new CheckoutViewModel
             {
-                var user = await _userManager.GetUserAsync(User);
-                var userId = user.Id;
-
-                var newOrder = new OrderListViewModel()
-                {
-                    UserId = userId,
-                    Book = cardInfo.Book,
-                    User = cardInfo.User,
-                    Address = cardInfo.Address,
-                    City = cardInfo.City,
-                    Country = cardInfo.Country,
-                    Quantity = 
-                    Price =
-                    PaymentInfo =
-                    PaymentInfo =
-                }; 
-            // 2. Put models into tuple
-
-            // 2. return view(tuple);
-
-                _reviewService.AddReviewToDB(newReview);
-                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-                return RedirectToAction("Details", "Book", new { id = idbook});
-                //return View(bookDetails1);
-            }
-            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-            //return View(bookDetails2);
-            return RedirectToAction("Details", "Book", new { id = idbook});
-
-            return View();
-        }*/
-    }
+                FirstName = user.FirstName,
+                LastName = user.LastName, 
+                City = user.City,
+                Country = user.Country, 
+                Address = user.Address,
+                Email = user.Email,
+            };
+        return View(checkout);
+        }
+  }
 }

@@ -39,7 +39,7 @@
    
     <h4>Leave a Comment:</h4>
 
-    <form role="form" method="POST" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
+    <form method="post" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
         <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1
@@ -53,7 +53,7 @@
         </div>
 
         <!-- Submit rating and comment: -->
-        <button type="submit" class="btn btn-success" value="@Model.Item2">Submit</button>
+        <button type="submit" class="btn btn-success" value="Submit">Submit</button>
     </form>
 
     <br><br>
