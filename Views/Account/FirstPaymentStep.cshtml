@@ -1,63 +1,58 @@
-@model Tuple<BookCave.Models.ViewModels.ProfileViewModel, BookCave.Models.ViewModels.OrderListViewModel>
+@model BookCave.Models.ViewModels.CheckoutViewModel
 
-@{
+<h1>1. Payment details</h1>
 
-}
-
-<div>
-  You are signed in as: @Model.Item1.FirstName @Model.Item1.LastName
-</div>
-
-<div id="AccountInfo">
-    <div id=name>
-      First Name: @Model.Item1.FirstName <br/>
-      Last Name:  @Model.Item1.LastName
-    </div>
-    <div id=address>
-        Address: <@Model.Item1.Address 
-            <div id=city>
-              City: @Model.Item1.City 
-            </div>
-            <div id=country>
-              Country: @Model.Item1.Country 
-            </div>
-    </div>
-</div>
-
-<div id="cardInfo">
-    <form asp-action="OverviewStep" asp-controller="Account" class="from-horizontal">
+<form asp-action="OverviewStep" asp-controller="Account" class="form-horizontal" method="POST">
+        <h4>First Name:</h4>
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.Address" class="form-control" placeholder="Enter a shipping address.."/>
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
     </div>
-
+        <h4>Last Name:</h4>
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.City" class="form-control" placeholder="Enter the city.."/>
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="LastName" placeholder="Enter your last name..." value="@Model.LastName" />
     </div>
-
-    <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.Country" class="form-control" placeholder="Enter the country.."/>
+        <h4>Country:</h4>
+        <div class="form-group">
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="Country" placeholder="Enter your country..." value="@Model.Country" />
     </div>
-
+        <h4>City:</h4>
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.PaymentInfo.CardNumber" class="form-control" placeholder="Enter credit card number.."/>
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="City" placeholder="Enter your city..." value="@Model.City" />
     </div>
-
+        <h4>ZipCode:</h4>
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.PaymentInfo.Cvc" class="form-control" placeholder="Enter the CVC.."/>
+            <input type="number" autofocus="autofocus" class="form-control" asp-for="ZipCode" placeholder="Enter expiry ZIP code..." value="@Model.ZipCode" />
     </div>
-
+        <h4>Address:</h4>
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.PaymentInfo.ExpiryMonth" class="form-control" placeholder="Enter expiration month.."/>
+            <input type="text" autofocus="autofocus" class="form-control" asp-for="Address" placeholder="Enter your address..." value="@Model.Address" />
+    </div>
+        <h4>Email:</h4>
+    <div class="form-group">
+            <input type="email" autofocus="autofocus" class="form-control" asp-for="Email" placeholder="Enter your email..." value="@Model.Email" />
+    </div>
+        <h4>Card Number:</h4>
+    <div class="form-group">
+            <input type="number" autofocus="autofocus" class="form-control" asp-for="CardNumber" placeholder="Enter your card number..." value="@Model.CardNumber" />
+    </div>
+        <h4>CVC:</h4>
+    <div class="form-group">
+            <input type="number" autofocus="autofocus" class="form-control" asp-for="Cvc" placeholder="Enter CVC number..." value="@Model.Cvc" />
+    </div>
+        <h4>Expiry Year:</h4>
+    <div class="form-group">
+            <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryYear" placeholder="Enter expiry year..." value="@Model.ExpiryYear" />
+    </div>
+        <h4>Expiry Month: </h4>
+    <div class="form-group">
+            <input type="number" autofocus="autofocus" class="form-control" asp-for="ExpiryMonth" placeholder="Enter expiry month..." value="@Model.ExpiryMonth" />
     </div>
 
     <div class="form-group">
-        <input type="text" asp-for="@Model.Item2.PaymentInfo.ExpiryYear" class="form-control" placeholder="Enter expiration year.."/>
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="FirstPaymentContinue">Continue</button>
+        <input type="submit" class="continuePayment" value="Continue"/>
     </div>
 </form>
-</div>
+<button><a asp-area="" asp-controller="Account" asp-action="Cart"> Cancel</a></button>
 
-<button type="button">Cancel</button>
+
+

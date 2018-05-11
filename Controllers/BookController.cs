@@ -27,12 +27,6 @@ namespace BookCave.Controllers
             _authorService = new AuthorService();
             _reviewService = new ReviewService();
         }
-        /*public IActionResult Index()
-        {
-            var books = _bookService.GetAllBooks();
-            return View(books);
-        }*/
-
         public IActionResult Index(int genre, int order, string search)
         {
             if (search == null && !(order == 0 && genre == 0)) 
@@ -51,8 +45,7 @@ namespace BookCave.Controllers
                 return View(filteredBooks);           
             }
         }
-
-///TODO: TAKA ÞENNANN ÚT???:
+        
         public IActionResult LogIn()
         {
             return View();

@@ -26,7 +26,17 @@
         </div>
     </div>
     <!-- ADDED -->
-    <nav class="navbar navbar-inverse">
+    <nav class="container navbar navbar-inverse">
+        <!-- LOGIN  -->
+        <div id="nav-Margin" class="nav navbar-right">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a asp-area="" asp-controller="Account" asp-action="Cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                    @await Html.PartialAsync("_LoginPartial")
+                </ul>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" a asp-area="" asp-controller="Home" asp-action="Index">The Book Cave</a>
@@ -79,16 +89,6 @@
                     </div>
                 </div>
             </form>
-            <!-- Need to add a dropdown bar here!!  -->
-                <div class="nav navbar-nav navbar-right">
-                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">My Account <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a asp-area="" asp-controller="Cart" asp-action="Index"><i class="fas fa-shopping-cart"></i> Cart</a></li>
-                            @await Html.PartialAsync("_LoginPartial")
-                        </ul>
-                    </div>
-                </div>
         </div>
        <!-- </form>-->
     </div>

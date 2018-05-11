@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookCave.Data;
 using BookCave.Models;
+using BookCave.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -61,11 +62,13 @@ namespace BookCave
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
-
+            //By doing the following we can inject
+            //this in the constructor of AccountController
+            services.AddTransient<ISignUpService, SignUpService>();
             services.AddMvc();
         }
 
-        //This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        //This method gets called in runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())

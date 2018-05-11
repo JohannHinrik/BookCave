@@ -16,28 +16,27 @@
             <div class="carousel-caption" role="option">
                 <p>
                     Get the Harry Potter collection!
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
+                    <a class="btn btn-default" href="~/Book?genre=0&order=0&search=Harry Potter">
                         BUY NOW
                     </a>
                 </p>
             </div>
         </div>
         <div class="item">
-            <img src="../../images/topRated.jpg" alt="topPicks" class="img-responsive" />
+            <img src="../../images/readAboutCompany.jpg" alt="readAboutCompany" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
+                        <a class="btn btn-default" asp-area="" asp-controller="Home" asp-action="About"/>
                         Check it out!
                     </a>
                  </p>
             </div>
         </div>
         <div class="item">
-            <img src="../../images/schoolPics.jpg" alt="Microsoft Azure" class="img-responsive" />
+            <img src="../../images/signupPic.jpg" alt="Microsoft Azure" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
-                    Check some of our school book collection!
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
+                        <a class="btn btn-default" asp-area="" asp-controller="Account" asp-action="SignUp">
                         Check it out!
                     </a>
                 </p>
@@ -56,13 +55,15 @@
 
 <div class="col-xs-6 col-lg-12">
     <div class="col-md-3">
-        <h2>Top Rated Books</h2>
-        <ol>
-             @foreach(var book in Model.OrderByDescending(x=>x.Rating).Take(3))
-             {
-                 <li><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a></li>
-             }
-        </ol>
-        <button type="button" class="btn btn-outline-primary"><a asp-area="" asp-controller="Book" asp-action="TopRated">View More</a></button>
+            <div id="list" width="25%">
+            <ol>
+                     <h2>Top Rated Books</h2>
+                @foreach(var book in Model.OrderByDescending(x=>x.Rating).Take(3))
+                {
+                    <li><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a></li>
+                }
+            <button type="button" class="btn btn-outline-primary"><a asp-area="" asp-controller="Book" asp-action="TopRated">View More</a></button>
+         </ol>
+        </div>
     </div>
 </div>

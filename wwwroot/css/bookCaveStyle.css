@@ -1,3 +1,8 @@
+#nav-Margin
+{
+    margin-top: 5px;
+    margin-right: 5px;
+}
 #siteName-div
 {
     text-align: center;
@@ -256,4 +261,10 @@ h2
 .avatar > input:checked + img {
     border-radius: 50%;
     border: 2px solid red;
+}
+
+.continuePayment
+{
+    color: white;
+    background: green;
 }

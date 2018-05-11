@@ -27,10 +27,11 @@
                 <button type="submit" class="cartButton">Add to Cart</button>
             </form>
             <br/>
-            <button type="button" class="wishListButton"><i class="far fa-heart"></i></button>
+            <form asp-action="AddToWishlist" asp-controller="Account" asp-route-id="@Model.Item1.BookId" method="POST">
+                <button type="submit" class="wishListButton"><i class="far fa-heart"></i></button>
+            </form>
         </div>
     </div>
-
 </div>
 
 
@@ -39,21 +40,21 @@
    
     <h4>Leave a Comment:</h4>
 
-    <form role="form" method="POST" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
+    <form method="post" asp-action="Details" asp-controller="Account" asp-route-id="@Model.Item1.BookId">
         <!-- Leave a rating: -->
         How did you like the book? Please leave a rating:
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='1'> 1
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='2'> 2
-        <input type="radio" asp-for="@Model.Item2.Rating" name="rate" value='3'> 3
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='1'> 1
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='2'> 2
+        <input type="radio" asp-for="@Model.Item2.Rating" name="rating" value='3'> 3
         <br>
 
         <!-- Leave a comment: -->
         <div class="form-group">
-            <input type="text" asp-for="@Model.Item2.Comment" class="form-control"/>
+            <input type="text" asp-for="@Model.Item2.Comment" name="comment" class="form-control"/>
         </div>
 
         <!-- Submit rating and comment: -->
-        <button type="submit" class="btn btn-success" value="@Model.Item2">Submit</button>
+        <button type="submit" class="btn btn-success" value="Submit">Submit</button>
     </form>
 
     <br><br>
@@ -61,11 +62,11 @@
     <h4><small>RECENT POSTS</small></h4>
     <hr>
     <div class="ListOfComments">
-        <hr>
         @foreach(var review in Model.Item3)
         {
             <div id="OneComment">
-                comment: @review.Comment
+                Anonymous: @review.Comment <br/><br/>
+                User gave this book the rating: @review.Rating
             </div>
             <hr>
         }

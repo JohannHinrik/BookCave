@@ -16,22 +16,28 @@ namespace BookCave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ISignUpService _signUpService;
 
         private CartService _cartService;
         private ReviewService _reviewService;
         private BookService _bookService;
+        private OrderService _orderService;
+        private WishlistService _wishlistService;
 
         public IActionResult Index()
         {
             return View();
         }
-        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
+        public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager, ISignUpService signUpService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _signUpService = signUpService;
             _cartService = new CartService();
             _reviewService = new ReviewService();
             _bookService = new BookService();
+            _orderService = new OrderService();
+            _wishlistService = new WishlistService();
         }
 
         public IActionResult SignUp()
@@ -106,7 +112,7 @@ namespace BookCave.Controllers
             {
                 return View();
             }
-            //If the register goes through 
+            //If the register goes through
             //make the username the same as the password.
             var user = new ApplicationUser
             {
@@ -174,6 +180,7 @@ namespace BookCave.Controllers
         {
             return View();
         }
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddingToCart(int id)
@@ -219,12 +226,9 @@ namespace BookCave.Controllers
             return View(books);
         }
 
-
-        // Testing if commenting in Book-Detail works: 
-
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Details(ReviewListViewModel review, int idbook)     
+        public async Task<IActionResult> Details(ReviewListViewModel review, int id)     
         {            
             //If the comment was not valid:
             if(ModelState.IsValid)
@@ -234,77 +238,101 @@ namespace BookCave.Controllers
 
                 var newReview = new ReviewListViewModel()
                 {
-                    BookId = idbook,
+                    BookId = id,
                     AccountId = user.Id,
                     Comment = review.Comment,
                     Rating =  review.Rating
                 }; 
                 _reviewService.AddReviewToDB(newReview);
-                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-                return RedirectToAction("Details", "Book", new { id = idbook});
-                //return View(bookDetails1);
+                return RedirectToAction("Details", "Book", new { id = id});
             }
-            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-            //return View(bookDetails2);
-            return RedirectToAction("Details", "Book", new { id = idbook});
+            return RedirectToAction("Details", "Book", new { id = id});
         }
+
 
         [Authorize]
         public async Task<IActionResult> FirstPaymentStep()
         {
-            //Get user data
             var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
 
-            var UserPay= new ProfileViewModel {
+            var checkout = new CheckoutViewModel
+            {
                 FirstName = user.FirstName,
-                LastName = user.LastName,
+                LastName = user.LastName, 
                 City = user.City,
-                Country = user.Country,
+                Country = user.Country, 
                 Address = user.Address,
-                /* TODO: Later Add email and username */
+                Email = user.Email,
             };
 
-            var PaymentInfo = new Tuple<ProfileViewModel, OrderListViewModel>(UserPay, null);
-
-            return View(PaymentInfo);
+            return View(checkout);
         }
 
-        /*[Authorize]
-        public async Task<IActionResult> OverviewStep(OrderListViewModel cardInfo)
+        [Authorize]
+        public async Task<IActionResult> OverviewStep(CheckoutViewModel checkout)
         {
-            // 1. Add cardInfo to database: 
-            if(ModelState.IsValid)
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+            // Tuple that keeps the chekout info and all books in the users cart: 
+            var checkoutTuple = new Tuple<CheckoutViewModel, List<BookListViewModel>>(checkout, _cartService.GetBooks(userId));
+
+            return View(checkoutTuple);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ConfirmPay()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
+
+            var checkout = new CheckoutViewModel
             {
-                var user = await _userManager.GetUserAsync(User);
-                var userId = user.Id;
+                FirstName = user.FirstName,
+                LastName = user.LastName, 
+                City = user.City,
+                Country = user.Country, 
+                Address = user.Address,
+                Email = user.Email,
+            };
+/* 
+            // 1. Bæta öllu úr Cart í Orders-gagnagrunn
+                _orderService.AddToOrderHistory(userId);
+                
+            // 2. Eyða öllu úr cart (nota cart-repo)
+*/
+        return View(checkout);
+        }
+        
+        [Authorize]
+        //The Wishlist view
+        public async Task<IActionResult> Wishlist()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
 
-                var newOrder = new OrderListViewModel()
-                {
-                    UserId = userId,
-                    Book = cardInfo.Book,
-                    User = cardInfo.User,
-                    Address = cardInfo.Address,
-                    City = cardInfo.City,
-                    Country = cardInfo.Country,
-                    Quantity = 
-                    Price =
-                    PaymentInfo =
-                    PaymentInfo =
-                }; 
-            // 2. Put models into tuple
+            var books = _wishlistService.GetBooks(userId);
+            return View(books);
+        }
 
-            // 2. return view(tuple);
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddToWishlist(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user.Id;
 
-                _reviewService.AddReviewToDB(newReview);
-                //var bookDetails1 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-                return RedirectToAction("Details", "Book", new { id = idbook});
-                //return View(bookDetails1);
-            }
-            //var bookDetails2 = new Tuple<BookListViewModel, ReviewListViewModel ,List<ReviewListViewModel>>(_bookService.GetBookDetails(id),null,_reviewService.GetAllReviews(id));
-            //return View(bookDetails2);
-            return RedirectToAction("Details", "Book", new { id = idbook});
+            _wishlistService.AddToWishlist(userId, id);
 
-            return View();
-        }*/
+            return RedirectToAction("Index","Book");
+        }
+
+       public async Task<IActionResult> OrderHistory(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            return View(); 
+
+        }
+
     }
 }

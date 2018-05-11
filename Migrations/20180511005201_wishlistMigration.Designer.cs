@@ -11,9 +11,10 @@ using System;
 namespace BookCave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180511005201_wishlistMigration")]
+    partial class wishlistMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,8 +66,6 @@ namespace BookCave.Migrations
 
                     b.Property<int>("BookId");
 
-                    b.Property<bool>("Payed");
-
                     b.Property<int>("Quantity");
 
                     b.Property<string>("UserId");
@@ -76,6 +75,24 @@ namespace BookCave.Migrations
                     b.ToTable("Carts");
                 });
 
+            modelBuilder.Entity("BookCave.Data.EntityModels.CreditCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CardNumber");
+
+                    b.Property<int>("Cvc");
+
+                    b.Property<int>("ExpiryMonth");
+
+                    b.Property<int>("ExpiryYear");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CreditCard");
+                });
+
             modelBuilder.Entity("BookCave.Data.EntityModels.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -83,11 +100,11 @@ namespace BookCave.Migrations
 
                     b.Property<string>("Address");
 
-                    b.Property<int>("BookId");
-
                     b.Property<string>("City");
 
                     b.Property<string>("Country");
+
+                    b.Property<int?>("PaymentInfoId");
 
                     b.Property<int>("Price");
 
@@ -96,6 +113,8 @@ namespace BookCave.Migrations
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PaymentInfoId");
 
                     b.ToTable("Orders");
                 });
@@ -148,6 +167,13 @@ namespace BookCave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Wishlists");
+                });
+
+            modelBuilder.Entity("BookCave.Data.EntityModels.Order", b =>
+                {
+                    b.HasOne("BookCave.Data.EntityModels.CreditCard", "PaymentInfo")
+                        .WithMany()
+                        .HasForeignKey("PaymentInfoId");
                 });
 #pragma warning restore 612, 618
         }

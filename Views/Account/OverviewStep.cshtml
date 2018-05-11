@@ -1,43 +1,78 @@
-@model Tuple<BookCave.Models.ViewModels.ProfileViewModel, BookCave.Models.ViewModels.OrderListViewModel>
+@model Tuple<BookCave.Models.ViewModels.CheckoutViewModel, List<BookCave.Models.ViewModels.BookListViewModel>>
 
 @{
-
+	int cartTotal = 0;
+	int bookTotal = 0;
 }
 
-<h1>Order Overview</h1>
-
-<div id="overview">
-    <div id=firstName>
-      Name: @Model.Item1.FirstName @Model.Item1.LastName
+<h1>2. Order overview</h1>
+    <form>
+      <h4>Name:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.FirstName @Model.Item1.LastName" readonly="readonly" />
     </div>
-    <div id=address>
-        Address: @Model.Item1.Address
-            <div id=city>
-              City: @Model.Item1.City
-            </div>
-            <div id=country>
-              Country: @Model.Item1.Country
-            </div>
+    <h4>Address:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Address" readonly="readonly" />
     </div>
-    <div id=cardNumber>
-      Card Number: @Model.Item2.PaymentInfo.CardNumber
+    <h4>City:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.City" readonly="readonly" />
     </div>
-
-    <div id="cvc">
-      CVC: @Model.Item2.PaymentInfo.Cvc
+    <h4>Country:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Country" readonly="readonly" />
     </div>
-
-    <div id=expDate>
-      Expiry Date: @Model.Item2.PaymentInfo.ExpiryMonth / @Model.Item2.PaymentInfo.ExpiryYear
+    <h4>CardNumber:</h4>
+     <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.CardNumber" readonly="readonly" />
     </div>
-</div>
-
-<div id="booksInCart">
+    <h4>CVC:</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.Cvc" readonly="readonly" />
+    </div>
+    <h4>Expiry Date (Month/year)</h4>
+    <div class="form-group">
+            <input type="text" type="text" autofocus="autofocus" class="form-control" value="@Model.Item1.ExpiryMonth / @Model.Item1.ExpiryYear" readonly="readonly" />
+    </div>
+</form>
+<div class="col-xs-6 col-lg-8">
   <h2>Books in Cart</h2>
+    @foreach(var book in Model.Item2)
+    {
+        <table id="overview" class="table table-hover table-condensed">
+					<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-2 hidden-xs"><img src="~/images/books/(@book.BookId).jpg" alt="BookPhoto" class="img-responsive"/></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin"><a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class="bookTitle">@book.Title</a> </h4>
+									</div>
+								</div>
+							</td>
+							<td> Price: @book.Price</td>
+							<td> Quantity: @book.Quantity </td>
+						</tr>
+					</tbody>
+				</table>
+    }
+    @foreach(var book in Model.Item2) 
+	{
+		cartTotal += book.Price * book.Quantity;
+		bookTotal += book.Quantity;
+	}
+ <strong>Books in cart: @bookTotal</strong></br>
+			<strong>Total: @cartTotal Kr</strong>
+    </div>
 </div>
-
-<button type="button" id="cancelCheckout">Cancel</button>
-
-<button type="button" id="backToCart">Back</button>
-
-<button type="button" id="continueCheckout2">Continue</button>
+<table>
+  <td colspan="3"></td>
+  <td><a asp-area="" asp-controller="Account" asp-action="Cart">Cancel</a></td>
+  <td><a asp-area="" asp-controller="Account" asp-action="FirstPaymentStep">Back</a></td>
+  <td>
+    <form asp-area="" asp-controller="Account" asp-action="ConfirmPay">
+        <button class="confirmPayButton">Confirm</i></button>
+    </form>
+  </td>
+</table>

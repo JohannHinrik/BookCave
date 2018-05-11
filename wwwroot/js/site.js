@@ -1,12 +1,4 @@
-﻿$('.search-button').addEventListener("keyup", function(event) {
-    // 13 is the enterkey on keyboard
-    if (event.keyCode === 13) {
-    document.getElementById("search-button").click();
-    }
-});
-
-$('.cartButton').click(function(id) {
-    AddToCart(id);
+﻿$('.cartButton').click(function() {
     swal({
         title: "Success!",
         text: "Book has been added to your cart!",
@@ -25,15 +17,6 @@ $('.wishListButton').click(function() {
       });
 });
 
-$('.cartButton').click(function() { 
-    swal({
-        title: "Success!",
-        text: "Book has been added to your cart!",
-        icon: "success",
-        button: "Continue Browsing",
-      });
-});
-
 $('.updateProfile').click(function() { 
     swal({
         title: "Success!",
@@ -43,6 +26,13 @@ $('.updateProfile').click(function() {
       });
 });
 
+$('.search-button').addEventListener("keyup", function(event) {
+    // 13 is the enterkey on keyboard
+    if (event.keyCode === 13) {
+    document.getElementById("search-button").click();
+    }
+});
+
 /* Deleting account */
 $('.DeleteAccountButton').click(function() { 
 
@@ -50,4 +40,9 @@ $('.DeleteAccountButton').click(function() {
 
 $("#Image-choosing input[type='radio']:checked").attr("checked", "checked");
 
-/*$("#Image-choosing input[type='radio']:checked").css("border", '2px solid red');*/
+
+$('.confirmPayButton').click(function() { 
+    swal("Please confirm your payment!", {
+        buttons: ["Go back", true],
+      });
+});
