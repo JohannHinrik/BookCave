@@ -20,6 +20,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+    <div class="wrapper">
     <div class="banner">
         <div id="siteName-div">
             <a href="http://localhost:5000"><img src="../../images/bookCave.jpg" alt="siteName" id="siteName"></a>
@@ -96,8 +97,9 @@
 <!-- HERE IT ENDS -->
     <div class="container body-content">
         @RenderBody()
-         <hr />
-        <footer>
+         <div class ="push"></div>
+         </div>
+        <footer class="footer">
             <p>&copy; 2018 - BookCave</p>
             <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
             <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
