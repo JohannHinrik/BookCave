@@ -289,6 +289,7 @@ namespace BookCave.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userId = user.Id;
 
+            //Get the user, so the FirstName variable can be called in the view:
             var checkout = new CheckoutViewModel
             {
                 FirstName = user.FirstName,
@@ -298,13 +299,11 @@ namespace BookCave.Controllers
                 Address = user.Address,
                 Email = user.Email,
             };
-/* 
-            // 1. Bæta öllu úr Cart í Orders-gagnagrunn
-                _orderService.AddToOrderHistory(userId);
                 
-            // 2. Eyða öllu úr cart (nota cart-repo)
-*/
-        return View(checkout);
+            // 2. Make bool variable "payed" true for purchased books:
+                _cartService.UpdateCartPay(userId);
+
+            return View(checkout);
         }
         
         [Authorize]
@@ -330,10 +329,15 @@ namespace BookCave.Controllers
             return RedirectToAction("Index","Book");
         }
 
-       public async Task<IActionResult> OrderHistory(int id)
+       public async Task<IActionResult> OrderHistory()
         {
             var user = await _userManager.GetUserAsync(User);
-            return View(); 
+            var userId = user.Id; 
+            var userName = user.FirstName;
+
+            var orderList = _cartService.getOrderList(userId, userName);
+
+            return View(orderList); 
 
         }
 

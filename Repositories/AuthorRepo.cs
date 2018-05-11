@@ -26,19 +26,19 @@ namespace BookCave.Repositories
         public List<AuthorListViewModel> GetTopRatedAuthors()
         {
             var topRatedAuthors = ( from a in _db.Authors
-                                    join b in _db.Books on a.Id equals b.AuthorId                               
-                                    orderby b.Rating descending
+                                    join b in _db.Books on a.Id equals b.AuthorId
+                                    group b by new { b.AuthorId, a.Name} into AuthorBooks
                                     select new AuthorListViewModel
                                     {
-                                       Name = a.Name,
-                                       Rating = b.Rating
-                                    }).ToList();
+                                       Name = AuthorBooks.Key.Name,
+                                       Rating = AuthorBooks.Average(b => b.Rating)
+                                    });
 
-            var grp = topRatedAuthors.GroupBy(a=>a.Name,(key,g)=>g.OrderByDescending(b=>b.Rating).First());
+            //var grp2 = topRatedAuthors.GroupBy(a=>a.Name,(key,g)=>g.OrderByDescending(b=>b.Rating).First());
 
-            //var grp = topRatedAuthors.GroupBy(a=>a.Name,(key,g)=>g.Average(b=> b.Rating)).ToList();
-
-        return grp.Take(10).ToList();
+            //var grp = topRatedAuthors.GroupBy(a=>a.Name,(key,g)=>
+            var topTen = topRatedAuthors.OrderByDescending(average => average.Rating).Take(10);
+        return topTen.ToList();
         }
     }
 }
