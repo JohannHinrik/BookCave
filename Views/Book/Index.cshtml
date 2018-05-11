@@ -6,8 +6,7 @@
 
 <h2 id="BooksTile">Books</h2>
 
-<!--  Printing all Books
- -->
+<!--  Printing all Books-->
 <div>
     @foreach(var book in Model)
     {
@@ -23,6 +22,7 @@
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                <p class="bookPrice">@book.Price Kr</p>
+               <!-- A loop to print out the rating in stars -->
                 @for(var i = Math.Round(@book.Rating); i > 0; i--)
                 {
                     <i id="goldStar" class="fas fa-star"></i>
@@ -32,6 +32,7 @@
                     <i id="blackStar" class="fas fa-star"></i>
                 }
             </div>
+            <!-- Buttons to add to cart and wishlist -->
             <div class="addToButtons">
             <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
                 <button type="submit" class="cartButton">Add to Cart</button>
