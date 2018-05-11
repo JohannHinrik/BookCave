@@ -287,7 +287,7 @@ namespace BookCave.Controllers
                 City = user.City,
                 Country = user.Country, 
                 Address = user.Address,
-                Email = user.Email,
+                Email = user.Email
             };
 
             return View(checkout);
