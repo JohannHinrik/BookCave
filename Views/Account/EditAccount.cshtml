@@ -1,5 +1,9 @@
 @model BookCave.Models.ViewModels.ProfileViewModel
 
+@{
+    ViewData["Title"] = "Edit Account";
+}
+
 <form asp-action="EditAccount" asp-controller="Account" class="form-horizontal" method="POST">
     <div class="form-group">
             <input type="text" autofocus="autofocus" class="form-control" asp-for="FirstName" placeholder="Enter your first name..." value="@Model.FirstName" />
