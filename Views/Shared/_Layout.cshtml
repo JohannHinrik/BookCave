@@ -23,6 +23,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+    <div class="wrapper">
     <div class="banner">
         <!-- So that banner is clickable -->
         <div id="siteName-div">
@@ -98,8 +99,9 @@
 <!-- Here the navigation bar ends -->
     <div class="container body-content">
         @RenderBody()
-         <hr />
-        <footer>
+         <div class ="push"></div>
+         </div>
+        <footer class="footer">
             <p>&copy; 2018 - BookCave</p>
             <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
             <li>Mail: <a href = "mailto: info@bookcave.com">info@bookcave.com</a></li>
