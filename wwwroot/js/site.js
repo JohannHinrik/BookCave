@@ -38,7 +38,7 @@ $('.DeleteAccountButton').click(function() {
 
 });
 
-$("#Image-choosing input[type='radio']:checked").attr("checked", "checked");
+//$("#Image-choosing input[type='radio']:checked").attr("checked", "checked");
 
 
 $('.confirmPayButton').click(function() { 
@@ -46,3 +46,4 @@ $('.confirmPayButton').click(function() {
         buttons: ["Go back", true],
       });
 });
+
