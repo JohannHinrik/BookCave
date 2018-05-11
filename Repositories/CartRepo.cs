@@ -24,6 +24,7 @@ namespace BookCave.Repositories
             if(connection != null)
             {
                 connection.Quantity++;
+                connection.Payed = false;
                 _db.Carts.Update(connection);
                 _db.SaveChanges();
             }
@@ -108,6 +109,7 @@ namespace BookCave.Repositories
             foreach(var c in connection)
             {
                 c.Payed = true;
+                c.Quantity = 0;
             }
              _db.Carts.UpdateRange(connection);
                 _db.SaveChanges();
