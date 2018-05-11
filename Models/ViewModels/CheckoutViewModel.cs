@@ -13,5 +13,6 @@ namespace BookCave.Models.ViewModels
         public int Cvc { get; set; }
         public int ExpiryYear { get; set; }
         public int ExpiryMonth { get; set; }
+        public int ZipCode { get; set; }
     }
 }
