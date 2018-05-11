@@ -1,21 +1,29 @@
 @model Tuple<List<BookCave.Models.ViewModels.BookListViewModel>,List<BookCave.Models.ViewModels.AuthorListViewModel>>
 
+@{
+    ViewData["Title"] = "Top Rated Page";
+}
+
 <h2 id="topBooksH2">TOP 10 BOOKS</h2>
 <h2 id="topAuthorH2">TOP 10 AUTHORS</h2>
 
+<!--  Printing Top rated Books-->
 <div class="col-xs-6 col-lg-9">
     @foreach(var book in Model.Item1)
     {
         <div class="col-xs-6 col-lg-6">
         <hr>
+            <!-- Book Cover  -->
             <div>
                 <img src="~/images/books/(@book.BookId).jpg" alt="@book.Title" class="bookCover">
             </div>
+            <!-- Book info  -->
             <div class="col-xs-6 col-lg-6">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId" class ="bookTitle">@book.Title</a> <br/>
                 Genre: @book.Genre <br/>
                 Author: @book.Author <br/>
                 <p class="bookPrice">@book.Price Kr</p>
+                <!-- A loop to print out the rating in stars -->
                 @for(var i = Math.Round(@book.Rating); i > 0; i--)
                 {
                     <i id="goldStar" class="fas fa-star"></i>
@@ -25,6 +33,7 @@
                     <i id="blackStar" class="fas fa-star"></i>
                 }
             </div>
+            <!-- Buttons to add to cart and wishlist -->
             <div class="addToButtons">
                 <form asp-action="AddingToCart" asp-controller="Account" asp-route-id="@book.BookId" method="POST">
                     <button type="submit" class="cartButton">Add to Cart</button>
@@ -38,6 +47,7 @@
     }
 </div>
 
+<!--  Printing Top rated Authors-->
 <div id="list" width="25%">
         <ol>
         @foreach(var author in Model.Item2)
