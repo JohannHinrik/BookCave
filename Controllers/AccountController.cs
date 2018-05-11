@@ -21,6 +21,10 @@ namespace BookCave.Controllers
         private ReviewService _reviewService;
         private BookService _bookService;
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
